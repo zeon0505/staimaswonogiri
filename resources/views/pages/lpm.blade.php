@@ -1,0 +1,4 @@
+﻿@extends('layouts.app')
+@section('content')
+<div class='bg-white rounded-2xl shadow-sm border border-gray-100 p-8'><h2 class='text-2xl font-bold text-gray-800 mb-4'>Lembaga Penjaminan Mutu (LPM)</h2><p class='text-gray-600 leading-relaxed mb-6'>LPM STAIMAS Wonogiri bertanggung jawab atas monitoring, evaluasi, dan penjaminan mutu penyelenggaraan akademik dan non-akademik di lingkungan sekolah tinggi secara konsisten.</p><div class='bg-teal-50 p-6 rounded-xl'><h4 class='font-bold text-teal-700 mb-2'>Tugas Pokok LPM</h4><ul class='list-disc list-inside space-y-2 text-sm text-gray-700'><li>Merumuskan standar mutu institusi berdasarkan standar nasional</li><li>Melaksanakan Sistem Penjaminan Mutu Internal (SPMI)</li><li>Melakukan monitoring dan evaluasi perkuliahan secara berkala</li><li>Mempersiapkan proses akreditasi program studi dan institusi</li></ul></div></div>
+@endsection

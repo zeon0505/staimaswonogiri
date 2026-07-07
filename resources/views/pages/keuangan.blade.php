@@ -1,0 +1,4 @@
+﻿@extends('layouts.app')
+@section('content')
+<div class='bg-white rounded-2xl shadow-sm border border-gray-100 p-8'><h2 class='text-2xl font-bold text-gray-800 mb-4'>Layanan Keuangan</h2><p class='text-gray-600 leading-relaxed mb-6'>Informasi dan administrasi pembayaran SPP, biaya registrasi, uang gedung, serta biaya perkuliahan lainnya di STAIMAS Wonogiri.</p><div class='p-6 bg-yellow-50/50 border border-yellow-200 rounded-xl flex items-start gap-4 mb-6'><i class='fas fa-info-circle text-yellow-600 text-2xl mt-0.5'></i><div><h4 class='font-bold text-yellow-800 text-sm'>Pengumuman Pembayaran</h4><p class='text-xs text-yellow-700 leading-relaxed mt-1'>Semua transaksi pembayaran kuliah WAJIB disalurkan melalui nomor rekening resmi Bank Rakyat Indonesia (BRI) atas nama STAIMAS Wonogiri. Harap konfirmasi bukti transfer ke staf Keuangan.</p></div></div></div>
+@endsection

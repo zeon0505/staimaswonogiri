@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-teal-brand: #0d7c7d;
+  --color-teal-brand-dark: #074e50;
+  --color-gold-brand: #c9a84c;
+}
+
+/* Custom CSS to support standard transitions and interactive states */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom background pattern for Hero */
+.hero-pattern {
+  background-image: radial-gradient(rgba(201, 168, 76, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom styles for desktop dropdown */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Custom styles for map */
+.kontak-map iframe {
+  filter: grayscale(0.2) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+.kontak-map iframe:hover {
+  filter: grayscale(0);
+}
+
+/* Responsive Navbar Drawer Mobile */
+.mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.open {
+  transform: translateX(0) !important;
+}
+.mobile-menu-overlay {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+.mobile-menu-overlay.active {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Responsive Hero Slide */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-slide {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .carousel-slide {
+    height: 50vh !important;
+    min-height: 50vh !important;
+  }
+  .carousel-container {
+    height: 50vh !important;
+    min-height: 50vh !important;
+  }
+}
+
