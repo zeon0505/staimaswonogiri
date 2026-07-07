@@ -122,12 +122,8 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group" id="nav-brand">
-        <div class="w-12 h-12 bg-teal-brand rounded-full flex items-center justify-center border-2 border-gold-brand shadow-md">
-          <svg class="w-8 h-8 text-white" viewBox="0 0 60 60" fill="none">
-            <rect x="16" y="26" width="28" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="24" y="34" width="12" height="10" rx="1" fill="currentColor" opacity="0.5"/>
-            <path d="M20 26 Q30 18 40 26" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-gold-brand shadow-md overflow-hidden">
+          <img src="{{ asset('assest/LOGO STAIMAS AI.png') }}" alt="STAIMAS Logo" class="w-full h-full object-contain p-0.5">
         </div>
         <div class="flex flex-col">
           <span class="text-lg font-extrabold text-teal-brand tracking-tight leading-none group-hover:text-teal-brand-dark transition-colors">STAIMAS</span>
