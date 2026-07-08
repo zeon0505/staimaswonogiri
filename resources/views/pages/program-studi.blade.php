@@ -9,7 +9,7 @@
     ['Hukum Tata Negara', 'HTN', 'Terakreditasi B', 'hukum', 'Menghasilkan pakar hukum Islam yang kompeten dan berintegritas', 'green'],
   ] as $prodi)
   <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
-    <div class="p-6 @if($prodi[1] === 'PAI') bg-teal-brand/10 border-b-4 border-teal-brand/20 @elseif($prodi[1] === 'KPI') bg-blue-600/10 border-b-4 border-blue-600/20 @elseif($prodi[1] === 'ES') bg-yellow-400/10 border-b-4 border-yellow-400/20 @else bg-green-500/10 border-b-4 border-green-500/20 @endif">
+    <div class="p-6 @if($prodi[1] === 'PAI') bg-teal-50 @elseif($prodi[1] === 'KPI') bg-blue-50 @else bg-white @endif">
       <div class="relative w-full h-32 rounded-xl mb-4 flex items-center justify-center p-2">
         @if($prodi[2])
         <span class="absolute top-2 left-2 bg-{{ $prodi[5] }}-600 text-white text-xs font-bold px-2 py-1 rounded-md">{{ $prodi[2] }}</span>
