@@ -20,4 +20,19 @@ class Dosen extends Model
     {
         return trim(($this->gelar_depan ? $this->gelar_depan . ' ' : '') . $this->nama . ($this->gelar_belakang ? ', ' . $this->gelar_belakang : ''));
     }
+
+    protected static function booted()
+    {
+        static::creating(function ($dosen) {
+            if (empty($dosen->slug)) {
+                $dosen->slug = \Illuminate\Support\Str::slug($dosen->nama_lengkap);
+            }
+        });
+
+        static::updating(function ($dosen) {
+            if (empty($dosen->slug)) {
+                $dosen->slug = \Illuminate\Support\Str::slug($dosen->nama_lengkap);
+            }
+        });
+    }
 }
