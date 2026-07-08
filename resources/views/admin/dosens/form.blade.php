@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title', $dosen ? 'Edit Dosen' : 'Tambah Dosen')
-@section('breadcrumb', 'Dosen PAI / ' . ($dosen ? 'Edit' : 'Tambah Baru'))
+@section('breadcrumb', 'Dosen & Staff / ' . ($dosen ? 'Edit' : 'Tambah Baru'))
 
 @section('content')
 <div class="max-w-2xl">

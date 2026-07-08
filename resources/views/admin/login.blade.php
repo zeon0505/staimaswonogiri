@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Admin – PAI STAIMAS Wonogiri</title>
+  <title>Login Admin – STAIMAS Wonogiri</title>
   <link rel="icon" type="image/png" href="{{ asset('assest/LOGO STAIMAS AI.png') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
       <p class="text-center text-xs text-gray-400">Halaman ini tidak ditampilkan di website publik.</p>
     </div>
 
-    <p class="text-center text-teal-500 text-xs mt-6">© 2026 PAI STAIMAS Wonogiri</p>
+    <p class="text-center text-teal-500 text-xs mt-6">© 2026 STAIMAS Wonogiri</p>
   </div>
 
 </body>

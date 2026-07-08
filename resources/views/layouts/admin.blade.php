@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel – @yield('title', 'Dashboard') | PAI STAIMAS</title>
+  <title>Admin Panel – @yield('title', 'Dashboard') | STAIMAS Wonogiri</title>
   <link rel="icon" type="image/png" href="{{ asset('assest/LOGO STAIMAS AI.png') }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
           <img src="{{ asset('assest/LOGO STAIMAS AI.png') }}" alt="STAIMAS" style="width:100%; height:100%; object-fit:contain; padding:2px;">
         </div>
         <div>
-          <div style="font-weight:800; color:#fff; font-size:14px; line-height:1.2;">PAI STAIMAS</div>
+          <div style="font-weight:800; color:#fff; font-size:14px; line-height:1.2;">STAIMAS</div>
           <div style="font-size:10px; color:#5f9ea0; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Admin Panel</div>
         </div>
       </div>
@@ -104,7 +104,7 @@
       <div class="sidebar-section-title" style="margin-top:10px;">Akademik</div>
       <a href="{{ route('admin.dosens.index') }}" class="sidebar-link {{ request()->routeIs('admin.dosens*') ? 'active' : '' }}">
         <i class="fas fa-user-tie"></i>
-        <span>Dosen PAI</span>
+        <span>Dosen & Staff</span>
       </a>
     </nav>
 
@@ -126,7 +126,7 @@
         </button>
       </form>
       <a href="{{ route('home') }}" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:6px; color:#5f9ea0; font-size:11px; text-decoration:none; padding:4px;" onmouseover="this.style.color='#b2d8d8'" onmouseout="this.style.color='#5f9ea0'">
-        <i class="fas fa-external-link-alt" style="font-size:9px;"></i> Lihat Website PAI
+        <i class="fas fa-external-link-alt" style="font-size:9px;"></i> Lihat Website
       </a>
     </div>
   </aside>

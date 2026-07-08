@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Dashboard')
-@section('breadcrumb', 'Selamat datang di Admin Panel PAI STAIMAS Wonogiri')
+@section('breadcrumb', 'Selamat datang di Admin Panel STAIMAS Wonogiri')
 
 @section('content')
 {{-- Stats Cards --}}

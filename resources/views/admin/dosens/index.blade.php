@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Dosen PAI')
-@section('breadcrumb', 'Kelola data dosen pengajar PAI STAIMAS')
+@section('title', 'Dosen & Staff')
+@section('breadcrumb', 'Kelola data dosen & staff pengajar STAIMAS')
 @section('header-action')
   <a href="{{ route('admin.dosens.create') }}" class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-sm font-bold px-4 py-2 rounded-xl transition-colors shadow">
     <i class="fas fa-user-plus"></i> Tambah Dosen
