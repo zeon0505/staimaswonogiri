@@ -87,9 +87,6 @@
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
         },
-        "platform": {
-            "php": "8.2.31"
-        },
         "platform-check": false
     },
     "minimum-stability": "stable",
