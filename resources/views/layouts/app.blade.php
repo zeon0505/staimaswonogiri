@@ -74,6 +74,7 @@
               <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all"><i class="fas fa-graduation-cap text-teal-600 w-4"></i> Akademik</a></li>
               <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all"><i class="fas fa-database text-teal-600 w-4"></i> Pusat Data & Informasi</a></li>
               <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all"><i class="fas fa-book-open text-teal-600 w-4"></i> Program Studi</a></li>
+              <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 px-4 py-2 text-sm rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all"><i class="fas fa-chalkboard-teacher text-teal-600 w-4"></i> Dosen & Staff</a></li>
             </ul>
           </li>
 
@@ -119,6 +120,7 @@
             </ul>
           </li>
 
+          <li><a href="{{ route('pages.berita') }}" class="hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.berita') ? 'text-teal-700 font-bold' : '' }}">BERITA</a></li>
           <li><a href="{{ route('pages.pengumuman') }}" class="hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.pengumuman') ? 'text-teal-700 font-bold' : '' }}">PENGUMUMAN</a></li>
           <li><a href="{{ route('pages.akreditasi') }}" class="hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.akreditasi') ? 'text-teal-700 font-bold' : '' }}">AKREDITASI</a></li>
         </ul>
@@ -147,7 +149,8 @@
           <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
             <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-700 border-b border-gray-100/70"><i class="fas fa-graduation-cap text-teal-500 text-xs w-3"></i> Akademik</a></li>
             <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-700 border-b border-gray-100/70"><i class="fas fa-database text-teal-500 text-xs w-3"></i> Pusat Data & Informasi</a></li>
-            <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-700"><i class="fas fa-list text-teal-500 text-xs w-3"></i> Program Studi</a></li>
+            <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-700 border-b border-gray-100/70"><i class="fas fa-list text-teal-500 text-xs w-3"></i> Program Studi</a></li>
+            <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-700"><i class="fas fa-chalkboard-teacher text-teal-500 text-xs w-3"></i> Dosen & Staff</a></li>
           </ul>
         </li>
 

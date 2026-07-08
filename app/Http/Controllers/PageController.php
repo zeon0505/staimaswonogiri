@@ -4,8 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Slide;
+use App\Models\Berita;
+use App\Models\Poster;
+use App\Models\Dosen;
+
 class PageController extends Controller
 {
+    public function home()
+    {
+        $slides = Slide::where('aktif', true)->orderBy('urutan')->get();
+        // Berita & Pengumuman
+        $beritas = Berita::where('aktif', true)->orderBy('created_at', 'desc')->take(6)->get();
+        $posters = Poster::where('aktif', true)->get();
+        
+        return view('welcome', compact('slides', 'beritas', 'posters'));
+    }
     // ===== PENDIDIKAN =====
     public function akademik()
     {
@@ -129,6 +143,71 @@ class PageController extends Controller
 
     public function akreditasi()
     {
-        return view('pages.akreditasi', ['title' => 'Akreditasi', 'subtitle' => 'Status akreditasi program studi STAIMAS Wonogiri']);
+        return view('pages.akreditasi', ['title' => 'Akreditasi', 'subtitle' => 'Status Akreditasi Institusi dan Program Studi STAIMAS Wonogiri']);
+    }
+
+    // ===== DOSEN =====
+    public function dosen(Request $request)
+    {
+        $query = Dosen::where('aktif', true);
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('nama', 'like', "%{$search}%")
+                  ->orWhere('jabatan', 'like', "%{$search}%");
+        }
+        $dosens = $query->paginate(12)->withQueryString();
+        
+        return view('pages.dosen', [
+            'title' => 'Tenaga Pengajar',
+            'subtitle' => 'Dosen-Dosen STAIMAS',
+            'dosens' => $dosens
+        ]);
+    }
+
+    public function dosenShow($slug)
+    {
+        $dosen = Dosen::where('slug', $slug)->firstOrFail();
+        return view('pages.dosen-detail', [
+            'title' => $dosen->nama,
+            'subtitle' => 'Profil Dosen',
+            'dosen' => $dosen
+        ]);
+    }
+
+    // ===== BERITA =====
+    public function berita(Request $request)
+    {
+        $query = Berita::where('aktif', true);
+        
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('judul', 'like', "%{$search}%")
+                  ->orWhere('konten', 'like', "%{$search}%");
+        }
+        
+        $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
+        
+        return view('pages.berita', [
+            'title' => 'Berita & Pengumuman',
+            'subtitle' => 'Informasi terbaru seputar STAIMAS Wonogiri',
+            'beritas' => $beritas
+        ]);
+    }
+
+    public function beritaShow($slug)
+    {
+        $berita = Berita::where('slug', $slug)->firstOrFail();
+        $related_beritas = Berita::where('aktif', true)
+                                 ->where('id', '!=', $berita->id)
+                                 ->orderBy('created_at', 'desc')
+                                 ->take(3)
+                                 ->get();
+                                 
+        return view('pages.berita-detail', [
+            'title' => $berita->judul,
+            'subtitle' => 'Berita STAIMAS',
+            'berita' => $berita,
+            'related_beritas' => $related_beritas
+        ]);
     }
 }

@@ -144,6 +144,7 @@
               <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-graduation-cap w-4 text-teal-brand"></i> Akademik</a></li>
               <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-database w-4 text-teal-brand"></i> Pusat Data & Informasi</a></li>
               <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-book-open w-4 text-teal-brand"></i> Program Studi</a></li>
+              <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-chalkboard-teacher w-4 text-teal-brand"></i> Dosen & Staff</a></li>
             </ul>
           </li>
 
@@ -197,7 +198,7 @@
             </ul>
           </li>
 
-          <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">PENGUMUMAN</a></li>
+          <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">BERITA</a></li>
           <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">AKREDITASI</a></li>
         </ul>
       </nav>
@@ -229,7 +230,8 @@
           <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
             <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-graduation-cap text-teal-brand/60 text-xs w-3"></i> Akademik</a></li>
             <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-database text-teal-brand/60 text-xs w-3"></i> Pusat Data & Informasi</a></li>
-            <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-list text-teal-brand/60 text-xs w-3"></i> Program Studi</a></li>
+            <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-list text-teal-brand/60 text-xs w-3"></i> Program Studi</a></li>
+            <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-chalkboard-teacher text-teal-brand/60 text-xs w-3"></i> Dosen & Staff</a></li>
           </ul>
         </li>
 
@@ -291,7 +293,8 @@
           </ul>
         </li>
 
-        <!-- PENGUMUMAN & AKREDITASI -->
+        <!-- BERITA, PENGUMUMAN & AKREDITASI -->
+        <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita</a></li>
         <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-bell w-4 text-teal-brand"></i> Pengumuman</a></li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
 
@@ -308,15 +311,15 @@
   <!-- ===== HERO CAROUSEL ===== -->
   <section class="carousel-container min-h-[50vh] md:min-h-[70vh] bg-teal-brand-dark" id="beranda">
     <div class="carousel-track" id="carousel-track">
-      <!-- Slide 1 -->
+      @forelse($slides as $slide)
+      <div class="carousel-slide relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ Storage::url($slide->gambar) }}')">
+        <div class="absolute inset-0 bg-black/10 z-0"></div>
+      </div>
+      @empty
       <div class="carousel-slide relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('/slide1.png')">
-        <!-- Hapus semua teks overlay di sini, sisakan overlay gelap tipis agar slide transisinya halus -->
         <div class="absolute inset-0 bg-black/10 z-0"></div>
       </div>
-      <!-- Slide 2 -->
-      <div class="carousel-slide relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('/slide2.png')">
-        <div class="absolute inset-0 bg-black/10 z-0"></div>
-      </div>
+      @endforelse
     </div>
     
     <!-- Carousel Controls -->
@@ -466,36 +469,19 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Berita 1 -->
+        @forelse($beritas as $berita)
         <article class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
           <div class="aspect-video bg-teal-brand/10 relative">
-            <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-11-at-09.06.29.jpeg" alt="BPN & STAIMAS" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
+            <img src="{{ Storage::url($berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
           </div>
           <div class="p-5">
-            <span class="text-[10px] text-teal-brand font-bold uppercase">Berita</span>
-            <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug"><a href="https://www.staimaswonogiri.ac.id/2026/06/11/bpn-gandeng-staimas-untuk-peningkatan-kualitas-data-pertanahan-di-wonogiri-ini-tugas-mahasiswa-kpm-07-di-lapangan/" target="_blank" class="hover:text-teal-brand">BPN Gandeng STAIMAS untuk Peningkatan Kualitas Data Pertanahan di Wonogiri, Ini Tugas Mahasiswa KPM 07 di Lapangan</a></h3>
+            <span class="text-[10px] text-teal-brand font-bold uppercase">{{ $berita->kategori->nama ?? 'Berita' }}</span>
+            <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug"><a href="#" class="hover:text-teal-brand">{{ $berita->judul }}</a></h3>
           </div>
         </article>
-        <!-- Berita 2 -->
-        <article class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <div class="aspect-video bg-teal-brand/10 relative">
-            <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2026/06/WhatsApp-Image-2026-06-10-at-10.03.15.jpeg" alt="Pembekalan KPM" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
-          </div>
-          <div class="p-5">
-            <span class="text-[10px] text-teal-brand font-bold uppercase">Berita</span>
-            <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug"><a href="https://www.staimaswonogiri.ac.id/2026/06/10/pembekalan-kpm-07-staimas-wonogiri-menyiapkan-langkah-pengabdian-dari-proposal-hingga-publikasi/" target="_blank" class="hover:text-teal-brand">Pembekalan KPM 07 STAIMAS Wonogiri, Menyiapkan Langkah Pengabdian dari Proposal hingga Publikasi</a></h3>
-          </div>
-        </article>
-        <!-- Berita 3 -->
-        <article class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <div class="aspect-video bg-teal-brand/10 relative">
-            <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-02-at-15.24.05.jpeg" alt="Polri & STAIMAS" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
-          </div>
-          <div class="p-5">
-            <span class="text-[10px] text-teal-brand font-bold uppercase">Berita</span>
-            <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug"><a href="https://www.staimaswonogiri.ac.id/2026/05/04/kolaborasi-akademisi-dan-polri-penguatan-penegakan-hukum-lalu-lintas-di-polres-wonogiri/" target="_blank" class="hover:text-teal-brand">Kolaborasi Akademisi dan Polri, Penguatan Penegakan Hukum Lalu Lintas di Polres Wonogiri</a></h3>
-          </div>
-        </article>
+        @empty
+        <div class="col-span-3 text-center py-10 text-gray-500 text-sm">Belum ada berita.</div>
+        @endforelse
       </div>
     </div>
   </section>
