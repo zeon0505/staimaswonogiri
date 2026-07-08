@@ -3,23 +3,27 @@
 @section('content')
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
   @foreach([
-    ['Pendidikan Agama Islam', 'PAI', 'Terakreditasi B', 'fa-quran', 'Mempersiapkan pendidik profesional dan berkarakter Islami', 'teal'],
-    ['Komunikasi & Penyiaran Islam', 'KPI', 'Terakreditasi B', 'fa-broadcast-tower', 'Mencetak komunikator dakwah yang handal dan profesional', 'blue'],
-    ['Ekonomi Syariah', 'ES', 'Terakreditasi B', 'fa-coins', 'Membentuk ahli ekonomi berbasis nilai syariah Islam', 'yellow'],
-    ['Hukum Tata Negara', 'HTN', 'Terakreditasi B', 'fa-balance-scale', 'Menghasilkan pakar hukum Islam yang kompeten dan berintegritas', 'green'],
+    ['Pendidikan Agama Islam', 'PAI', 'Terakreditasi B', 'pai', 'Mempersiapkan pendidik profesional dan berkarakter Islami', 'teal'],
+    ['Komunikasi & Penyiaran Islam', 'KPI', 'Terakreditasi B', 'kpi', 'Mencetak komunikator dakwah yang handal dan profesional', 'blue'],
+    ['Ekonomi Syariah', 'ES', 'Terakreditasi B', 'ekonomi', 'Membentuk ahli ekonomi berbasis nilai syariah Islam', 'yellow'],
+    ['Hukum Tata Negara', 'HTN', 'Terakreditasi B', 'hukum', 'Menghasilkan pakar hukum Islam yang kompeten dan berintegritas', 'green'],
   ] as $prodi)
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow group">
-    <div class="bg-{{ $prodi[5] }}-700 text-white p-6 flex items-center justify-between">
-      <div>
-        <span class="text-xs font-semibold bg-white/20 px-2 py-0.5 rounded-full">{{ $prodi[2] }}</span>
-        <h3 class="font-extrabold text-2xl mt-2">{{ $prodi[1] }}</h3>
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+    <div class="p-6 @if($prodi[1] === 'PAI') bg-teal-brand/10 border-b-4 border-teal-brand/20 @elseif($prodi[1] === 'KPI') bg-blue-600/10 border-b-4 border-blue-600/20 @elseif($prodi[1] === 'ES') bg-yellow-400/10 border-b-4 border-yellow-400/20 @else bg-green-500/10 border-b-4 border-green-500/20 @endif">
+      <div class="relative w-full h-32 rounded-xl mb-4 flex items-center justify-center p-2">
+        @if($prodi[2])
+        <span class="absolute top-2 left-2 bg-{{ $prodi[5] }}-600 text-white text-xs font-bold px-2 py-1 rounded-md">{{ $prodi[2] }}</span>
+        @endif
+        
+        @if($prodi[3])
+        <img src="{{ asset('assest/' . $prodi[3] . '.png') }}" alt="Logo {{ $prodi[1] }}" class="h-full w-auto object-contain">
+        @else
+        <i class="fas fa-balance-scale text-5xl text-gray-300"></i>
+        @endif
       </div>
-      <i class="fas {{ $prodi[3] }} text-4xl text-white/40 group-hover:text-white/60 transition-colors"></i>
-    </div>
-    <div class="p-6">
-      <h4 class="font-bold text-gray-800 mb-2 text-sm leading-snug">{{ $prodi[0] }}</h4>
+      <h4 class="font-bold text-gray-800 mb-1 text-base leading-snug">{{ $prodi[0] }}</h4>
       <p class="text-xs text-gray-500 leading-relaxed mb-4">{{ $prodi[4] }}</p>
-      <a href="{{ $prodi[1] === 'PAI' ? route('pages.pai') : route('pages.akademik') }}" class="text-xs font-semibold text-teal-700 hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
+      <a href="{{ $prodi[1] === 'PAI' ? route('pages.pai') : route('pages.akademik') }}" class="text-xs font-semibold text-{{ $prodi[5] }}-700 hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
     </div>
   </div>
   @endforeach
