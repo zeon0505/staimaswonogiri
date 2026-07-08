@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('content')
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center max-w-4xl mx-auto">
+  
+  {{-- Section Hymne --}}
   <div class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6">Hymne & Mars STAIMAS Wonogiri</h2>
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Hymne STAIMAS Wonogiri</h2>
     
-    {{-- Video YouTube --}}
-    <div class="aspect-video max-w-2xl mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-      <iframe class="w-full h-full" src="https://www.youtube.com/embed/76ndbw_CVFQ" title="Hymne & Mars STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    {{-- Video YouTube Hymne --}}
+    <div class="aspect-video max-w-2xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/76ndbw_CVFQ" title="Hymne STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
-    <h3 class="text-2xl font-bold text-gray-800 mb-4">Hymne STAIMAS Wonogiri</h3>
     <div class="text-gray-600 leading-loose italic space-y-1">
       <p>Disini kami mengabdi</p>
       <p>Padamu ibu pertiwi</p>
@@ -27,8 +28,15 @@
     </div>
   </div>
 
+  {{-- Section Mars --}}
   <div class="border-t border-gray-100 pt-12">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Mars STAIMAS Wonogiri</h2>
+
+    {{-- Video YouTube Mars --}}
+    <div class="aspect-video max-w-2xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/1qncQHKHxcE" title="Mars STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
     <div class="text-gray-600 leading-loose font-medium space-y-1">
       <p>Bersama dalam menuntut ilmu</p>
       <p>Meraih cita-cita</p>
