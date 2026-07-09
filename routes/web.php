@@ -76,3 +76,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('posters',  PosterController::class)->except(['show']);
     });
 });
+
+Route::get('/link-storage', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'Storage link sukses dibuat!';
+});
+
