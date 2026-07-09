@@ -88,6 +88,12 @@ Route::get('/link-storage', function () {
     $results['target_exists'] = is_dir($target);
     if (is_dir($target)) {
         $results['target_contents'] = scandir($target);
+        $slidesDir = $target . '/slides';
+        if (is_dir($slidesDir)) {
+            $results['slides_contents'] = scandir($slidesDir);
+        } else {
+            $results['slides_contents'] = 'slides dir does not exist';
+        }
     }
 
     // Default Laravel storage link
@@ -102,7 +108,7 @@ Route::get('/link-storage', function () {
         if (is_link($defaultStorageLink)) {
             @unlink($defaultStorageLink);
         } else if (is_dir($defaultStorageLink)) {
-            @rmdir($defaultStorageLink); // Coba hapus jika dir kosong
+            @rmdir($defaultStorageLink); 
         }
     }
 
@@ -126,7 +132,6 @@ Route::get('/link-storage', function () {
             if (is_link($publicHtmlStorage)) {
                 @unlink($publicHtmlStorage);
             } else if (is_dir($publicHtmlStorage)) {
-                // Hapus isi folder jika itu direktori biasa agar bisa dihapus
                 $files = glob($publicHtmlStorage . '/*');
                 foreach ($files as $file) {
                     if (is_file($file)) @unlink($file);
@@ -147,6 +152,13 @@ Route::get('/link-storage', function () {
             'is_dir' => is_dir($publicHtmlStorage),
             'contents' => is_dir($publicHtmlStorage) ? array_slice(scandir($publicHtmlStorage), 0, 10) : 'not a dir'
         ];
+        
+        $publicHtmlSlides = $publicHtmlStorage . '/slides';
+        if (is_dir($publicHtmlSlides)) {
+            $results['public_html_slides_contents'] = scandir($publicHtmlSlides);
+        } else {
+            $results['public_html_slides_contents'] = 'not a dir';
+        }
     } else {
         $results['public_html'] = "Not found at " . $publicHtml;
     }
