@@ -38,7 +38,42 @@ class PageController extends Controller
 
     public function pai()
     {
-        return view('pages.pai', ['title' => 'Pendidikan Agama Islam (PAI)', 'subtitle' => 'Program Studi Pendidikan Agama Islam – Jenjang S1']);
+        $dosens = Dosen::where('aktif', true)->where('program_studi', 'PAI')->orderBy('urutan')->get();
+        return view('pages.pai', [
+            'title' => 'Pendidikan Agama Islam (PAI)', 
+            'subtitle' => 'Program Studi Pendidikan Agama Islam – Jenjang S1',
+            'dosens' => $dosens
+        ]);
+    }
+
+    public function kpi()
+    {
+        $dosens = Dosen::where('aktif', true)->where('program_studi', 'KPI')->orderBy('urutan')->get();
+        return view('pages.kpi', [
+            'title' => 'Komunikasi dan Penyiaran Islam (KPI)', 
+            'subtitle' => 'Program Studi Komunikasi dan Penyiaran Islam – Jenjang S1',
+            'dosens' => $dosens
+        ]);
+    }
+
+    public function es()
+    {
+        $dosens = Dosen::where('aktif', true)->where('program_studi', 'ES')->orderBy('urutan')->get();
+        return view('pages.es', [
+            'title' => 'Ekonomi Syariah (ES)', 
+            'subtitle' => 'Program Studi Ekonomi Syariah – Jenjang S1',
+            'dosens' => $dosens
+        ]);
+    }
+
+    public function hukum()
+    {
+        $dosens = Dosen::where('aktif', true)->where('program_studi', 'HTN')->orderBy('urutan')->get();
+        return view('pages.hukum', [
+            'title' => 'Hukum Tata Negara (HTN)', 
+            'subtitle' => 'Program Studi Hukum Tata Negara – Jenjang S1',
+            'dosens' => $dosens
+        ]);
     }
 
     // ===== TENTANG STAIMAS =====

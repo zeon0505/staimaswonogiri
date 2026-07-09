@@ -54,9 +54,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="space-y-1.5">
           <label class="text-sm font-semibold text-gray-700">Program Studi</label>
-          <input type="text" name="program_studi" value="{{ old('program_studi', $dosen?->program_studi) }}"
-            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-            placeholder="Contoh: Ekonomi Syariah">
+          <select name="program_studi" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <option value="">-- Pilih Program Studi --</option>
+            <option value="PAI" {{ old('program_studi', $dosen?->program_studi) === 'PAI' ? 'selected' : '' }}>Pendidikan Agama Islam (PAI)</option>
+            <option value="KPI" {{ old('program_studi', $dosen?->program_studi) === 'KPI' ? 'selected' : '' }}>Komunikasi dan Penyiaran Islam (KPI)</option>
+            <option value="ES" {{ old('program_studi', $dosen?->program_studi) === 'ES' ? 'selected' : '' }}>Ekonomi Syariah (ES)</option>
+            <option value="HTN" {{ old('program_studi', $dosen?->program_studi) === 'HTN' ? 'selected' : '' }}>Hukum Tata Negara (HTN)</option>
+          </select>
         </div>
         <div class="space-y-1.5">
           <label class="text-sm font-semibold text-gray-700">Jenis Pegawai / Status</label>

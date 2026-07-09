@@ -16,6 +16,9 @@ Route::get('/akademik', [PageController::class, 'akademik'])->name('pages.akadem
 Route::get('/pusat-data', [PageController::class, 'pusatData'])->name('pages.pusat-data');
 Route::get('/program-studi', [PageController::class, 'programStudi'])->name('pages.program-studi');
 Route::get('/program-studi/pai', [PageController::class, 'pai'])->name('pages.pai');
+Route::get('/program-studi/kpi', [PageController::class, 'kpi'])->name('pages.kpi');
+Route::get('/program-studi/es', [PageController::class, 'es'])->name('pages.es');
+Route::get('/program-studi/hukum', [PageController::class, 'hukum'])->name('pages.hukum');
 
 // ===== TENTANG STAIMAS =====
 Route::get('/sambutan-ketua', [PageController::class, 'sambutan'])->name('pages.sambutan');
