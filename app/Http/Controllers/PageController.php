@@ -8,6 +8,7 @@ use App\Models\Slide;
 use App\Models\Berita;
 use App\Models\Poster;
 use App\Models\Dosen;
+use App\Models\Kategori;
 
 class PageController extends Controller
 {
@@ -219,13 +220,19 @@ class PageController extends Controller
             $query->where('judul', 'like', "%{$search}%")
                   ->orWhere('konten', 'like', "%{$search}%");
         }
+
+        if ($request->filled('kategori')) {
+            $query->where('kategori_id', $request->kategori);
+        }
         
         $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
+        $kategoris = Kategori::orderBy('nama')->get();
         
         return view('pages.berita', [
             'title' => 'Berita & Pengumuman',
             'subtitle' => 'Informasi terbaru seputar STAIMAS Wonogiri',
-            'beritas' => $beritas
+            'beritas' => $beritas,
+            'kategoris' => $kategoris
         ]);
     }
 
