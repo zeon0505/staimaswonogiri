@@ -3,16 +3,16 @@
 @section('content')
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
   @foreach([
-    ['Pendidikan Agama Islam', 'PAI', 'Terakreditasi B', 'pai', 'Mempersiapkan pendidik profesional dan berkarakter Islami', 'emerald', 'bg-emerald-50/40', 'border-emerald-100/70'],
-    ['Komunikasi & Penyiaran Islam', 'KPI', 'Terakreditasi B', 'kpi', 'Mencetak komunikator dakwah yang handal dan profesional', 'orange', 'bg-orange-50/40', 'border-orange-100/70'],
-    ['Ekonomi Syariah', 'ES', 'Terakreditasi B', 'ekonomi', 'Membentuk ahli ekonomi berbasis nilai syariah Islam', 'blue', 'bg-blue-50/40', 'border-blue-100/70'],
-    ['Hukum Tata Negara', 'HTN', 'Terakreditasi B', 'hukum', 'Menghasilkan pakar hukum Islam yang kompeten dan berintegritas', 'red', 'bg-red-50/40', 'border-red-100/70'],
+    ['Pendidikan Agama Islam', 'PAI', 'Terakreditasi B', 'pai', 'Mempersiapkan pendidik profesional dan berkarakter Islami', 'bg-emerald-600', 'text-emerald-700', 'bg-emerald-50/40', 'border-emerald-100/70'],
+    ['Komunikasi & Penyiaran Islam', 'KPI', 'Terakreditasi B', 'kpi', 'Mencetak komunikator dakwah yang handal dan profesional', 'bg-orange-600', 'text-orange-700', 'bg-orange-50/40', 'border-orange-100/70'],
+    ['Ekonomi Syariah', 'ES', 'Terakreditasi B', 'ekonomi', 'Membentuk ahli ekonomi berbasis nilai syariah Islam', 'bg-blue-600', 'text-blue-700', 'bg-blue-50/40', 'border-blue-100/70'],
+    ['Hukum Tata Negara', 'HTN', 'Terakreditasi B', 'hukum', 'Menghasilkan pakar hukum Islam yang kompeten dan berintegritas', 'bg-red-600', 'text-red-700', 'bg-red-50/40', 'border-red-100/70'],
   ] as $prodi)
-  <div class="{{ $prodi[6] }} {{ $prodi[7] }} rounded-2xl shadow-sm border overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
+  <div class="{{ $prodi[7] }} {{ $prodi[8] }} rounded-2xl shadow-sm border overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
     <div class="p-6">
       <div class="relative w-full h-32 rounded-xl mb-4 flex items-center justify-center p-2 bg-white/80 shadow-inner">
         @if($prodi[2])
-        <span class="absolute top-2 left-2 bg-{{ $prodi[5] }}-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm">{{ $prodi[2] }}</span>
+        <span class="absolute top-2 left-2 {{ $prodi[5] }} text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm">{{ $prodi[2] }}</span>
         @endif
         
         @if($prodi[3])
@@ -23,7 +23,7 @@
       </div>
       <h4 class="font-bold text-gray-800 mb-1 text-base leading-snug">{{ $prodi[0] }}</h4>
       <p class="text-xs text-gray-500 leading-relaxed mb-4 min-h-[40px]">{{ $prodi[4] }}</p>
-      <a href="{{ $prodi[1] === 'PAI' ? route('pages.pai') : route('pages.akademik') }}" class="text-xs font-semibold text-{{ $prodi[5] }}-700 hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
+      <a href="{{ $prodi[1] === 'PAI' ? route('pages.pai') : route('pages.akademik') }}" class="text-xs font-semibold {{ $prodi[6] }} hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
     </div>
   </div>
   @endforeach
