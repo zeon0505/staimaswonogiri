@@ -79,47 +79,78 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::get('/link-storage', function () {
     $target = storage_path('app/public');
-    
-    // 1. Coba deteksi apakah folder public_html ada di sebelah folder project (sibling)
     $projectDir = base_path();
     $parentDir = dirname($projectDir);
     $publicHtml = $parentDir . '/public_html';
     $results = [];
 
-    // Hapus symlink lama di public bawaan Laravel jika ada
-    $defaultStorageLink = public_path('storage');
-    if (file_exists($defaultStorageLink) || is_link($defaultStorageLink)) {
-        @unlink($defaultStorageLink);
+    // Cek apakah target ada
+    $results['target_exists'] = is_dir($target);
+    if (is_dir($target)) {
+        $results['target_contents'] = scandir($target);
     }
-    
-    // Jalankan perintah bawaan Laravel
+
+    // Default Laravel storage link
+    $defaultStorageLink = public_path('storage');
+    $results['default_link_before'] = [
+        'exists' => file_exists($defaultStorageLink),
+        'is_link' => is_link($defaultStorageLink),
+        'is_dir' => is_dir($defaultStorageLink)
+    ];
+
+    if (file_exists($defaultStorageLink) || is_link($defaultStorageLink)) {
+        if (is_link($defaultStorageLink)) {
+            @unlink($defaultStorageLink);
+        } else if (is_dir($defaultStorageLink)) {
+            @rmdir($defaultStorageLink); // Coba hapus jika dir kosong
+        }
+    }
+
     try {
         \Illuminate\Support\Facades\Artisan::call('storage:link');
-        $results[] = "Artisan storage:link berhasil dijalankan.";
+        $results['artisan_call'] = "Success";
     } catch (\Exception $e) {
-        $results[] = "Artisan storage:link error: " . $e->getMessage();
+        $results['artisan_call'] = "Error: " . $e->getMessage();
     }
 
-    // 2. Jika ada folder public_html, buat symlink di dalam public_html juga
+    // public_html storage link
     if (is_dir($publicHtml)) {
         $publicHtmlStorage = $publicHtml . '/storage';
+        $results['public_html_before'] = [
+            'exists' => file_exists($publicHtmlStorage),
+            'is_link' => is_link($publicHtmlStorage),
+            'is_dir' => is_dir($publicHtmlStorage)
+        ];
+
         if (file_exists($publicHtmlStorage) || is_link($publicHtmlStorage)) {
-            @unlink($publicHtmlStorage);
+            if (is_link($publicHtmlStorage)) {
+                @unlink($publicHtmlStorage);
+            } else if (is_dir($publicHtmlStorage)) {
+                // Hapus isi folder jika itu direktori biasa agar bisa dihapus
+                $files = glob($publicHtmlStorage . '/*');
+                foreach ($files as $file) {
+                    if (is_file($file)) @unlink($file);
+                }
+                @rmdir($publicHtmlStorage);
+            }
         }
+
         if (symlink($target, $publicHtmlStorage)) {
-            $results[] = "Symlink untuk public_html berhasil dibuat!";
+            $results['public_html_symlink'] = "Success";
         } else {
-            $results[] = "Gagal membuat symlink untuk public_html.";
+            $results['public_html_symlink'] = "Failed";
         }
+
+        $results['public_html_after'] = [
+            'exists' => file_exists($publicHtmlStorage),
+            'is_link' => is_link($publicHtmlStorage),
+            'is_dir' => is_dir($publicHtmlStorage),
+            'contents' => is_dir($publicHtmlStorage) ? array_slice(scandir($publicHtmlStorage), 0, 10) : 'not a dir'
+        ];
     } else {
-        $results[] = "Folder public_html tidak terdeteksi di: " . $publicHtml;
+        $results['public_html'] = "Not found at " . $publicHtml;
     }
 
-    return response()->json([
-        'status' => 'Proses Selesai',
-        'log' => $results,
-        'base_path' => base_path(),
-        'public_path' => public_path(),
-    ]);
+    return response()->json($results);
 });
 
