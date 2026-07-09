@@ -78,7 +78,48 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::get('/link-storage', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    return 'Storage link sukses dibuat!';
+    $target = storage_path('app/public');
+    
+    // 1. Coba deteksi apakah folder public_html ada di sebelah folder project (sibling)
+    $projectDir = base_path();
+    $parentDir = dirname($projectDir);
+    $publicHtml = $parentDir . '/public_html';
+    $results = [];
+
+    // Hapus symlink lama di public bawaan Laravel jika ada
+    $defaultStorageLink = public_path('storage');
+    if (file_exists($defaultStorageLink) || is_link($defaultStorageLink)) {
+        @unlink($defaultStorageLink);
+    }
+    
+    // Jalankan perintah bawaan Laravel
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        $results[] = "Artisan storage:link berhasil dijalankan.";
+    } catch (\Exception $e) {
+        $results[] = "Artisan storage:link error: " . $e->getMessage();
+    }
+
+    // 2. Jika ada folder public_html, buat symlink di dalam public_html juga
+    if (is_dir($publicHtml)) {
+        $publicHtmlStorage = $publicHtml . '/storage';
+        if (file_exists($publicHtmlStorage) || is_link($publicHtmlStorage)) {
+            @unlink($publicHtmlStorage);
+        }
+        if (symlink($target, $publicHtmlStorage)) {
+            $results[] = "Symlink untuk public_html berhasil dibuat!";
+        } else {
+            $results[] = "Gagal membuat symlink untuk public_html.";
+        }
+    } else {
+        $results[] = "Folder public_html tidak terdeteksi di: " . $publicHtml;
+    }
+
+    return response()->json([
+        'status' => 'Proses Selesai',
+        'log' => $results,
+        'base_path' => base_path(),
+        'public_path' => public_path(),
+    ]);
 });
 
