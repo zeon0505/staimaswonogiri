@@ -166,3 +166,12 @@ Route::get('/link-storage', function () {
     return response()->json($results);
 });
 
+Route::get('/debug-error', function () {
+    $logPath = storage_path('logs/laravel.log');
+    if (!file_exists($logPath)) {
+        return 'Log file tidak ditemukan di: ' . $logPath;
+    }
+    $content = file_get_contents($logPath);
+    $lines = array_slice(explode("\n", $content), -80);
+    return response('<pre>' . htmlspecialchars(implode("\n", $lines)) . '</pre>');
+});
