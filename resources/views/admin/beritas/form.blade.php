@@ -53,12 +53,42 @@
         </div>
         @endif
 
-        <div class="space-y-1.5">
-          <label class="text-sm font-semibold text-gray-700">{{ $berita ? 'Ganti Gambar' : 'Upload Gambar' }} <span class="text-gray-400">(opsional, maks 5MB)</span></label>
+        {{-- Tab Switcher --}}
+        <div class="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
+          <button type="button" id="tab-upload" onclick="switchTab('upload')"
+            class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-white text-teal-700 shadow-sm">
+            <i class="fas fa-upload mr-1"></i> Upload File
+          </button>
+          <button type="button" id="tab-link" onclick="switchTab('link')"
+            class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-gray-500 hover:text-gray-700">
+            <i class="fas fa-link mr-1"></i> Link URL
+          </button>
+        </div>
+
+        {{-- Panel Upload File --}}
+        <div id="panel-upload" class="space-y-2">
+          <label class="text-sm font-semibold text-gray-700">{{ $berita ? 'Ganti Gambar' : 'Upload Gambar' }} <span class="text-gray-400">(maks 5MB)</span></label>
           <input type="file" name="gambar" accept="image/*" id="gambar-input"
             class="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-teal-50 file:text-teal-700 file:font-semibold hover:file:bg-teal-100">
           <div id="preview-container" class="hidden mt-2">
             <img id="preview-img" src="" alt="Preview" class="aspect-video w-full max-w-md object-cover rounded-xl border border-gray-200">
+          </div>
+        </div>
+
+        {{-- Panel Link URL --}}
+        <div id="panel-link" class="hidden space-y-2">
+          <label class="text-sm font-semibold text-gray-700">URL Gambar <span class="text-gray-400">(link langsung ke file gambar)</span></label>
+          <div class="flex gap-2">
+            <input type="url" id="gambar-url-input" name="gambar_url"
+              class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="https://example.com/foto-berita.jpg">
+            <button type="button" id="btn-preview-img-url"
+              class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors whitespace-nowrap">
+              <i class="fas fa-eye mr-1"></i> Preview
+            </button>
+          </div>
+          <div id="preview-url-container" class="hidden mt-2">
+            <img id="preview-url-img" src="" alt="Preview URL" class="aspect-video w-full max-w-md object-cover rounded-xl border border-gray-200">
           </div>
         </div>
       </div>
@@ -108,64 +138,113 @@
   </div>
 </form>
 
+
 {{-- Custom Modal Popup --}}
-<div id="custom-modal" class="fixed inset-0 z-[999] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
+<div id="custom-modal" class="fixed inset-0 z-[999] flex items-end justify-center sm:items-center p-4 hidden" role="dialog" aria-modal="true">
   {{-- Backdrop --}}
-  <div id="modal-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
   {{-- Panel --}}
-  <div id="modal-panel" class="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center transform scale-90 opacity-0 transition-all duration-300">
-    {{-- Icon Ring --}}
-    <div id="modal-icon-wrapper" class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5">
-      <i id="modal-icon" class="text-3xl"></i>
+  <div id="modal-panel" class="relative bg-white rounded-2xl shadow-xl w-full max-w-xs p-5 transform translate-y-4 opacity-0 transition-all duration-300 ease-out">
+    <div class="flex items-start gap-3">
+      {{-- Icon --}}
+      <div id="modal-icon-wrapper" class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center mt-0.5">
+        <i id="modal-icon" class="text-base"></i>
+      </div>
+      {{-- Text --}}
+      <div class="flex-1 min-w-0">
+        <h3 id="modal-title" class="text-sm font-bold text-gray-900 leading-snug"></h3>
+        <p id="modal-message" class="text-xs text-gray-500 mt-1 leading-relaxed"></p>
+      </div>
+      {{-- Close X --}}
+      <button onclick="closeModal()" class="flex-shrink-0 text-gray-300 hover:text-gray-500 transition-colors ml-1 mt-0.5">
+        <i class="fas fa-times text-sm"></i>
+      </button>
     </div>
-    <h3 id="modal-title" class="text-lg font-extrabold text-gray-900 mb-2"></h3>
-    <p id="modal-message" class="text-sm text-gray-500 leading-relaxed mb-6"></p>
-    <button id="modal-ok-btn"
-      class="w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md"
-      onclick="closeModal()">
-      OK
-    </button>
+    {{-- Divider + OK button --}}
+    <div class="mt-4 flex justify-end">
+      <button id="modal-ok-btn"
+        class="px-5 py-1.5 rounded-lg font-semibold text-xs text-white transition-all hover:opacity-90 shadow-sm"
+        onclick="closeModal()">
+        OK, Mengerti
+      </button>
+    </div>
   </div>
 </div>
 
 <script>
+// ---- Tab Switcher Gambar ----
+function switchTab(tab) {
+  const panelUpload = document.getElementById('panel-upload');
+  const panelLink   = document.getElementById('panel-link');
+  const tabUpload   = document.getElementById('tab-upload');
+  const tabLinkBtn  = document.getElementById('tab-link');
+
+  if (tab === 'upload') {
+    panelUpload.classList.remove('hidden');
+    panelLink.classList.add('hidden');
+    tabUpload.classList.add('bg-white', 'text-teal-700', 'shadow-sm');
+    tabUpload.classList.remove('text-gray-500');
+    tabLinkBtn.classList.remove('bg-white', 'text-teal-700', 'shadow-sm');
+    tabLinkBtn.classList.add('text-gray-500');
+    // Kosongkan gambar_url agar tidak ikut terkirim
+    document.getElementById('gambar-url-input').value = '';
+  } else {
+    panelLink.classList.remove('hidden');
+    panelUpload.classList.add('hidden');
+    tabLinkBtn.classList.add('bg-white', 'text-teal-700', 'shadow-sm');
+    tabLinkBtn.classList.remove('text-gray-500');
+    tabUpload.classList.remove('bg-white', 'text-teal-700', 'shadow-sm');
+    tabUpload.classList.add('text-gray-500');
+  }
+}
+
+// Preview gambar dari URL
+document.getElementById('btn-preview-img-url').addEventListener('click', function() {
+  const url = document.getElementById('gambar-url-input').value.trim();
+  if (!url) return;
+  const img = document.getElementById('preview-url-img');
+  img.src = url;
+  img.onload = () => document.getElementById('preview-url-container').classList.remove('hidden');
+  img.onerror = () => showModal('error', 'Gagal Memuat Gambar', 'URL gambar tidak valid atau tidak dapat diakses.');
+});
+
 function showModal(type, title, message) {
-  const modal   = document.getElementById('custom-modal');
+  const modal    = document.getElementById('custom-modal');
   const backdrop = document.getElementById('modal-backdrop');
-  const panel   = document.getElementById('modal-panel');
+  const panel    = document.getElementById('modal-panel');
   const iconWrap = document.getElementById('modal-icon-wrapper');
-  const icon    = document.getElementById('modal-icon');
-  const btn     = document.getElementById('modal-ok-btn');
+  const icon     = document.getElementById('modal-icon');
+  const btn      = document.getElementById('modal-ok-btn');
 
   document.getElementById('modal-title').textContent   = title;
   document.getElementById('modal-message').textContent = message;
 
-  // Styling berdasarkan tipe
+  // Styling compact berdasarkan tipe
   if (type === 'success') {
-    iconWrap.className = 'w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-teal-100';
-    icon.className     = 'text-3xl fas fa-check-circle text-teal-600';
-    btn.className      = 'w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md bg-teal-600 hover:bg-teal-700';
+    iconWrap.className = 'flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center mt-0.5 bg-teal-100';
+    icon.className     = 'text-base fas fa-check text-teal-600';
+    btn.className      = 'px-5 py-1.5 rounded-lg font-semibold text-xs text-white transition-all hover:opacity-90 shadow-sm bg-teal-600';
   } else {
-    iconWrap.className = 'w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-red-100';
-    icon.className     = 'text-3xl fas fa-exclamation-triangle text-red-500';
-    btn.className      = 'w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md bg-red-500 hover:bg-red-600';
+    iconWrap.className = 'flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center mt-0.5 bg-red-100';
+    icon.className     = 'text-base fas fa-exclamation text-red-500';
+    btn.className      = 'px-5 py-1.5 rounded-lg font-semibold text-xs text-white transition-all hover:opacity-90 shadow-sm bg-red-500';
   }
 
   modal.classList.remove('hidden');
   requestAnimationFrame(() => {
     backdrop.classList.replace('opacity-0', 'opacity-100');
-    panel.classList.replace('scale-90', 'scale-100');
+    panel.classList.replace('translate-y-4', 'translate-y-0');
     panel.classList.replace('opacity-0', 'opacity-100');
   });
 }
 
 function closeModal() {
-  const modal   = document.getElementById('custom-modal');
+  const modal    = document.getElementById('custom-modal');
   const backdrop = document.getElementById('modal-backdrop');
-  const panel   = document.getElementById('modal-panel');
+  const panel    = document.getElementById('modal-panel');
 
   backdrop.classList.replace('opacity-100', 'opacity-0');
-  panel.classList.replace('scale-100', 'scale-90');
+  panel.classList.replace('translate-y-0', 'translate-y-4');
   panel.classList.replace('opacity-100', 'opacity-0');
   setTimeout(() => modal.classList.add('hidden'), 300);
 }

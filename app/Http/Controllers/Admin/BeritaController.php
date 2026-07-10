@@ -29,13 +29,31 @@ class BeritaController extends Controller
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
-            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-            $html = curl_exec($ch);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                'Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+                'Accept-Encoding: gzip, deflate, br',
+                'Connection: keep-alive',
+                'Upgrade-Insecure-Requests: 1',
+                'Cache-Control: max-age=0',
+                'Referer: https://www.google.com/',
+            ]);
+            $html       = curl_exec($ch);
+            $httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
-            if (!$html) {
-                return response()->json(['error' => 'Gagal mengambil data dari URL.'], 422);
+            if (!$html || $httpCode >= 400) {
+                $errorMsg = match(true) {
+                    $httpCode === 403 => 'Website ini memblokir akses otomatis (403 Forbidden). Silakan isi konten berita secara manual.',
+                    $httpCode === 404 => 'Halaman tidak ditemukan (404). Periksa kembali URL yang dimasukkan.',
+                    $httpCode >= 500  => 'Server website tujuan sedang bermasalah (' . $httpCode . '). Coba lagi nanti.',
+                    !$html            => 'Tidak dapat terhubung ke URL. Pastikan URL valid dan dapat diakses.',
+                    default           => 'Gagal mengambil data (HTTP ' . $httpCode . ').',
+                };
+                return response()->json(['error' => $errorMsg], 422);
             }
 
             libxml_use_internal_errors(true);
@@ -184,6 +202,7 @@ class BeritaController extends Controller
             'tanggal'     => 'required|date',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'gambar'      => 'nullable|image|max:5120',
+            'gambar_url'  => 'nullable|url',
             'link'        => 'nullable|url',
         ]);
 
@@ -192,13 +211,20 @@ class BeritaController extends Controller
         $data['aktif'] = $request->boolean('aktif', true);
 
         if ($request->hasFile('gambar')) {
+            // Prioritas 1: Upload file
             $data['gambar'] = $request->file('gambar')->store('beritas', 'public');
-        } elseif ($request->filled('link')) {
-            // Scrape image otomatis jika ada link
-            $scraped = $this->scrapeImageFromUrl($request->link);
-            if ($scraped) {
-                $data['gambar'] = $scraped;
+        } elseif ($request->filled('gambar_url')) {
+            // Prioritas 2: Download dari URL gambar langsung
+            $imgRes = Http::timeout(15)->withHeaders(['User-Agent' => 'Mozilla/5.0'])->get($request->gambar_url);
+            if ($imgRes->successful()) {
+                $filename = 'beritas/' . md5($request->gambar_url) . '.jpg';
+                Storage::disk('public')->put($filename, $imgRes->body());
+                $data['gambar'] = $filename;
             }
+        } elseif ($request->filled('link')) {
+            // Prioritas 3: Scrape image dari link berita
+            $scraped = $this->scrapeImageFromUrl($request->link);
+            if ($scraped) $data['gambar'] = $scraped;
         }
 
         Berita::create($data);
@@ -221,6 +247,7 @@ class BeritaController extends Controller
             'tanggal'     => 'required|date',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'gambar'      => 'nullable|image|max:5120',
+            'gambar_url'  => 'nullable|url',
             'link'        => 'nullable|url',
         ]);
 
@@ -230,8 +257,15 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             if ($berita->gambar) Storage::disk('public')->delete($berita->gambar);
             $data['gambar'] = $request->file('gambar')->store('beritas', 'public');
+        } elseif ($request->filled('gambar_url')) {
+            $imgRes = Http::timeout(15)->withHeaders(['User-Agent' => 'Mozilla/5.0'])->get($request->gambar_url);
+            if ($imgRes->successful()) {
+                if ($berita->gambar) Storage::disk('public')->delete($berita->gambar);
+                $filename = 'beritas/' . md5($request->gambar_url) . '.jpg';
+                Storage::disk('public')->put($filename, $imgRes->body());
+                $data['gambar'] = $filename;
+            }
         } elseif ($request->filled('link') && $request->link !== $berita->link) {
-            // Scrape image otomatis jika link berubah
             $scraped = $this->scrapeImageFromUrl($request->link);
             if ($scraped) {
                 if ($berita->gambar) Storage::disk('public')->delete($berita->gambar);
