@@ -2,7 +2,7 @@
 @section('content')
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
   <div class="text-center mb-8">
-    <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2024/09/lgp.png" alt="Logo STAIMAS" class="mx-auto w-64 h-auto mb-6">
+    <img src="{{ asset('assest/LOGO STAIMAS AI.png') }}" alt="Logo STAIMAS" class="mx-auto w-64 h-auto mb-6">
     <h2 class="text-2xl font-bold text-gray-800">Makna Lambang STAIMAS Wonogiri</h2>
   </div>
   <div class="prose prose-gray max-w-none text-gray-600 leading-loose text-justify space-y-4">
