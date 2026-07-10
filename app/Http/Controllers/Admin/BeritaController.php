@@ -18,6 +18,74 @@ class BeritaController extends Controller
         ]);
     }
 
+    public function scrapeUrl(Request $request)
+    {
+        $request->validate(['url' => 'required|url']);
+        $url = $request->url;
+
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            $html = curl_exec($ch);
+            curl_close($ch);
+
+            if (!$html) {
+                return response()->json(['error' => 'Gagal mengambil data dari URL.'], 422);
+            }
+
+            libxml_use_internal_errors(true);
+            $doc = new \DOMDocument();
+            $doc->loadHTML($html);
+            $xpath = new \DOMXPath($doc);
+
+            // 1. Ekstrak Judul
+            $judul = '';
+            $titleNode = $xpath->query('//meta[@property="og:title"]/@content | //title');
+            if ($titleNode->length > 0) {
+                $judul = trim($titleNode->item(0)->nodeValue);
+            }
+
+            // 2. Ekstrak Deskripsi/Isi Konten
+            $konten = '';
+            $descNode = $xpath->query('//meta[@property="og:description"]/@content | //meta[@name="description"]/@content');
+            if ($descNode->length > 0) {
+                $konten = trim($descNode->item(0)->nodeValue);
+            }
+
+            // 3. Ekstrak Gambar
+            $gambarUrl = '';
+            $imageNode = $xpath->query('//meta[@property="og:image"]/@content | //meta[@name="twitter:image"]/@content');
+            if ($imageNode->length > 0) {
+                $gambarUrl = trim($imageNode->item(0)->nodeValue);
+            }
+
+            // Download gambar ke storage lokal jika ada
+            $localImagePath = null;
+            if (!empty($gambarUrl)) {
+                $imageContent = @file_get_contents($gambarUrl);
+                if ($imageContent) {
+                    $filename = 'beritas/' . md5($gambarUrl) . '.jpg';
+                    Storage::disk('public')->put($filename, $imageContent);
+                    $localImagePath = asset('storage/' . $filename);
+                }
+            }
+
+            return response()->json([
+                'success' => true,
+                'judul' => $judul,
+                'konten' => $konten,
+                'gambar_url' => $localImagePath
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error: ' . $e->getMessage()], 500);
+        }
+    }
+
     public function create()
     {
         return view('admin.beritas.form', [

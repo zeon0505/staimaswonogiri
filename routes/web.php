@@ -69,6 +69,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
+        Route::post('/beritas/scrape', [BeritaController::class, 'scrapeUrl'])->name('beritas.scrape');
         Route::resource('slides',   SlideController::class)->except(['show']);
         Route::resource('dosens',   DosenController::class)->except(['show']);
         Route::resource('kategoris', KategoriController::class)->except(['show']);

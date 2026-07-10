@@ -22,9 +22,15 @@
  
          <div class="space-y-1.5">
            <label class="text-sm font-semibold text-gray-700">Link Berita <span class="text-gray-400">(opsional, gambar akan otomatis diambil dari link)</span></label>
-           <input type="url" name="link" value="{{ old('link', $berita?->link) }}"
-             class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-             placeholder="https://example.com/berita-staimas...">
+           <div class="flex gap-2">
+            <input type="url" name="link" id="link-url-input" value="{{ old('link', $berita?->link) }}"
+              class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="https://example.com/berita-staimas...">
+            <button type="button" id="btn-fetch-link" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap">
+              <i class="fas fa-sync-alt" id="fetch-spinner"></i> Ambil Data Link
+            </button>
+          </div>
+         </div>
 
         <div class="space-y-1.5">
           <label class="text-sm font-semibold text-gray-700">Isi Berita <span class="text-red-500">*</span></label>
@@ -112,6 +118,57 @@ document.getElementById('gambar-input').addEventListener('change', function(e) {
     document.getElementById('preview-container').classList.remove('hidden');
   };
   reader.readAsDataURL(file);
+});
+
+document.getElementById('btn-fetch-link').addEventListener('click', function() {
+  const urlInput = document.getElementById('link-url-input').value.trim();
+  if (!urlInput) {
+    alert('Silakan tempel (paste) URL link berita terlebih dahulu!');
+    return;
+  }
+
+  const spinner = document.getElementById('fetch-spinner');
+  const btn = document.getElementById('btn-fetch-link');
+
+  spinner.classList.add('fa-spin');
+  btn.disabled = true;
+
+  fetch('{{ route("admin.beritas.scrape") }}', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': '{{ csrf_token() }}'
+    },
+    body: JSON.stringify({ url: urlInput })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Gagal mengambil data. Pastikan URL valid.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.success) {
+      if (data.judul) {
+        document.querySelector('input[name="judul"]').value = data.judul;
+      }
+      if (data.konten) {
+        document.querySelector('textarea[name="konten"]').value = data.konten;
+      }
+      if (data.gambar_url) {
+        document.getElementById('preview-img').src = data.gambar_url;
+        document.getElementById('preview-container').classList.remove('hidden');
+      }
+      alert('Data berita berhasil diambil otomatis dari link!');
+    }
+  })
+  .catch(error => {
+    alert(error.message);
+  })
+  .finally(() => {
+    spinner.classList.remove('fa-spin');
+    btn.disabled = false;
+  });
 });
 </script>
 @endsection
