@@ -222,7 +222,7 @@ class PageController extends Controller
         }
 
         if ($request->filled('kategori')) {
-            $query->where('kategori_id', $request->kategori);
+            $query->whereHas('kategori', fn($q) => $q->where('slug', $request->kategori));
         }
         
         $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
