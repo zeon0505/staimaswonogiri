@@ -84,6 +84,13 @@
   </div>
   @endif
 
+  {{-- Pagination --}}
+  @if($beritas->hasPages())
+  <div class="pt-6 mt-4">
+    {{ $beritas->links() }}
+  </div>
+  @endif
+
   {{-- Poster / Flyer Section --}}
   @if($posters->isNotEmpty())
   <div class="space-y-4">
