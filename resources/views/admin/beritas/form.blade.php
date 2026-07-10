@@ -108,7 +108,71 @@
   </div>
 </form>
 
+{{-- Custom Modal Popup --}}
+<div id="custom-modal" class="fixed inset-0 z-[999] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true">
+  {{-- Backdrop --}}
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+  {{-- Panel --}}
+  <div id="modal-panel" class="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center transform scale-90 opacity-0 transition-all duration-300">
+    {{-- Icon Ring --}}
+    <div id="modal-icon-wrapper" class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5">
+      <i id="modal-icon" class="text-3xl"></i>
+    </div>
+    <h3 id="modal-title" class="text-lg font-extrabold text-gray-900 mb-2"></h3>
+    <p id="modal-message" class="text-sm text-gray-500 leading-relaxed mb-6"></p>
+    <button id="modal-ok-btn"
+      class="w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md"
+      onclick="closeModal()">
+      OK
+    </button>
+  </div>
+</div>
+
 <script>
+function showModal(type, title, message) {
+  const modal   = document.getElementById('custom-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const panel   = document.getElementById('modal-panel');
+  const iconWrap = document.getElementById('modal-icon-wrapper');
+  const icon    = document.getElementById('modal-icon');
+  const btn     = document.getElementById('modal-ok-btn');
+
+  document.getElementById('modal-title').textContent   = title;
+  document.getElementById('modal-message').textContent = message;
+
+  // Styling berdasarkan tipe
+  if (type === 'success') {
+    iconWrap.className = 'w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-teal-100';
+    icon.className     = 'text-3xl fas fa-check-circle text-teal-600';
+    btn.className      = 'w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md bg-teal-600 hover:bg-teal-700';
+  } else {
+    iconWrap.className = 'w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 bg-red-100';
+    icon.className     = 'text-3xl fas fa-exclamation-triangle text-red-500';
+    btn.className      = 'w-full py-3 rounded-xl font-bold text-sm text-white transition-all hover:-translate-y-0.5 shadow-md bg-red-500 hover:bg-red-600';
+  }
+
+  modal.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    backdrop.classList.replace('opacity-0', 'opacity-100');
+    panel.classList.replace('scale-90', 'scale-100');
+    panel.classList.replace('opacity-0', 'opacity-100');
+  });
+}
+
+function closeModal() {
+  const modal   = document.getElementById('custom-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const panel   = document.getElementById('modal-panel');
+
+  backdrop.classList.replace('opacity-100', 'opacity-0');
+  panel.classList.replace('scale-100', 'scale-90');
+  panel.classList.replace('opacity-100', 'opacity-0');
+  setTimeout(() => modal.classList.add('hidden'), 300);
+}
+
+// Tutup modal jika klik backdrop
+document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
 document.getElementById('gambar-input').addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (!file) return;
@@ -123,7 +187,7 @@ document.getElementById('gambar-input').addEventListener('change', function(e) {
 document.getElementById('btn-fetch-link').addEventListener('click', function() {
   const urlInput = document.getElementById('link-url-input').value.trim();
   if (!urlInput) {
-    alert('Silakan tempel (paste) URL link berita terlebih dahulu!');
+    showModal('error', 'URL Kosong!', 'Silakan tempel (paste) URL link berita terlebih dahulu sebelum mengambil data.');
     return;
   }
 
@@ -132,6 +196,7 @@ document.getElementById('btn-fetch-link').addEventListener('click', function() {
 
   spinner.classList.add('fa-spin');
   btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-sync-alt fa-spin" id="fetch-spinner"></i> Mengambil data...';
 
   fetch('{{ route("admin.beritas.scrape") }}', {
     method: 'POST',
@@ -142,32 +207,27 @@ document.getElementById('btn-fetch-link').addEventListener('click', function() {
     body: JSON.stringify({ url: urlInput })
   })
   .then(response => {
-    if (!response.ok) {
-      throw new Error('Gagal mengambil data. Pastikan URL valid.');
-    }
+    if (!response.ok) throw new Error('Gagal mengambil data. Pastikan URL valid dan dapat diakses.');
     return response.json();
   })
   .then(data => {
     if (data.success) {
-      if (data.judul) {
-        document.querySelector('input[name="judul"]').value = data.judul;
-      }
-      if (data.konten) {
-        document.querySelector('textarea[name="konten"]').value = data.konten;
-      }
+      if (data.judul) document.querySelector('input[name="judul"]').value = data.judul;
+      if (data.konten) document.querySelector('textarea[name="konten"]').value = data.konten;
       if (data.gambar_url) {
         document.getElementById('preview-img').src = data.gambar_url;
         document.getElementById('preview-container').classList.remove('hidden');
       }
-      alert('Data berita berhasil diambil otomatis dari link!');
+      showModal('success', 'Berhasil!', 'Data berita (judul, isi, dan gambar) berhasil diambil otomatis dari link berita.');
     }
   })
   .catch(error => {
-    alert(error.message);
+    showModal('error', 'Gagal Mengambil Data', error.message);
   })
   .finally(() => {
-    spinner.classList.remove('fa-spin');
+    document.getElementById('fetch-spinner')?.classList.remove('fa-spin');
     btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-sync-alt" id="fetch-spinner"></i> Ambil Data Link';
   });
 });
 </script>

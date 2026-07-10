@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -101,13 +102,15 @@ class BeritaController extends Controller
                 $gambarUrl = trim($imageNode->item(0)->nodeValue);
             }
 
-            // Download gambar ke storage lokal jika ada
+            // Download gambar ke storage lokal menggunakan Laravel HTTP Client (kompatibel hosting)
             $localImagePath = null;
             if (!empty($gambarUrl)) {
-                $imageContent = @file_get_contents($gambarUrl);
-                if ($imageContent) {
+                $imageResponse = Http::timeout(15)
+                    ->withHeaders(['User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'])
+                    ->get($gambarUrl);
+                if ($imageResponse->successful()) {
                     $filename = 'beritas/' . md5($gambarUrl) . '.jpg';
-                    Storage::disk('public')->put($filename, $imageContent);
+                    Storage::disk('public')->put($filename, $imageResponse->body());
                     $localImagePath = asset('storage/' . $filename);
                 }
             }
@@ -157,10 +160,13 @@ class BeritaController extends Controller
                 $imageUrl = $nodes->item(0)->nodeValue;
                 
                 // Download gambar dan simpan ke local disk
-                $imageContent = file_get_contents($imageUrl);
-                if ($imageContent) {
+                // Gunakan Laravel HTTP Client agar kompatibel dengan hosting yang menonaktifkan allow_url_fopen
+                $imageResponse = Http::timeout(15)
+                    ->withHeaders(['User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'])
+                    ->get($imageUrl);
+                if ($imageResponse->successful()) {
                     $filename = 'beritas/' . md5($imageUrl) . '.jpg';
-                    Storage::disk('public')->put($filename, $imageContent);
+                    Storage::disk('public')->put($filename, $imageResponse->body());
                     return $filename;
                 }
             }
