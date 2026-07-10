@@ -227,29 +227,52 @@ class PageController extends Controller
         
         $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
         $kategoris = Kategori::orderBy('nama')->get();
+        $posters = \App\Models\Poster::where('aktif', true)->orderBy('created_at', 'desc')->get();
         
         return view('pages.berita', [
             'title' => 'Berita & Pengumuman',
             'subtitle' => 'Informasi terbaru seputar STAIMAS Wonogiri',
             'beritas' => $beritas,
-            'kategoris' => $kategoris
+            'kategoris' => $kategoris,
+            'posters' => $posters
         ]);
     }
 
     public function beritaShow($slug)
     {
         $berita = Berita::where('slug', $slug)->firstOrFail();
-        $related_beritas = Berita::where('aktif', true)
-                                 ->where('id', '!=', $berita->id)
-                                 ->orderBy('created_at', 'desc')
-                                 ->take(3)
-                                 ->get();
+        
+        $prev = Berita::where('aktif', true)
+                      ->where('created_at', '<', $berita->created_at)
+                      ->orderBy('created_at', 'desc')
+                      ->first();
+                      
+        $next = Berita::where('aktif', true)
+                      ->where('created_at', '>', $berita->created_at)
+                      ->orderBy('created_at', 'asc')
+                      ->first();
+
+        $related = Berita::where('aktif', true)
+                         ->where('kategori_id', $berita->kategori_id)
+                         ->where('id', '!=', $berita->id)
+                         ->orderBy('created_at', 'desc')
+                         ->take(5)
+                         ->get();
+
+        $otherBeritas = Berita::where('aktif', true)
+                              ->where('id', '!=', $berita->id)
+                              ->orderBy('created_at', 'desc')
+                              ->take(5)
+                              ->get();
                                  
         return view('pages.berita-detail', [
             'title' => $berita->judul,
             'subtitle' => 'Berita STAIMAS',
             'berita' => $berita,
-            'related_beritas' => $related_beritas
+            'related' => $related,
+            'otherBeritas' => $otherBeritas,
+            'prev' => $prev,
+            'next' => $next
         ]);
     }
 }
