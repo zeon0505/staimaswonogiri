@@ -49,11 +49,49 @@ class BeritaController extends Controller
                 $judul = trim($titleNode->item(0)->nodeValue);
             }
 
-            // 2. Ekstrak Deskripsi/Isi Konten
+            // 2. Ekstrak Deskripsi/Isi Konten (Lebih Pintar)
             $konten = '';
             $descNode = $xpath->query('//meta[@property="og:description"]/@content | //meta[@name="description"]/@content');
             if ($descNode->length > 0) {
                 $konten = trim($descNode->item(0)->nodeValue);
+            }
+
+            // Jika deskripsi meta kosong atau terlalu pendek, cari dari teks artikel utama
+            if (strlen($konten) < 50) {
+                $paragraphs = [];
+
+                // Hapus dulu semua elemen script dan style dari dokumen agar tidak terbaca
+                $removeNodes = $xpath->query('//script | //style | //noscript | //nav | //header | //footer | //aside | //form');
+                foreach ($removeNodes as $node) {
+                    $node->parentNode->removeChild($node);
+                }
+
+                // Coba cari di pembungkus artikel umum dulu
+                $bodyNodes = $xpath->query('//article//p | //main//p | //div[contains(@class,"post-content")]//p | //div[contains(@class,"entry-content")]//p | //div[contains(@class,"article-body")]//p | //div[contains(@class,"td-post-content")]//p | //div[contains(@id,"content")]//p');
+
+                if ($bodyNodes->length === 0) {
+                    // Fallback ke seluruh tag p di halaman jika tidak ditemukan class artikel khusus
+                    $bodyNodes = $xpath->query('//p');
+                }
+
+                foreach ($bodyNodes as $p) {
+                    $txt = trim($p->nodeValue);
+
+                    // Filter ketat: abaikan teks yang mengandung pola kode JS/HTML
+                    if (strlen($txt) < 40) continue;
+                    if (preg_match('/(_0x[a-f0-9]+|function\s*\(|var\s+\w|<\w+>|\{|\}|=>|===|!==|\$\(|innerHTML|document\.)/i', $txt)) continue;
+                    // Abaikan baris yang lebih banyak karakter non-huruf daripada huruf (kemungkinan kode)
+                    $letterCount = preg_match_all('/[a-zA-Z\s]/u', $txt);
+                    $totalCount  = mb_strlen($txt);
+                    if ($totalCount > 0 && ($letterCount / $totalCount) < 0.5) continue;
+
+                    $paragraphs[] = $txt;
+                }
+
+                if (count($paragraphs) > 0) {
+                    // Gabungkan seluruh paragraf artikel yang berhasil diambil
+                    $konten = implode("\n\n", $paragraphs);
+                }
             }
 
             // 3. Ekstrak Gambar

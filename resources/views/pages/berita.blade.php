@@ -18,7 +18,7 @@
   {{-- Berita Utama (Featured) --}}
   @if($beritas->isNotEmpty())
   @php $featured = $beritas->first(); @endphp
-  <a href="{{ $featured->link ?? route('pages.berita.show', $featured->slug) }}" {{ $featured->link ? 'target="_blank"' : '' }} class="group block bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all">
+  <a href="{{ route('pages.berita.show', $featured->slug) }}" class="group block bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all">
     <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="aspect-video md:aspect-auto min-h-[220px] relative overflow-hidden bg-gradient-to-br from-teal-700 to-teal-900">
         @if($featured->gambar)
@@ -53,7 +53,7 @@
   @if($beritas->count() > 1)
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     @foreach($beritas->skip(1) as $berita)
-    <a href="{{ $berita->link ?? route('pages.berita.show', $berita->slug) }}" {{ $berita->link ? 'target="_blank"' : '' }} class="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
+    <a href="{{ route('pages.berita.show', $berita->slug) }}" class="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">
       <div class="aspect-video bg-gradient-to-br from-teal-600 to-teal-800 relative overflow-hidden">
         @if($berita->gambar)
         <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">

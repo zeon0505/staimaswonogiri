@@ -681,7 +681,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         @forelse($beritas as $berita)
         <article class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <a href="{{ $berita->link ?? route('pages.berita.show', $berita->slug) }}" {{ $berita->link ? 'target="_blank"' : '' }}>
+          <a href="{{ route('pages.berita.show', $berita->slug) }}">
             <div class="aspect-video bg-teal-brand/10 relative">
               <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
             </div>

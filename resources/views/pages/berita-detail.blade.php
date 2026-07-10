@@ -52,12 +52,17 @@
             @endforeach
           </div>
 
-          <blockquote class="border-l-4 border-teal-600 bg-teal-50 rounded-r-2xl px-6 py-4 my-4">
-            <p class="text-teal-800 text-sm font-semibold italic leading-relaxed">
-              "Kami terus berkomitmen memajukan kualitas lulusan PAI STAIMAS Wonogiri yang berakhlak mulia dan profesional."
-            </p>
-            <footer class="text-xs text-teal-600 font-bold mt-2">— Kaprodi PAI STAIMAS</footer>
-          </blockquote>
+          {{-- Tombol Lihat Selengkapnya (jika berita punya link eksternal) --}}
+          @if($berita->link)
+          <div class="pt-4 border-t border-gray-100">
+            <a href="{{ $berita->link }}" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm shadow transition-all hover:-translate-y-0.5">
+              <i class="fas fa-external-link-alt text-xs"></i>
+              Lihat Berita Selengkapnya
+            </a>
+            <p class="text-xs text-gray-400 mt-2">Sumber: {{ parse_url($berita->link, PHP_URL_HOST) }}</p>
+          </div>
+          @endif
         </div>
       </article>
 
