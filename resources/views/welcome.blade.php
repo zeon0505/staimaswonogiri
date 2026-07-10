@@ -840,7 +840,7 @@
         <h4 class="font-extrabold text-white text-xs uppercase tracking-wider">Program Studi</h4>
         <ul class="space-y-2">
           <li><a href="#prodi" class="hover:text-gold-brand transition-colors">Pendidikan Agama Islam (PAI)</a></li>
-          <li><a href="#prodi" class="hover:text-gold-brand transition-colors">Komunikasi Penyiaran Islam (KPI)</a></li>
+          <li><a href="#prodi" class="hover:text-gold-brand transition-colors">Komunikasi dan Penyiaran Islam (KPI)</a></li>
           <li><a href="#prodi" class="hover:text-gold-brand transition-colors">Ekonomi Syariah (ES)</a></li>
           <li><a href="#prodi" class="hover:text-gold-brand transition-colors">Hukum Tata Negara (HTN)</a></li>
         </ul>
