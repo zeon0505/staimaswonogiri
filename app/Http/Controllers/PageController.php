@@ -227,7 +227,7 @@ class PageController extends Controller
         
         $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
         $kategoris = Kategori::orderBy('nama')->get();
-        $posters = \App\Models\Poster::where('aktif', true)->orderBy('created_at', 'desc')->get();
+        $posters = Poster::where('aktif', true)->orderBy('created_at', 'desc')->get();
         
         return view('pages.berita', [
             'title' => 'Berita & Pengumuman',
