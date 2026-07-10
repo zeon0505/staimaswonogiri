@@ -737,7 +737,7 @@
           <h2 class="text-3xl font-extrabold text-teal-brand-dark mt-2">Berita Terkini Kampus</h2>
         </div>
         <div class="mt-4 md:mt-0 flex gap-2">
-          <a href="#" class="px-4 py-2 bg-teal-brand text-white rounded-lg text-xs font-bold">Semua Berita</a>
+          <a href="{{ route('pages.berita') }}" class="px-4 py-2 bg-teal-brand text-white rounded-lg text-xs font-bold transition-all hover:bg-teal-700">Semua Berita</a>
         </div>
       </div>
 
