@@ -8,7 +8,7 @@
     
     {{-- Video YouTube Hymne --}}
     <div class="aspect-video max-w-2xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-md border border-gray-100">
-      <iframe class="w-full h-full" src="https://www.youtube.com/embed/76ndbw_CVFQ" title="Hymne STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/_Y1Eh11feYI" title="Hymne STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
     <div class="text-gray-600 leading-loose italic space-y-1">
