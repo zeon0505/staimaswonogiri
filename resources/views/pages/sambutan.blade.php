@@ -3,7 +3,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
   <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
     <div class="flex items-center gap-4 mb-8">
-      <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2024/09/Atik-Nurfatmawati-S.E-M.I.Kom_-200x300.jpg" class="w-24 h-24 rounded-full border-4 border-teal-700 shadow-lg object-cover object-top" alt="Atik Nurfatmawati, S.E, M.I.Kom">
+      <img src="{{ asset('assest/bu atikpng.png') }}" class="w-32 h-32 rounded-full border-4 border-teal-700 shadow-lg object-cover" style="object-position: center 5%;" alt="Atik Nurfatmawati, S.E, M.I.Kom">
       <div>
         <h2 class="text-xl font-bold text-gray-800">Atik Nurfatmawati, S.E, M.I.Kom</h2>
         <p class="text-teal-700 font-medium">Ketua STAIMAS Wonogiri</p>

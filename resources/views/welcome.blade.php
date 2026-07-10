@@ -430,30 +430,60 @@
         <p class="text-gray-500 mt-2 text-sm">Didukung oleh jajaran akademisi berkualitas yang ahli di bidang masing-masing.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+        <!-- Dr. Trianto -->
         <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4"><i class="fas fa-user-tie"></i></div>
+          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4 overflow-hidden">
+            <i class="fas fa-user-tie"></i>
+          </div>
           <h4 class="font-bold text-gray-900 text-sm">Dr. H. Trianto, M.Pd.</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Senat & Dosen Utama</p>
         </div>
+        <!-- Kaprodi PAI -->
         <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4"><i class="fas fa-user-tie"></i></div>
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+            <img src="{{ asset('assest/Kaprodi PAI.png') }}" alt="Kaprodi PAI"
+              class="w-full h-full object-cover"
+              style="object-position: center 5%;">
+          </div>
           <h4 class="font-bold text-gray-900 text-sm">Kaprodi PAI</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi PAI</p>
         </div>
+        <!-- Kaprodi KPI -->
         <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4"><i class="fas fa-user-tie"></i></div>
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+            <img src="{{ asset('assest/kaprodi kpi.JPG') }}" alt="Kaprodi KPI"
+              class="w-full h-full object-cover"
+              style="object-position: center 15%;">
+          </div>
           <h4 class="font-bold text-gray-900 text-sm">Kaprodi KPI</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi KPI</p>
         </div>
+        <!-- Kaprodi ES -->
         <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4"><i class="fas fa-user-tie"></i></div>
-          <h4 class="font-bold text-gray-900 text-sm">Kaprodi ES / HTN</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi ES & HTN</p>
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+            <img src="{{ asset('assest/Kaprodi ES.JPG') }}" alt="Kaprodi ES"
+              class="w-full h-full object-cover"
+              style="object-position: center 10%;">
+          </div>
+          <h4 class="font-bold text-gray-900 text-sm">Kaprodi ES</h4>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Ekonomi Syariah</p>
+        </div>
+        <!-- Kaprodi HTN -->
+        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+            <img src="{{ asset('assest/kaprodi htn.jpg') }}" alt="Kaprodi HTN"
+              class="w-full h-full object-cover"
+              style="object-position: center 10%;">
+          </div>
+          <h4 class="font-bold text-gray-900 text-sm">Kaprodi HTN</h4>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Hukum Tata Negara</p>
         </div>
       </div>
     </div>
   </section>
+
+
 
   <!-- ===== BERITA TERBARU (News & Updates) ===== -->
   <section class="py-20 bg-gray-50" id="berita">
