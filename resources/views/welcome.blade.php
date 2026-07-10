@@ -392,28 +392,36 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- KPI -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-brand text-xl mb-4"><i class="fas fa-broadcast-tower"></i></div>
+          <div class="w-16 h-16 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-teal-50">
+            <img src="{{ asset('assest/LOGO PRODI KPI.png') }}" alt="Logo KPI" class="w-full h-full object-contain">
+          </div>
           <h3 class="font-bold text-gray-900 text-base leading-tight">Komunikasi dan Penyiaran Islam (KPI)</h3>
           <p class="text-xs text-gray-500 mt-2">Mempelajari komunikasi berbasis Islam, jurnalistik, dan media dakwah. Lulusannya siap menjadi komunikator profesional di berbagai platform.</p>
         </div>
 
         <!-- PAI -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-brand text-xl mb-4"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="w-16 h-16 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-teal-50">
+            <img src="{{ asset('assest/PAI.jpeg') }}" alt="Logo PAI" class="w-full h-full object-contain">
+          </div>
           <h3 class="font-bold text-gray-900 text-base leading-tight">Pendidikan Agama Islam (PAI)</h3>
           <p class="text-xs text-gray-500 mt-2">Berfokus pada pengajaran dan pengembangan ilmu keislaman. Lulusannya dipersiapkan menjadi pendidik profesional yang mampu menyebarkan nilai-nilai Islam.</p>
         </div>
 
         <!-- ES -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-brand text-xl mb-4"><i class="fas fa-coins"></i></div>
+          <div class="w-16 h-16 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-teal-50">
+            <img src="{{ asset('assest/ES.jpeg') }}" alt="Logo ES" class="w-full h-full object-contain">
+          </div>
           <h3 class="font-bold text-gray-900 text-base leading-tight">Ekonomi Syariah (ES)</h3>
           <p class="text-xs text-gray-500 mt-2">Mempelajari prinsip ekonomi Islam, perbankan syariah, dan bisnis halal. Lulusannya siap berkarier di sektor keuangan dan bisnis berbasis syariah.</p>
         </div>
 
         <!-- HTN -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-brand text-xl mb-4"><i class="fas fa-balance-scale"></i></div>
+          <div class="w-16 h-16 rounded-lg mb-4 overflow-hidden flex items-center justify-center bg-teal-50">
+            <img src="{{ asset('assest/HTN.jpeg') }}" alt="Logo HTN" class="w-full h-full object-contain">
+          </div>
           <h3 class="font-bold text-gray-900 text-base leading-tight">Hukum Tata Negara (HTN)</h3>
           <p class="text-xs text-gray-500 mt-2">Mempelajari prinsip-prinsip hukum Islam dan ketatanegaraan. Lulusannya dipersiapkan untuk berkarier di bidang hukum, pemerintahan, dan legislatif.</p>
         </div>
@@ -673,13 +681,15 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         @forelse($beritas as $berita)
         <article class="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-          <div class="aspect-video bg-teal-brand/10 relative">
-            <img src="{{ Storage::url($berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
-          </div>
-          <div class="p-5">
-            <span class="text-[10px] text-teal-brand font-bold uppercase">{{ $berita->kategori->nama ?? 'Berita' }}</span>
-            <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug"><a href="#" class="hover:text-teal-brand">{{ $berita->judul }}</a></h3>
-          </div>
+          <a href="{{ $berita->link ?? route('pages.berita.show', $berita->slug) }}" {{ $berita->link ? 'target="_blank"' : '' }}>
+            <div class="aspect-video bg-teal-brand/10 relative">
+              <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
+            </div>
+            <div class="p-5">
+              <span class="text-[10px] text-teal-brand font-bold uppercase">{{ $berita->kategori->nama ?? 'Berita' }}</span>
+              <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug hover:text-teal-brand">{{ $berita->judul }}</h3>
+            </div>
+          </a>
         </article>
         @empty
         <div class="col-span-3 text-center py-10 text-gray-500 text-sm">Belum ada berita.</div>

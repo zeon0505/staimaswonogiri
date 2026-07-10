@@ -26,6 +26,44 @@ class BeritaController extends Controller
         ]);
     }
 
+    private function scrapeImageFromUrl($url)
+    {
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)');
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            $html = curl_exec($ch);
+            curl_close($ch);
+
+            if (!$html) return null;
+
+            libxml_use_internal_errors(true);
+            $doc = new \DOMDocument();
+            $doc->loadHTML($html);
+            $xpath = new \DOMXPath($doc);
+
+            // Cari og:image atau twitter:image
+            $nodes = $xpath->query('//meta[@property="og:image"]/@content | //meta[@name="twitter:image"]/@content');
+            if ($nodes->length > 0) {
+                $imageUrl = $nodes->item(0)->nodeValue;
+                
+                // Download gambar dan simpan ke local disk
+                $imageContent = file_get_contents($imageUrl);
+                if ($imageContent) {
+                    $filename = 'beritas/' . md5($imageUrl) . '.jpg';
+                    Storage::disk('public')->put($filename, $imageContent);
+                    return $filename;
+                }
+            }
+        } catch (\Exception $e) {
+            // Abaikan error jika scrap gagal, user bisa upload manual
+        }
+        return null;
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -34,14 +72,21 @@ class BeritaController extends Controller
             'tanggal'     => 'required|date',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'gambar'      => 'nullable|image|max:5120',
+            'link'        => 'nullable|url',
         ]);
 
-        $data = $request->only('judul', 'konten', 'tanggal', 'kategori_id');
+        $data = $request->only('judul', 'konten', 'tanggal', 'kategori_id', 'link');
         $data['slug']  = Str::slug($request->judul) . '-' . time();
         $data['aktif'] = $request->boolean('aktif', true);
 
         if ($request->hasFile('gambar')) {
             $data['gambar'] = $request->file('gambar')->store('beritas', 'public');
+        } elseif ($request->filled('link')) {
+            // Scrape image otomatis jika ada link
+            $scraped = $this->scrapeImageFromUrl($request->link);
+            if ($scraped) {
+                $data['gambar'] = $scraped;
+            }
         }
 
         Berita::create($data);
@@ -64,14 +109,22 @@ class BeritaController extends Controller
             'tanggal'     => 'required|date',
             'kategori_id' => 'nullable|exists:kategoris,id',
             'gambar'      => 'nullable|image|max:5120',
+            'link'        => 'nullable|url',
         ]);
 
-        $data = $request->only('judul', 'konten', 'tanggal', 'kategori_id');
+        $data = $request->only('judul', 'konten', 'tanggal', 'kategori_id', 'link');
         $data['aktif'] = $request->boolean('aktif');
 
         if ($request->hasFile('gambar')) {
             if ($berita->gambar) Storage::disk('public')->delete($berita->gambar);
             $data['gambar'] = $request->file('gambar')->store('beritas', 'public');
+        } elseif ($request->filled('link') && $request->link !== $berita->link) {
+            // Scrape image otomatis jika link berubah
+            $scraped = $this->scrapeImageFromUrl($request->link);
+            if ($scraped) {
+                if ($berita->gambar) Storage::disk('public')->delete($berita->gambar);
+                $data['gambar'] = $scraped;
+            }
         }
 
         $berita->update($data);
