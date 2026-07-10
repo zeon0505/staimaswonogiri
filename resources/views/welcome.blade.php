@@ -526,7 +526,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
-                <div class="info-value">PAI</div>
+                <div class="info-value">Pendidikan Agama Islam</div>
               </div>
               <div class="info-item">
                 <div class="info-label">NIDN</div>
@@ -566,7 +566,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
-                <div class="info-value">KPI</div>
+                <div class="info-value">Komunikasi dan Penyiaran Islam</div>
               </div>
               <div class="info-item">
                 <div class="info-label">NIDN</div>
