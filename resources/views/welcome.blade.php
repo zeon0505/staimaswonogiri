@@ -491,11 +491,48 @@
         }
         .info-value {
           font-weight: 600;
-          color: #111827; /* Gray-900 */
+          color: #111827;
           font-size: 9.5px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+
+        /* ===== TAP/KLIK: Overlay via JS (semua device) ===== */
+        .kaprodi-card.touch-active .hover-overlay-info {
+          opacity: 1 !important;
+          pointer-events: auto !important;
+        }
+        .kaprodi-card.touch-active {
+          border-color: #0d9488 !important;
+          box-shadow: 0 0 0 2px rgba(13,148,136,0.2) !important;
+        }
+
+        /* ===== MOBILE: Perbaiki layout overlay & matikan animasi lift ===== */
+        @media (max-width: 767px) {
+          .kaprodi-card, .kaprodi-card:hover {
+            transform: none !important;
+            box-shadow: none !important;
+          }
+          .kaprodi-card.touch-active {
+            box-shadow: 0 0 0 2px rgba(13,148,136,0.2) !important;
+          }
+          .hover-overlay-info {
+            padding: 12px;
+          }
+          .info-col-left {
+            display: none; /* Sembunyikan foto di overlay HP agar teks lega */
+          }
+          .info-col-right {
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            gap: 4px;
+          }
+          .info-value {
+            white-space: normal; /* Izinkan teks memanjang ke baris baru */
+            line-height: 1.3;
+          }
         }
       </style>
 
@@ -663,6 +700,32 @@
     </div>
   </section>
 
+  <script>
+  // Kaprodi card: klik untuk tampilkan overlay di semua device
+  (function() {
+    var cards = document.querySelectorAll('.kaprodi-card');
+
+    cards.forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isActive = card.classList.contains('touch-active');
+
+        // Tutup semua card dulu
+        cards.forEach(function(c) { c.classList.remove('touch-active'); });
+
+        // Buka card ini jika belum aktif
+        if (!isActive) {
+          card.classList.add('touch-active');
+        }
+      });
+    });
+
+    // Klik/tap di luar semua card → tutup semua
+    document.addEventListener('click', function() {
+      cards.forEach(function(c) { c.classList.remove('touch-active'); });
+    });
+  })();
+  </script>
 
 
   <!-- ===== BERITA TERBARU (News & Updates) ===== -->
