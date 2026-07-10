@@ -31,18 +31,18 @@ class BeritaController extends Controller
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($ch, CURLOPT_TIMEOUT, 15);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_ENCODING, '');  // Auto-decompress gzip/deflate/br
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-                'Accept-Encoding: gzip, deflate, br',
                 'Connection: keep-alive',
                 'Upgrade-Insecure-Requests: 1',
                 'Cache-Control: max-age=0',
                 'Referer: https://www.google.com/',
             ]);
-            $html       = curl_exec($ch);
-            $httpCode   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $html     = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
             if (!$html || $httpCode >= 400) {
