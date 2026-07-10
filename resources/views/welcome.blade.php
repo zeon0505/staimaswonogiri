@@ -430,54 +430,226 @@
         <p class="text-gray-500 mt-2 text-sm">Didukung oleh jajaran akademisi berkualitas yang ahli di bidang masing-masing.</p>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-        <!-- Dr. Trianto -->
-        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full bg-teal-brand/10 flex items-center justify-center text-teal-brand text-3xl mb-4 overflow-hidden">
-            <i class="fas fa-user-tie"></i>
-          </div>
-          <h4 class="font-bold text-gray-900 text-sm">Dr. H. Trianto, M.Pd.</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Senat & Dosen Utama</p>
-        </div>
+      <style>
+        .kaprodi-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .kaprodi-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .hover-overlay-info {
+          position: absolute;
+          inset: 0;
+          background: rgba(255, 255, 255, 0.98);
+          color: #1f2937; /* Gray-800 */
+          padding: 16px;
+          display: flex;
+          gap: 12px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          text-align: left;
+          border-radius: 12px;
+        }
+        .kaprodi-card:hover .hover-overlay-info {
+          opacity: 1;
+        }
+        .info-col-left {
+          width: 40%;
+          height: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .info-col-right {
+          width: 60%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          font-size: 10px;
+        }
+        .info-item {
+          border-bottom: 1px solid #f3f4f6;
+          padding-bottom: 2px;
+          margin-bottom: 2px;
+        }
+        .info-label {
+          color: #9ca3af; /* Gray-400 */
+          font-size: 8px;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+        .info-value {
+          font-weight: 600;
+          color: #111827; /* Gray-900 */
+          font-size: 9.5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      </style>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <!-- Kaprodi PAI -->
-        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center kaprodi-card">
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20 relative">
             <img src="{{ asset('assest/Kaprodi PAI.png') }}" alt="Kaprodi PAI"
               class="w-full h-full object-cover"
               style="object-position: center 5%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">Kaprodi PAI</h4>
+          <h4 class="font-bold text-gray-900 text-sm">RATIH</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi PAI</p>
+          
+          <!-- Hover Overlay Info -->
+          <div class="hover-overlay-info">
+            <div class="info-col-left">
+              <img src="{{ asset('assest/Kaprodi PAI.png') }}" alt="RATIH" class="w-full h-full object-cover" style="object-position: center 5%;">
+            </div>
+            <div class="info-col-right">
+              <div class="info-item">
+                <div class="info-label">Nama</div>
+                <div class="info-value" title="RATIH">RATIH</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Jabatan</div>
+                <div class="info-value">Ketua Program Studi</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Program Studi</div>
+                <div class="info-value">PAI</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NIDN</div>
+                <div class="info-value font-mono">2130089801</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NUPTK</div>
+                <div class="info-value font-mono">3162776677230103</div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <!-- Kaprodi KPI -->
-        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center kaprodi-card">
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20 relative">
             <img src="{{ asset('assest/kaprodi kpi.JPG') }}" alt="Kaprodi KPI"
               class="w-full h-full object-cover"
               style="object-position: center 15%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">Kaprodi KPI</h4>
+          <h4 class="font-bold text-gray-900 text-sm">ACHMAD ZAKY FAIZ, S.Sos., M.Sos</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi KPI</p>
+
+          <!-- Hover Overlay Info -->
+          <div class="hover-overlay-info">
+            <div class="info-col-left">
+              <img src="{{ asset('assest/kaprodi kpi.JPG') }}" alt="ACHMAD ZAKY FAIZ" class="w-full h-full object-cover" style="object-position: center 15%;">
+            </div>
+            <div class="info-col-right">
+              <div class="info-item">
+                <div class="info-label">Nama</div>
+                <div class="info-value" title="ACHMAD ZAKY FAIZ, S.Sos., M.Sos">A. ZAKY FAIZ, M.Sos</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Jabatan</div>
+                <div class="info-value">Ketua Program Studi</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Program Studi</div>
+                <div class="info-value">KPI</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NIDN</div>
+                <div class="info-value font-mono">-</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NUPTK</div>
+                <div class="info-value font-mono">9748775676130182</div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <!-- Kaprodi ES -->
-        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center kaprodi-card">
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20 relative">
             <img src="{{ asset('assest/Kaprodi ES.JPG') }}" alt="Kaprodi ES"
               class="w-full h-full object-cover"
               style="object-position: center 10%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">Kaprodi ES</h4>
+          <h4 class="font-bold text-gray-900 text-sm">INDRA SETIAWAN, SE., M.M</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Ekonomi Syariah</p>
+
+          <!-- Hover Overlay Info -->
+          <div class="hover-overlay-info">
+            <div class="info-col-left">
+              <img src="{{ asset('assest/Kaprodi ES.JPG') }}" alt="INDRA SETIAWAN" class="w-full h-full object-cover" style="object-position: center 10%;">
+            </div>
+            <div class="info-col-right">
+              <div class="info-item">
+                <div class="info-label">Nama</div>
+                <div class="info-value" title="INDRA SETIAWAN, SE., M.M">INDRA SETIAWAN, M.M</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Jabatan</div>
+                <div class="info-value">Ketua Program Studi</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Program Studi</div>
+                <div class="info-value">Ekonomi Syariah</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NIDN</div>
+                <div class="info-value font-mono">2101057703</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NUPTK</div>
+                <div class="info-value font-mono">3833755656130152</div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <!-- Kaprodi HTN -->
-        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center group hover:bg-teal-50/50 transition-colors">
-          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20">
+        <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center kaprodi-card">
+          <div class="w-24 h-24 mx-auto rounded-full mb-4 overflow-hidden border-2 border-teal-brand/20 relative">
             <img src="{{ asset('assest/kaprodi htn.jpg') }}" alt="Kaprodi HTN"
               class="w-full h-full object-cover"
               style="object-position: center 10%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">Kaprodi HTN</h4>
+          <h4 class="font-bold text-gray-900 text-sm">Dr. RUSLINA DWI WAHYUNI, S.Sos., M.A.P</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Hukum Tata Negara</p>
+
+          <!-- Hover Overlay Info -->
+          <div class="hover-overlay-info">
+            <div class="info-col-left">
+              <img src="{{ asset('assest/kaprodi htn.jpg') }}" alt="Dr. RUSLINA DWI WAHYUNI" class="w-full h-full object-cover" style="object-position: center 10%;">
+            </div>
+            <div class="info-col-right">
+              <div class="info-item">
+                <div class="info-label">Nama</div>
+                <div class="info-value" title="Dr. RUSLINA DWI WAHYUNI, S.Sos., M.A.P">Dr. RUSLINA DWI W.</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Jabatan</div>
+                <div class="info-value">Ketua Program Studi</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Program Studi</div>
+                <div class="info-value">Hukum Tata Negara</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NIDN</div>
+                <div class="info-value font-mono">2126068404</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">NUPTK</div>
+                <div class="info-value font-mono">8958762663231172</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
