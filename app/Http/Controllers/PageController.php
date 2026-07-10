@@ -16,7 +16,7 @@ class PageController extends Controller
     {
         $slides = Slide::where('aktif', true)->orderBy('urutan')->get();
         // Berita & Pengumuman
-        $beritas = Berita::where('aktif', true)->orderBy('created_at', 'desc')->take(6)->get();
+        $beritas = Berita::where('aktif', true)->orderBy('tanggal', 'desc')->take(6)->get();
         $posters = Poster::where('aktif', true)->get();
         
         return view('welcome', compact('slides', 'beritas', 'posters'));
@@ -225,7 +225,7 @@ class PageController extends Controller
             $query->whereHas('kategori', fn($q) => $q->where('slug', $request->kategori));
         }
         
-        $beritas = $query->orderBy('created_at', 'desc')->paginate(9)->withQueryString();
+        $beritas = $query->orderBy('tanggal', 'desc')->paginate(9)->withQueryString();
         $kategoris = Kategori::orderBy('nama')->get();
         $posters = Poster::where('aktif', true)->orderBy('created_at', 'desc')->get();
         
@@ -243,25 +243,25 @@ class PageController extends Controller
         $berita = Berita::where('slug', $slug)->firstOrFail();
         
         $prev = Berita::where('aktif', true)
-                      ->where('created_at', '<', $berita->created_at)
-                      ->orderBy('created_at', 'desc')
+                      ->where('tanggal', '<', $berita->tanggal)
+                      ->orderBy('tanggal', 'desc')
                       ->first();
                       
         $next = Berita::where('aktif', true)
-                      ->where('created_at', '>', $berita->created_at)
-                      ->orderBy('created_at', 'asc')
+                      ->where('tanggal', '>', $berita->tanggal)
+                      ->orderBy('tanggal', 'asc')
                       ->first();
 
         $related = Berita::where('aktif', true)
                          ->where('kategori_id', $berita->kategori_id)
                          ->where('id', '!=', $berita->id)
-                         ->orderBy('created_at', 'desc')
+                         ->orderBy('tanggal', 'desc')
                          ->take(5)
                          ->get();
 
         $otherBeritas = Berita::where('aktif', true)
                               ->where('id', '!=', $berita->id)
-                              ->orderBy('created_at', 'desc')
+                              ->orderBy('tanggal', 'desc')
                               ->take(5)
                               ->get();
                                  
