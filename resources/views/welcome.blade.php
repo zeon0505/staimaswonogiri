@@ -366,7 +366,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 relative">
           <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-            <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/02/AKREDITASI-KAMPUS-STAIMAS.jpg" alt="Akreditasi STAIMAS" class="w-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="{{ asset('assest/akreditasi.jpg') }}" alt="Akreditasi STAIMAS" class="w-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
         </div>
         <div class="lg:col-span-7">
