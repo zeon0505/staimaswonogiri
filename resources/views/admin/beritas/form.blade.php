@@ -3,6 +3,21 @@
 @section('breadcrumb', 'Berita PAI / ' . ($berita ? 'Edit' : 'Tulis Baru'))
 
 @section('content')
+@if(!$berita)
+  {{-- Switcher Mode Single / Bulk --}}
+  <div class="flex gap-2 bg-gray-100 p-1.5 rounded-2xl w-fit mb-6">
+    <button type="button" id="tab-mode-single" onclick="switchMode('single')"
+      class="mode-btn px-6 py-2 rounded-xl text-xs font-bold transition-all bg-white text-teal-700 shadow-sm">
+      <i class="fas fa-file-alt mr-1.5"></i> Tulis Satu Berita
+    </button>
+    <button type="button" id="tab-mode-bulk" onclick="switchMode('bulk')"
+      class="mode-btn px-6 py-2 rounded-xl text-xs font-bold transition-all text-gray-500 hover:text-gray-700">
+      <i class="fas fa-copy mr-1.5"></i> Upload Massal (1-3 Link)
+    </button>
+  </div>
+@endif
+
+<div id="section-single-upload">
 <form action="{{ $berita ? route('admin.beritas.update', $berita) : route('admin.beritas.store') }}"
       method="POST" enctype="multipart/form-data">
   @csrf
@@ -137,6 +152,109 @@
     </div>
   </div>
 </form>
+</div>
+
+@if(!$berita)
+<div id="section-bulk-upload" class="hidden">
+  <form action="{{ route('admin.beritas.store-bulk') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+    @csrf
+    
+    {{-- Input URL Massal --}}
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+      <h3 class="font-bold text-gray-800 text-sm">Upload Massal Berita (1-3 Link sekaligus)</h3>
+      <p class="text-xs text-gray-500">Masukkan tautan (link) berita di bawah ini, lalu klik "Ambil Semua Data Link" untuk mengekstrak data secara otomatis.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        @for($i = 0; $i < 3; $i++)
+        <div class="space-y-1.5">
+          <label class="text-xs font-semibold text-gray-700">Link Berita {{ $i + 1 }}</label>
+          <input type="url" id="bulk-url-input-{{ $i }}" placeholder="https://example.com/berita-{{ $i + 1 }}" 
+            class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500">
+        </div>
+        @endfor
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="button" id="btn-fetch-bulk" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-colors flex items-center gap-1.5 shadow-sm">
+          <i class="fas fa-sync-alt animate-none" id="fetch-spinner-bulk"></i> Ambil Semua Data Link
+        </button>
+      </div>
+    </div>
+
+    {{-- Detail Form Masing-masing Berita --}}
+    <div class="space-y-6">
+      @for($i = 0; $i < 3; $i++)
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+        <div class="flex items-center justify-between border-b border-gray-50 pb-3">
+          <h4 class="font-bold text-teal-800 text-sm">Berita Slot {{ $i + 1 }}</h4>
+          <span id="bulk-status-badge-{{ $i }}" class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2.5 py-1 rounded-full">Kosong / Menunggu Link</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {{-- Konten --}}
+          <div class="lg:col-span-2 space-y-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">Judul Berita <span class="text-red-500">*</span></label>
+              <input type="text" name="beritas[{{ $i }}][judul]" id="bulk-judul-{{ $i }}" required
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Judul berita {{ $i + 1 }}">
+            </div>
+            
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">Link Berita Asli</label>
+              <input type="url" name="beritas[{{ $i }}][link]" id="bulk-link-{{ $i }}" readonly
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-xs focus:outline-none cursor-not-allowed" placeholder="Diisi otomatis dari link">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">Isi Berita <span class="text-red-500">*</span></label>
+              <textarea name="beritas[{{ $i }}][konten]" id="bulk-konten-{{ $i }}" rows="8" required
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500 resize-y" placeholder="Isi berita lengkap..."></textarea>
+            </div>
+          </div>
+
+          {{-- Meta --}}
+          <div class="space-y-4">
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">Kategori</label>
+              <select name="beritas[{{ $i }}][kategori_id]" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500">
+                <option value="">— Tanpa Kategori —</option>
+                @foreach($kategoris as $kat)
+                <option value="{{ $kat->id }}">{{ $kat->nama }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">Tanggal Terbit <span class="text-red-500">*</span></label>
+              <input type="date" name="beritas[{{ $i }}][tanggal]" value="{{ date('Y-m-d') }}" required
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-semibold text-gray-700">URL Gambar (Otomatis)</label>
+              <input type="url" name="beritas[{{ $i }}][gambar_url]" id="bulk-gambar-url-{{ $i }}" readonly
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-xs focus:outline-none cursor-not-allowed" placeholder="URL gambar otomatis">
+              <div class="mt-2 hidden" id="bulk-preview-container-{{ $i }}">
+                <img id="bulk-preview-img-{{ $i }}" src="" class="aspect-video w-full object-cover rounded-xl border border-gray-200">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endfor
+    </div>
+
+    <div class="flex gap-3">
+      <button type="submit" class="bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm shadow transition-colors flex items-center gap-2">
+        <i class="fas fa-save"></i> Terbitkan Semua Berita
+      </button>
+      <a href="{{ route('admin.beritas.index') }}" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+        Batal
+      </a>
+    </div>
+  </form>
+</div>
+@endif
 
 
 {{-- Custom Modal Popup --}}
@@ -252,6 +370,30 @@ function closeModal() {
 // Tutup modal jika klik backdrop
 document.getElementById('modal-backdrop').addEventListener('click', closeModal);
 
+// Tab Switcher Mode (Single / Bulk)
+function switchMode(mode) {
+  const sectionSingle = document.getElementById('section-single-upload');
+  const sectionBulk   = document.getElementById('section-bulk-upload');
+  const tabSingle     = document.getElementById('tab-mode-single');
+  const tabBulk       = document.getElementById('tab-mode-bulk');
+
+  if (mode === 'single') {
+    sectionSingle.classList.remove('hidden');
+    sectionBulk.classList.add('hidden');
+    tabSingle.classList.add('bg-white', 'text-teal-700', 'shadow-sm');
+    tabSingle.classList.remove('text-gray-500');
+    tabBulk.classList.remove('bg-white', 'text-teal-700', 'shadow-sm');
+    tabBulk.classList.add('text-gray-500');
+  } else {
+    sectionBulk.classList.remove('hidden');
+    sectionSingle.classList.add('hidden');
+    tabBulk.classList.add('bg-white', 'text-teal-700', 'shadow-sm');
+    tabBulk.classList.remove('text-gray-500');
+    tabSingle.classList.remove('bg-white', 'text-teal-700', 'shadow-sm');
+    tabSingle.classList.add('text-gray-500');
+  }
+}
+
 document.getElementById('gambar-input').addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (!file) return;
@@ -309,5 +451,92 @@ document.getElementById('btn-fetch-link').addEventListener('click', function() {
     btn.innerHTML = '<i class="fas fa-sync-alt" id="fetch-spinner"></i> Ambil Data Link';
   });
 });
+
+// Bulk Fetching Logic
+const btnFetchBulk = document.getElementById('btn-fetch-bulk');
+if (btnFetchBulk) {
+  btnFetchBulk.addEventListener('click', function() {
+    const urls = [
+      document.getElementById('bulk-url-input-0').value.trim(),
+      document.getElementById('bulk-url-input-1').value.trim(),
+      document.getElementById('bulk-url-input-2').value.trim()
+    ];
+
+    const hasUrls = urls.some(url => url !== '');
+    if (!hasUrls) {
+      showModal('error', 'URL Kosong!', 'Masukkan setidaknya 1 link berita untuk diambil datanya.');
+      return;
+    }
+
+    const spinner = document.getElementById('fetch-spinner-bulk');
+    spinner.classList.add('fa-spin');
+    btnFetchBulk.disabled = true;
+    btnFetchBulk.innerHTML = '<i class="fas fa-sync-alt fa-spin" id="fetch-spinner-bulk"></i> Mengambil data...';
+
+    const promises = urls.map((url, index) => {
+      if (!url) {
+        return Promise.resolve({ skipped: true });
+      }
+
+      // Update status to loading
+      const badge = document.getElementById(`bulk-status-badge-${index}`);
+      badge.textContent = 'Sedang Mengambil Data...';
+      badge.className = 'text-[10px] bg-yellow-100 text-yellow-700 font-bold px-2.5 py-1 rounded-full';
+
+      return fetch('{{ route("admin.beritas.scrape") }}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ url: url })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Koneksi gagal atau website memblokir.');
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          document.getElementById(`bulk-judul-${index}`).value = data.judul || '';
+          document.getElementById(`bulk-konten-${index}`).value = data.konten || '';
+          document.getElementById(`bulk-link-${index}`).value = url;
+          document.getElementById(`bulk-gambar-url-${index}`).value = data.gambar_url || '';
+
+          if (data.gambar_url) {
+            document.getElementById(`bulk-preview-img-${index}`).src = data.gambar_url;
+            document.getElementById(`bulk-preview-container-${index}`).classList.remove('hidden');
+          }
+
+          badge.textContent = 'Berhasil Diambil';
+          badge.className = 'text-[10px] bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-full';
+          return { success: true };
+        } else {
+          throw new Error(data.message || 'Gagal mengekstrak data.');
+        }
+      })
+      .catch(error => {
+        badge.textContent = 'Gagal: ' + error.message;
+        badge.className = 'text-[10px] bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-full';
+        return { success: false, error: error.message };
+      });
+    });
+
+    Promise.all(promises).then(results => {
+      const successfulCount = results.filter(r => r.success).length;
+      const failedCount = results.filter(r => r.success === false).length;
+
+      if (successfulCount > 0) {
+        showModal('success', 'Pengambilan Selesai!', `${successfulCount} berita berhasil diambil secara otomatis. Silakan periksa detailnya.`);
+      } else if (failedCount > 0) {
+        showModal('error', 'Semua Pengambilan Gagal', 'Gagal mengambil data dari link yang dimasukkan.');
+      }
+    })
+    .finally(() => {
+      spinner.classList.remove('fa-spin');
+      btnFetchBulk.disabled = false;
+      btnFetchBulk.innerHTML = '<i class="fas fa-sync-alt" id="fetch-spinner-bulk"></i> Ambil Semua Data Link';
+    });
+  });
+}
 </script>
 @endsection

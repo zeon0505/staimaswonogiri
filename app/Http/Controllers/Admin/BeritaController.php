@@ -283,4 +283,56 @@ class BeritaController extends Controller
         $berita->delete();
         return back()->with('success', 'Berita berhasil dihapus.');
     }
+
+    public function storeBulk(Request $request)
+    {
+        $request->validate([
+            'beritas' => 'required|array|min:1|max:3',
+            'beritas.*.judul' => 'required|string|max:255',
+            'beritas.*.konten' => 'required|string',
+            'beritas.*.tanggal' => 'required|date',
+            'beritas.*.kategori_id' => 'nullable|exists:kategoris,id',
+            'beritas.*.link' => 'nullable|url',
+            'beritas.*.gambar_url' => 'nullable|url',
+        ]);
+
+        $count = 0;
+        foreach ($request->beritas as $index => $item) {
+            $data = [
+                'judul' => $item['judul'],
+                'slug'  => Str::slug($item['judul']) . '-' . time() . '-' . uniqid(),
+                'konten' => $item['konten'],
+                'tanggal' => $item['tanggal'],
+                'kategori_id' => $item['kategori_id'] ?? null,
+                'link' => $item['link'] ?? null,
+                'aktif' => isset($item['aktif']) ? (bool)$item['aktif'] : true,
+            ];
+
+            // Handle image uploaded file
+            if ($request->hasFile("beritas.{$index}.gambar")) {
+                $data['gambar'] = $request->file("beritas.{$index}.gambar")->store('beritas', 'public');
+            } elseif (!empty($item['gambar_url'])) {
+                try {
+                    $imgRes = Http::timeout(15)->withHeaders(['User-Agent' => 'Mozilla/5.0'])->get($item['gambar_url']);
+                    if ($imgRes->successful()) {
+                        $filename = 'beritas/' . md5($item['gambar_url'] . time()) . '.jpg';
+                        Storage::disk('public')->put($filename, $imgRes->body());
+                        $data['gambar'] = $filename;
+                    }
+                } catch (\Exception $e) {
+                    // Fail gracefully
+                }
+            } elseif (!empty($item['link'])) {
+                $scraped = $this->scrapeImageFromUrl($item['link']);
+                if ($scraped) {
+                    $data['gambar'] = $scraped;
+                }
+            }
+
+            Berita::create($data);
+            $count++;
+        }
+
+        return redirect()->route('admin.beritas.index')->with('success', "$count Berita berhasil ditambahkan secara massal.");
+    }
 }

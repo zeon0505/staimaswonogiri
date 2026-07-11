@@ -70,6 +70,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
         Route::post('/beritas/scrape', [BeritaController::class, 'scrapeUrl'])->name('beritas.scrape');
+        Route::post('/beritas/store-bulk', [BeritaController::class, 'storeBulk'])->name('beritas.store-bulk');
         Route::resource('slides',   SlideController::class)->except(['show']);
         Route::resource('dosens',   DosenController::class)->except(['show']);
         Route::resource('kategoris', KategoriController::class)->except(['show']);
