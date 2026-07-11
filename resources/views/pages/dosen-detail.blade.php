@@ -69,11 +69,11 @@
             @endif
           </div>
           <div class="py-3">
-            <h5 class="text-xs text-gray-400">Google Scholar</h5>
-            @if($dosen->google_scholar)
-            <a href="{{ $dosen->google_scholar }}" target="_blank" class="text-sm font-semibold text-teal-700 hover:underline">Klik disini</a>
+            <h5 class="text-xs text-gray-400">NIPY</h5>
+            @if($dosen->nipy)
+              <p class="text-sm font-semibold text-gray-800">{{ $dosen->nipy }}</p>
             @else
-            <p class="text-sm text-gray-800">-</p>
+              <p class="text-sm text-gray-800">-</p>
             @endif
           </div>
           <div class="py-3">

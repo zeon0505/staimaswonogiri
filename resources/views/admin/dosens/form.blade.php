@@ -86,10 +86,10 @@
       </div>
 
       <div class="space-y-1.5">
-        <label class="text-sm font-semibold text-gray-700">URL Google Scholar</label>
-        <input type="url" name="google_scholar" value="{{ old('google_scholar', $dosen?->google_scholar) }}"
+        <label class="text-sm font-semibold text-gray-700">NIPY</label>
+        <input type="text" name="nipy" value="{{ old('nipy', $dosen?->nipy) }}"
           class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-          placeholder="https://scholar.google.com/citations?user=...">
+          placeholder="Nomor Induk Pendidik Yayasan">
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

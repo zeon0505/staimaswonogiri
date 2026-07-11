@@ -29,7 +29,7 @@ class DosenController extends Controller
             'foto'    => 'nullable|image|max:3072',
         ]);
 
-        $data = $request->only('nama', 'gelar_depan', 'gelar_belakang', 'jabatan', 'program_studi', 'urutan', 'nidn', 'nuptk', 'jabatan_akademik', 'status', 'email', 'google_scholar', 'pendidikan_terakhir');
+        $data = $request->only('nama', 'gelar_depan', 'gelar_belakang', 'jabatan', 'program_studi', 'urutan', 'nidn', 'nuptk', 'nipy', 'jabatan_akademik', 'status', 'email', 'pendidikan_terakhir');
         $data['aktif'] = $request->boolean('aktif', true);
         
         $namaLengkap = trim(($request->gelar_depan ?? '') . ' ' . $request->nama . ' ' . ($request->gelar_belakang ?? ''));
@@ -59,7 +59,7 @@ class DosenController extends Controller
             'foto'    => 'nullable|image|max:3072',
         ]);
 
-        $data = $request->only('nama', 'gelar_depan', 'gelar_belakang', 'jabatan', 'program_studi', 'urutan', 'nidn', 'nuptk', 'jabatan_akademik', 'status', 'email', 'google_scholar', 'pendidikan_terakhir');
+        $data = $request->only('nama', 'gelar_depan', 'gelar_belakang', 'jabatan', 'program_studi', 'urutan', 'nidn', 'nuptk', 'nipy', 'jabatan_akademik', 'status', 'email', 'pendidikan_terakhir');
         $data['aktif'] = $request->boolean('aktif');
 
         $namaLengkap = trim(($request->gelar_depan ?? '') . ' ' . $request->nama . ' ' . ($request->gelar_belakang ?? ''));

@@ -12,7 +12,7 @@ class Dosen extends Model
 
     protected $fillable = [
         'nama', 'slug', 'gelar_depan', 'gelar_belakang', 'jabatan', 'program_studi', 'foto', 'urutan', 'aktif',
-        'nidn', 'nuptk', 'jabatan_akademik', 'status', 'email', 'google_scholar', 'pendidikan_terakhir'
+        'nidn', 'nuptk', 'nipy', 'jabatan_akademik', 'status', 'email', 'pendidikan_terakhir'
     ];
     protected $casts = ['aktif' => 'boolean'];
 
