@@ -22,6 +22,13 @@ class DosenController extends Controller
 
     public function store(Request $request)
     {
+        // Ubah tanda '-' menjadi null agar tidak memicu error validasi email atau unique constraint
+        foreach (['email', 'nidn', 'nuptk', 'nipy'] as $field) {
+            if ($request->input($field) === '-') {
+                $request->merge([$field => null]);
+            }
+        }
+
         $request->validate([
             'nama'    => 'required|string|max:255',
             'email'   => 'nullable|email|max:255|unique:dosens,email',
@@ -52,6 +59,13 @@ class DosenController extends Controller
 
     public function update(Request $request, Dosen $dosen)
     {
+        // Ubah tanda '-' menjadi null agar tidak memicu error validasi email atau unique constraint
+        foreach (['email', 'nidn', 'nuptk', 'nipy'] as $field) {
+            if ($request->input($field) === '-') {
+                $request->merge([$field => null]);
+            }
+        }
+
         $request->validate([
             'nama'    => 'required|string|max:255',
             'email'   => 'nullable|email|max:255|unique:dosens,email,' . $dosen->id,
