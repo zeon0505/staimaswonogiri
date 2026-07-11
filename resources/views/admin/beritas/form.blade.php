@@ -201,8 +201,8 @@
             
             <div class="space-y-1.5">
               <label class="text-xs font-semibold text-gray-700">Link Berita Asli</label>
-              <input type="url" name="beritas[{{ $i }}][link]" id="bulk-link-{{ $i }}" readonly
-                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-xs focus:outline-none cursor-not-allowed" placeholder="Diisi otomatis dari link">
+              <input type="url" name="beritas[{{ $i }}][link]" id="bulk-link-{{ $i }}"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Masukkan link berita asli (opsional)">
             </div>
 
             <div class="space-y-1.5">
@@ -231,9 +231,9 @@
             </div>
 
             <div class="space-y-1.5">
-              <label class="text-xs font-semibold text-gray-700">URL Gambar (Otomatis)</label>
-              <input type="url" name="beritas[{{ $i }}][gambar_url]" id="bulk-gambar-url-{{ $i }}" readonly
-                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-xs focus:outline-none cursor-not-allowed" placeholder="URL gambar otomatis">
+              <label class="text-xs font-semibold text-gray-700">URL Gambar (Otomatis / Manual)</label>
+              <input type="url" name="beritas[{{ $i }}][gambar_url]" id="bulk-gambar-url-{{ $i }}"
+                class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Masukkan URL gambar langsung (opsional)">
               <div class="mt-2 hidden" id="bulk-preview-container-{{ $i }}">
                 <img id="bulk-preview-img-{{ $i }}" src="" class="aspect-video w-full object-cover rounded-xl border border-gray-200">
               </div>
