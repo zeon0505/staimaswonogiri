@@ -18,7 +18,7 @@
       <div class="col-span-1">
         <div class="aspect-[3/4] rounded-xl overflow-hidden">
           @if($dosen->foto)
-          <img src="{{ str_starts_with($dosen->foto, 'http') ? $dosen->foto : asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-full h-full object-cover">
+          <img src="{{ str_starts_with($dosen->foto, 'http') ? $dosen->foto : asset('storage/' . $dosen->foto) }}" alt="{{ $dosen->nama }}" class="w-full h-full object-cover" style="object-position: center 10%;">
           @else
           <div class="w-full h-full bg-teal-100 flex items-center justify-center">
             <i class="fas fa-user text-teal-400 text-3xl"></i>
