@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Berita PAI')
-@section('breadcrumb', 'Kelola semua berita dan artikel Program Studi PAI')
+@section('title', 'Berita STAIMAS')
+@section('breadcrumb', 'Kelola semua berita dan artikel STAIMAS')
 @section('header-action')
   <a href="{{ route('admin.beritas.create') }}" class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-sm font-bold px-4 py-2 rounded-xl transition-colors shadow">
     <i class="fas fa-plus"></i> Tulis Berita

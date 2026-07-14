@@ -249,10 +249,10 @@
       <div class="space-y-3">
         <h4 class="font-bold text-white uppercase tracking-wider">Program Studi</h4>
         <ul class="space-y-2 text-gray-400">
-          <li><a href="{{ route('pages.program-studi') }}" class="hover:text-yellow-400">Pendidikan Agama Islam</a></li>
-          <li><a href="{{ route('pages.program-studi') }}" class="hover:text-yellow-400">Komunikasi Penyiaran Islam</a></li>
-          <li><a href="{{ route('pages.program-studi') }}" class="hover:text-yellow-400">Ekonomi Syariah</a></li>
-          <li><a href="{{ route('pages.program-studi') }}" class="hover:text-yellow-400">Hukum Tata Negara</a></li>
+          <li><a href="{{ route('pages.pai') }}" class="hover:text-yellow-400">Pendidikan Agama Islam</a></li>
+          <li><a href="{{ route('pages.kpi') }}" class="hover:text-yellow-400">Komunikasi Penyiaran Islam</a></li>
+          <li><a href="{{ route('pages.es') }}" class="hover:text-yellow-400">Ekonomi Syariah</a></li>
+          <li><a href="{{ route('pages.hukum') }}" class="hover:text-yellow-400">Hukum Tata Negara</a></li>
         </ul>
       </div>
       <div class="space-y-3">

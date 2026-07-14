@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-<div class="h-40 bg-teal-800 bg-blend-multiply bg-center bg-cover" style="background-image: url('{{ asset('images/bg-hero.jpg') }}')">
+<div class="h-40 bg-teal-800 bg-blend-multiply bg-center bg-cover" style='background-image: url("{{ asset("images/bg-hero.jpg") }}")'>
   <div class="h-full container mx-auto flex items-center">
     <div>
       <h1 class="text-2xl md:text-3xl text-white font-bold">{{ $title }}</h1>

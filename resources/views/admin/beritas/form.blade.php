@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title', $berita ? 'Edit Berita' : 'Tulis Berita')
-@section('breadcrumb', 'Berita PAI / ' . ($berita ? 'Edit' : 'Tulis Baru'))
+@section('breadcrumb', 'Berita STAIMAS / ' . ($berita ? 'Edit' : 'Tulis Baru'))
 
 @section('content')
 @if(!$berita)

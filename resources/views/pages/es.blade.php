@@ -43,25 +43,25 @@
 
     <!-- Tab Contents -->
     <div class="min-h-[200px]">
-      <!-- VISI -->
+        <!-- VISI -->
       <div id="content-visi" class="tab-content block space-y-4 animate-fadeIn">
         <div class="bg-teal-50/50 border-l-4 border-teal-600 p-6 rounded-r-2xl">
           <h4 class="font-bold text-gray-800 text-lg mb-2">Visi Keilmuan Program Studi Ekonomi Syariah</h4>
           <p class="text-gray-700 text-sm leading-relaxed italic">
-            "Mengembangkan program studi yang unggul dalam melahirkan sarjana Ekonomi Syariah yang profesional, mandiri, dan berintegritas tinggi dalam praktik ekonomi Islam."
+            "Menjadi pusat kajian ilmu ekonomi syariah di bidang ekonomi pembangunan dan keuangan syariah serta entrepreneur bisnis yang berbasis prinsip pemberdayaan masyarakat, nilai-nilai keindonesiaan, dan religius kekaryaan."
           </p>
         </div>
       </div>
 
-        <!-- MISI -->
+      <!-- MISI -->
       <div id="content-misi" class="tab-content hidden space-y-4 animate-fadeIn">
         <h4 class="font-bold text-gray-800 text-lg">Misi Keilmuan Program Studi Ekonomi Syariah</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           @foreach([
-            'Menyelenggarakan pendidikan sarjana bidang ekonomi syariah yang integratif dan interdisipliner.',
-            'Melakukan riset kontemporer di bidang industri halal dan keuangan syariah nasional.',
-            'Melaksanakan kegiatan pengabdian masyarakat berbasis edukasi keuangan mikro syariah.',
-            'Meningkatkan kerja sama kemitraan dengan BUMN, BMT, dan lembaga amil zakat.'
+            'Menyelenggarakan pendidikan dan pengajaran ekonomi syariah yang memenuhi standarisasi pendidikan ekonomi syariah di Indonesia.',
+            'Menyelenggarakan penelitian dan pengembangan bidang ekonomi syariah berlandaskan nilai-nilai Islam.',
+            'Melaksanakan pengabdian bidang ekonomi syariah di masyarakat.',
+            'Menyelenggarakan kerjasama dengan institusi lain dalam pengembangan keilmuan and praktik ekonomi syariah.'
           ] as $i => $misi)
           <div class="p-5 bg-gray-50 rounded-2xl flex gap-3">
             <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 text-sm font-bold flex items-center justify-center flex-shrink-0">{{ $i + 1 }}</span>
@@ -70,16 +70,16 @@
           @endforeach
         </div>
       </div>
- 
+
       <!-- TUJUAN -->
       <div id="content-tujuan" class="tab-content hidden space-y-4 animate-fadeIn">
         <h4 class="font-bold text-gray-800 text-lg">Tujuan Program Studi Ekonomi Syariah</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           @foreach([
-            'Menghasilkan sarjana ekonomi Islam yang profesional, jujur, dan inovatif.',
-            'Menghasilkan karya ilmiah terpublikasi di jurnal terakreditasi bidang ekonomi syariah.',
-            'Mewujudkan masyarakat sadar zakat, infaq, shadaqah, dan wakaf.',
-            'Menjalin aliansi strategis dengan institusi keuangan syariah tingkat nasional.'
+            'Menghasilkan lulusan Ekonomi Syariah yang berintegritas tinggi serta kompeten di bidang analisis ekonomi pembangunan dan keuangan syariah.',
+            'Menghasilkan kajian ilmiah dan hasil penelitian inovatif yang berkontribusi pada pengembangan praktik perbankan dan lembaga keuangan syariah.',
+            'Mewujudkan program pemberdayaan ekonomi masyarakat berbasis prinsip-prinsip syariah secara berkelanjutan.',
+            'Membangun jaringan kemitraan strategis dengan industri perbankan, koperasi syariah, serta lembaga bisnis untuk mempercepat serapan kerja lulusan.'
           ] as $i => $tujuan)
           <div class="p-5 bg-gray-50 rounded-2xl flex gap-3">
             <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 text-sm font-bold flex items-center justify-center flex-shrink-0">{{ $i + 1 }}</span>
@@ -88,19 +88,19 @@
           @endforeach
         </div>
       </div>
- 
+
       <!-- STRATEGI -->
       <div id="content-strategi" class="tab-content hidden space-y-4 animate-fadeIn">
         <h4 class="font-bold text-gray-800 text-lg">Strategi Program Studi Ekonomi Syariah</h4>
         <div class="space-y-3">
           @foreach([
-            'Memperkuat materi perkuliahan dengan praktikum perbankan syariah (Mini Bank).',
-            'Menyelenggarakan sertifikasi kompetensi keahlian ekonomi dan perbankan syariah bagi lulusan.',
-            'Melakukan kunjungan studi lapangan ke pasar modal syariah dan lembaga amil zakat.',
-            'Meningkatkan kapasitas riset dosen dengan berkolaborasi dengan lembaga riset ekonomi syariah.'
+            'Meningkatkan mutu kurikulum secara periodik selaras dengan perkembangan industri keuangan sosial islam dan fintech syariah.',
+            'Mengakselerasi publikasi ilmiah dosen dan mahasiswa pada jurnal terakreditasi nasional maupun internasional.',
+            'Melaksanakan pembimbingan bisnis dan inkubasi wirausaha bagi mahasiswa guna mencetak lulusan berjiwa entrepreneur.',
+            'Mengoptimalkan pemanfaatan laboratorium mini bank syariah dan instrumen digital pendukung pembelajaran praktis.'
           ] as $i => $strategi)
-          <div class="p-4 bg-gray-50 rounded-xl flex items-center gap-4">
-            <i class="fas fa-check-circle text-teal-600 flex-shrink-0 text-lg"></i>
+          <div class="p-4 bg-gray-50 rounded-xl flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-teal-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{{ $i + 1 }}</div>
             <p class="text-gray-700 text-sm leading-relaxed">{{ $strategi }}</p>
           </div>
           @endforeach
@@ -152,6 +152,13 @@
     </div>
     <a href="#" class="w-full md:w-auto bg-teal-700 hover:bg-teal-800 text-white font-bold px-8 py-3.5 rounded-xl text-sm shadow transition-colors flex items-center justify-center gap-2">
       <i class="fas fa-cloud-download-alt"></i> Download PDF
+    </a>
+  </div>
+
+  <div class="text-center pt-8">
+    <p class="text-gray-500 mb-3">Baca lebih lanjut tentang prodi Ekonomi Syariah.</p>
+    <a href="http://ekonomi-syariah.test/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
+        Selengkapnya
     </a>
   </div>
 

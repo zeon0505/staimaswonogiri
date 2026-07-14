@@ -23,7 +23,16 @@
       </div>
       <h4 class="font-bold text-gray-800 mb-1 text-base leading-snug">{{ $prodi[0] }}</h4>
       <p class="text-xs text-gray-500 leading-relaxed mb-4 min-h-[40px]">{{ $prodi[4] }}</p>
-      <a href="{{ $prodi[1] === 'PAI' ? route('pages.pai') : route('pages.akademik') }}" class="text-xs font-semibold {{ $prodi[6] }} hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
+      @php
+        $routeMap = [
+          'PAI' => 'pages.pai',
+          'KPI' => 'pages.kpi',
+          'ES' => 'pages.es',
+          'HTN' => 'pages.hukum'
+        ];
+        $targetRoute = isset($routeMap[$prodi[1]]) ? route($routeMap[$prodi[1]]) : route('pages.akademik');
+      @endphp
+      <a href="{{ $targetRoute }}" class="text-xs font-semibold {{ $prodi[6] }} hover:underline flex items-center gap-1">Lihat Kurikulum <i class="fas fa-arrow-right text-[10px]"></i></a>
     </div>
   </div>
   @endforeach
