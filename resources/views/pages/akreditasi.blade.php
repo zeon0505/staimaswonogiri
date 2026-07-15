@@ -54,14 +54,14 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       
       {{-- Akreditasi Institusi --}}
-      <div class="lg:col-span-3 bg-[#074e50] rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+      <div class="lg:col-span-3 bg-[#074e50] rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm hover-preview-trigger cursor-pointer" data-preview-img="{{ asset('assest/akreditasi.jpg') }}" data-preview-title="Akreditasi Institusi" onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')">
         <div class="space-y-2">
           <span class="text-xs font-semibold uppercase tracking-widest text-teal-200">Akreditasi Institusi</span>
           <h4 class="font-bold text-2xl">STAIMAS Wonogiri</h4>
           <p class="text-teal-100 text-sm max-w-xl">Sekolah Tinggi Agama Islam Mulia Astuti (STAIMAS) Wonogiri telah meraih peringkat <strong>"Baik"</strong> dari Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT).</p>
         </div>
         <div class="shrink-0">
-          <button onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-teal-900/60 hover:bg-teal-900 border border-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center gap-2 text-sm">
+          <button onclick="event.stopPropagation(); openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-teal-900/60 hover:bg-teal-900 border border-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center gap-2 text-sm">
             <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
         </div>
