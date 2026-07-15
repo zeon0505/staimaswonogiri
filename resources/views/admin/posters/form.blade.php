@@ -36,17 +36,16 @@
       </div>
 
       <div class="space-y-1.5">
-        <label class="text-sm font-semibold text-gray-700">Kategori</label>
-        <input type="text" name="kategori" value="{{ old('kategori', $poster?->kategori ?? 'Umum') }}" list="kategori-list"
-          class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-          placeholder="Contoh: PMB, Beasiswa, Kegiatan, Akademik">
-        <datalist id="kategori-list">
-          <option value="PMB">
-          <option value="Beasiswa">
-          <option value="Kegiatan">
-          <option value="Akademik">
-          <option value="Umum">
-        </datalist>
+        <label class="text-sm font-semibold text-gray-700">Kategori <span class="text-red-500">*</span></label>
+        <select name="kategori" required
+          class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+          <option value="" disabled {{ !($poster?->kategori) ? 'selected' : '' }}>-- Pilih Kategori --</option>
+          <option value="Poster" {{ ($poster?->kategori == 'Poster') ? 'selected' : '' }}>Poster</option>
+          <option value="Pengumuman" {{ ($poster?->kategori == 'Pengumuman') ? 'selected' : '' }}>Pengumuman</option>
+          <option value="PMB" {{ ($poster?->kategori == 'PMB') ? 'selected' : '' }}>PMB (Penerimaan Mahasiswa Baru)</option>
+          <option value="Beasiswa" {{ ($poster?->kategori == 'Beasiswa') ? 'selected' : '' }}>Beasiswa</option>
+          <option value="Umum" {{ ($poster?->kategori == 'Umum') ? 'selected' : '' }}>Lainnya / Umum</option>
+        </select>
       </div>
 
       <div class="space-y-1.5">

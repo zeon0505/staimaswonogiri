@@ -48,86 +48,100 @@
 
     {{-- Certificate Visual Preview Section --}}
     <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2 pt-4 border-t border-gray-100">
-      <i class="fas fa-certificate text-teal-600"></i> Sertifikat Akreditasi
+      <i class="fas fa-certificate text-teal-600"></i> Berkas Sertifikat Akreditasi
     </h3>
     
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       
-      {{-- Akreditasi Institusi (Kiri / Atas) --}}
-      <div class="lg:col-span-1 space-y-4">
-        <div class="bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white text-center shadow-md relative overflow-hidden">
-          <div class="absolute top-0 right-0 p-4 opacity-10">
-            <i class="fas fa-award text-6xl"></i>
-          </div>
-          <h4 class="font-bold text-lg mb-2 relative z-10">Akreditasi Institusi STAIMAS</h4>
-          <p class="text-teal-100 text-sm mb-6 relative z-10">Peringkat "Baik" dari BAN-PT</p>
-          
-          <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2 mb-4 relative z-10">
-            <img src="{{ asset('assest/akreditasi.jpg') }}" alt="Sertifikat Akreditasi Institusi" class="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-300 rounded-lg">
-          </div>
+      {{-- Akreditasi Institusi --}}
+      <div class="lg:col-span-3 bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white text-center shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+          <i class="fas fa-award text-8xl"></i>
+        </div>
+        <div class="text-left relative z-10 space-y-2 md:w-1/2">
+          <h4 class="font-bold text-2xl">Akreditasi Institusi STAIMAS</h4>
+          <p class="text-teal-100 text-sm">Sekolah Tinggi Agama Islam Mulia Astuti (STAIMAS) Wonogiri telah meraih peringkat "Baik" dari Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT).</p>
+        </div>
+        <div class="relative z-10 md:w-1/2 flex justify-end">
+          <button onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-white text-teal-800 hover:bg-teal-50 font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center gap-2">
+            <i class="fas fa-search-plus"></i> Lihat Sertifikat
+          </button>
         </div>
       </div>
 
-      {{-- Akreditasi Prodi (Kanan / Bawah) --}}
-      <div class="lg:col-span-2">
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col h-full">
-          
-          {{-- Tabs Header --}}
-          <div class="bg-gray-50 border-b border-gray-200 p-2 flex flex-wrap gap-2 justify-center sm:justify-start">
-            <button onclick="switchTab('PAI')" id="tab-btn-PAI" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-teal-700 text-white shadow-sm transition-all">PAI</button>
-            <button onclick="switchTab('KPI')" id="tab-btn-KPI" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-gray-600 hover:bg-gray-100 transition-all">KPI</button>
-            <button onclick="switchTab('ES')" id="tab-btn-ES" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-gray-600 hover:bg-gray-100 transition-all">Ekonomi Syariah</button>
-            <button onclick="switchTab('HTN')" id="tab-btn-HTN" class="tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-gray-600 hover:bg-gray-100 transition-all">Hukum Tata Negara</button>
+      {{-- PAI --}}
+      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-book-open"></i>
           </div>
-          
-          {{-- Tab Contents --}}
-          <div class="p-4 bg-gray-50 flex-grow relative min-h-[500px]">
-            
-            {{-- PAI Content --}}
-            <div id="tab-content-PAI" class="tab-content w-full h-full absolute inset-0 p-4 transition-opacity duration-300">
-              <div class="w-full h-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="bg-teal-50 px-4 py-3 border-b border-teal-100 flex justify-between items-center">
-                  <span class="font-bold text-teal-800 text-sm">Sertifikat Pendidikan Agama Islam (PAI)</span>
-                  <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="text-xs bg-teal-700 text-white px-3 py-1.5 rounded-lg hover:bg-teal-800"><i class="fas fa-external-link-alt mr-1"></i> Buka Full</a>
-                </div>
-                <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" class="w-full flex-grow border-0"></iframe>
-              </div>
-            </div>
-            
-            {{-- KPI Content --}}
-            <div id="tab-content-KPI" class="tab-content w-full h-full absolute inset-0 p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-              <div class="w-full h-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="bg-teal-50 px-4 py-3 border-b border-teal-100 flex justify-between items-center">
-                  <span class="font-bold text-teal-800 text-sm">Sertifikat Komunikasi Penyiaran Islam (KPI)</span>
-                  <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="text-xs bg-teal-700 text-white px-3 py-1.5 rounded-lg hover:bg-teal-800"><i class="fas fa-external-link-alt mr-1"></i> Buka Full</a>
-                </div>
-                <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" class="w-full flex-grow border-0"></iframe>
-              </div>
-            </div>
-            
-            {{-- ES Content --}}
-            <div id="tab-content-ES" class="tab-content w-full h-full absolute inset-0 p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-              <div class="w-full h-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="bg-teal-50 px-4 py-3 border-b border-teal-100 flex justify-between items-center">
-                  <span class="font-bold text-teal-800 text-sm">Sertifikat Ekonomi Syariah (ES)</span>
-                  <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="text-xs bg-teal-700 text-white px-3 py-1.5 rounded-lg hover:bg-teal-800"><i class="fas fa-external-link-alt mr-1"></i> Buka Full</a>
-                </div>
-                <iframe src="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" class="w-full flex-grow border-0"></iframe>
-              </div>
-            </div>
-            
-            {{-- HTN Content --}}
-            <div id="tab-content-HTN" class="tab-content w-full h-full absolute inset-0 p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-              <div class="w-full h-full bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col">
-                <div class="bg-teal-50 px-4 py-3 border-b border-teal-100 flex justify-between items-center">
-                  <span class="font-bold text-teal-800 text-sm">Sertifikat Hukum Tata Negara (HTN)</span>
-                  <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="text-xs bg-teal-700 text-white px-3 py-1.5 rounded-lg hover:bg-teal-800"><i class="fas fa-external-link-alt mr-1"></i> Buka Full</a>
-                </div>
-                <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" class="w-full flex-grow border-0"></iframe>
-              </div>
-            </div>
-            
+          <h4 class="font-bold text-gray-800">Pendidikan Agama Islam (PAI)</h4>
+          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <i class="fas fa-eye mr-1"></i> Pratinjau
+          </button>
+          <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      {{-- KPI --}}
+      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-broadcast-tower"></i>
           </div>
+          <h4 class="font-bold text-gray-800">Komunikasi Penyiaran Islam</h4>
+          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <i class="fas fa-eye mr-1"></i> Pratinjau
+          </button>
+          <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      {{-- ES --}}
+      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-10 h-10 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4 class="font-bold text-gray-800">Ekonomi Syariah (ES)</h4>
+          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <i class="fas fa-eye mr-1"></i> Pratinjau
+          </button>
+          <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      {{-- HTN --}}
+      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
+        <div>
+          <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h4 class="font-bold text-gray-800">Hukum Tata Negara (HTN)</h4>
+          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <i class="fas fa-eye mr-1"></i> Pratinjau
+          </button>
+          <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
         </div>
       </div>
       
@@ -135,26 +149,72 @@
   </div>
 </div>
 
-<script>
-  function switchTab(tabId) {
-    // Reset all buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-white text-gray-600 hover:bg-gray-100 transition-all';
-    });
-    // Set active button
-    const activeBtn = document.getElementById('tab-btn-' + tabId);
-    activeBtn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-teal-700 text-white shadow-sm transition-all';
+{{-- Modal Viewer --}}
+<div id="certModal" class="fixed inset-0 z-[100] hidden bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[85vh] flex flex-col transform scale-95 transition-transform duration-300" id="certModalContent">
     
-    // Hide all contents
-    document.querySelectorAll('.tab-content').forEach(content => {
-      content.classList.add('opacity-0', 'pointer-events-none');
-      content.classList.remove('z-10');
-    });
-    // Show active content
-    const activeContent = document.getElementById('tab-content-' + tabId);
-    activeContent.classList.remove('opacity-0', 'pointer-events-none');
-    activeContent.classList.add('z-10');
+    {{-- Modal Header --}}
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl">
+      <h3 id="modalTitle" class="font-bold text-gray-800 text-lg">Pratinjau Sertifikat</h3>
+      <button onclick="closeModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    {{-- Modal Body --}}
+    <div class="flex-grow p-4 bg-gray-100 overflow-hidden relative" id="modalBody">
+      <!-- Content injected via JS -->
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  function openModal(fileUrl, type, title) {
+    const modal = document.getElementById('certModal');
+    const modalContent = document.getElementById('certModalContent');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    
+    modalTitle.textContent = title;
+    
+    if (type === 'pdf') {
+      modalBody.innerHTML = `<iframe src="${fileUrl}" class="w-full h-full rounded-lg shadow-sm border-0 bg-white"></iframe>`;
+    } else {
+      modalBody.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-white rounded-lg shadow-sm p-4"><img src="${fileUrl}" class="max-w-full max-h-full object-contain rounded"></div>`;
+    }
+    
+    // Show modal
+    modal.classList.remove('hidden');
+    // Trigger reflow
+    void modal.offsetWidth;
+    // Fade in
+    modal.classList.remove('opacity-0');
+    modalContent.classList.remove('scale-95');
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
   }
+
+  function closeModal() {
+    const modal = document.getElementById('certModal');
+    const modalContent = document.getElementById('certModalContent');
+    const modalBody = document.getElementById('modalBody');
+    
+    modal.classList.add('opacity-0');
+    modalContent.classList.add('scale-95');
+    
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modalBody.innerHTML = ''; // clear iframe to stop memory leaks
+      document.body.style.overflow = ''; // restore scroll
+    }, 300);
+  }
+  
+  // Close on outside click
+  document.getElementById('certModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
 </script>
 @endsection
 

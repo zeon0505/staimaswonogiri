@@ -760,6 +760,111 @@
     </div>
   </section>
 
+  <!-- ===== POSTER & PENGUMUMAN ===== -->
+  <section class="py-20 bg-white" id="poster">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs font-bold text-teal-brand uppercase tracking-wider bg-teal-50 px-3 py-1.5 rounded-full inline-block">Info Kampus</span>
+          <h2 class="text-3xl font-extrabold text-teal-brand-dark mt-2">Poster & Pengumuman</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        @forelse($posters as $poster)
+        <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-all" onclick="openPosterModal('{{ addslashes($poster->judul) }}', '{{ addslashes($poster->deskripsi) }}', '{{ $poster->gambar ? asset('storage/' . $poster->gambar) : '' }}', '{{ addslashes($poster->kategori) }}')">
+          <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative">
+            @if($poster->gambar)
+            <img src="{{ asset('storage/' . $poster->gambar) }}" alt="{{ $poster->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            @else
+            <div class="w-full h-full flex flex-col items-center justify-center text-gray-400 bg-gray-50">
+              <i class="fas fa-image text-4xl mb-2"></i>
+              <span class="text-xs font-medium">Tanpa Gambar</span>
+            </div>
+            @endif
+            <div class="absolute top-3 left-3 bg-teal-brand text-white text-[10px] font-bold px-2 py-1 rounded shadow">
+              {{ $poster->kategori ?? 'Umum' }}
+            </div>
+          </div>
+          <div class="p-4 border-t border-gray-100">
+            <h3 class="font-bold text-gray-900 text-sm leading-snug line-clamp-2">{{ $poster->judul }}</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-1">{{ $poster->deskripsi }}</p>
+          </div>
+        </div>
+        @empty
+        <div class="col-span-4 text-center py-10 text-gray-500 text-sm">Belum ada poster atau pengumuman.</div>
+        @endforelse
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Poster -->
+  <div id="posterModal" class="fixed inset-0 z-[100] hidden bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300" id="posterModalContent">
+      <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl shrink-0">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <span id="modalPosterKategori" class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-1 rounded shrink-0"></span>
+          <h3 id="modalPosterTitle" class="font-bold text-gray-800 text-sm truncate"></h3>
+        </div>
+        <button onclick="closePosterModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors shrink-0">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="flex-grow overflow-y-auto p-4 md:p-6 text-center space-y-4">
+        <img id="modalPosterImg" src="" class="w-full max-h-[60vh] object-contain rounded-xl bg-gray-100 mx-auto shadow-sm hidden">
+        <p id="modalPosterDesc" class="text-gray-600 text-sm text-left whitespace-pre-wrap bg-teal-50 p-4 rounded-xl border border-teal-100"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPosterModal(judul, deskripsi, gambarUrl, kategori) {
+      document.getElementById('modalPosterTitle').textContent = judul;
+      document.getElementById('modalPosterKategori').textContent = kategori || 'Umum';
+      
+      const descEl = document.getElementById('modalPosterDesc');
+      if(deskripsi && deskripsi.trim() !== '') {
+        descEl.textContent = deskripsi;
+        descEl.classList.remove('hidden');
+      } else {
+        descEl.classList.add('hidden');
+      }
+      
+      const imgEl = document.getElementById('modalPosterImg');
+      if (gambarUrl && gambarUrl.trim() !== '') {
+        imgEl.src = gambarUrl;
+        imgEl.classList.remove('hidden');
+      } else {
+        imgEl.classList.add('hidden');
+      }
+      
+      const modal = document.getElementById('posterModal');
+      const content = document.getElementById('posterModalContent');
+      
+      modal.classList.remove('hidden');
+      void modal.offsetWidth; // trigger reflow
+      modal.classList.remove('opacity-0');
+      content.classList.remove('scale-95');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closePosterModal() {
+      const modal = document.getElementById('posterModal');
+      const content = document.getElementById('posterModalContent');
+      
+      modal.classList.add('opacity-0');
+      content.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+    
+    document.getElementById('posterModal').addEventListener('click', function(e) {
+      if (e.target === this) closePosterModal();
+    });
+  </script>
+
   <!-- ===== BROSUR & FLYER GALERI ===== -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4">
