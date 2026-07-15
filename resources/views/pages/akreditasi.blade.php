@@ -221,23 +221,22 @@
       const title = target.getAttribute('data-preview-title');
       
       target.addEventListener('mouseenter', () => {
+        if (!imgUrl) return;
         hoverPreviewImg.src = imgUrl;
         hoverPreviewTitle.textContent = title;
         hoverPreview.classList.remove('hidden');
-        // Force reflow
-        void hoverPreview.offsetWidth;
-        hoverPreview.classList.add('opacity-100');
+        setTimeout(() => {
+          hoverPreview.classList.add('opacity-100');
+        }, 10);
       });
 
       target.addEventListener('mousemove', (e) => {
-        // Offset tooltip by 15px from cursor
-        const offset = 15;
+        const offset = 20;
         let x = e.clientX + offset;
         let y = e.clientY + offset;
 
-        // Prevent tooltip from overflowing the viewport width
-        const tooltipWidth = hoverPreview.offsetWidth;
-        const tooltipHeight = hoverPreview.offsetHeight;
+        const tooltipWidth = hoverPreview.offsetWidth || 350;
+        const tooltipHeight = hoverPreview.offsetHeight || 250;
         
         if (x + tooltipWidth > window.innerWidth) {
           x = e.clientX - tooltipWidth - offset;
@@ -246,8 +245,8 @@
           y = e.clientY - tooltipHeight - offset;
         }
 
-        hoverPreview.style.left = `${x}px`;
-        hoverPreview.style.top = `${y}px`;
+        hoverPreview.style.left = x + 'px';
+        hoverPreview.style.top = y + 'px';
       });
 
       target.addEventListener('mouseleave', () => {
@@ -259,7 +258,11 @@
   }
 
   // Initialize once DOM is ready
-  document.addEventListener('DOMContentLoaded', initHoverPreview);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHoverPreview);
+  } else {
+    initHoverPreview();
+  }
 
   // Modal Logic
   function openModal(fileUrl, type, title) {
