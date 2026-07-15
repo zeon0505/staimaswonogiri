@@ -145,10 +145,10 @@
     <div class="flex flex-col sm:flex-row">
       <div class="relative sm:w-52 shrink-0 cursor-pointer group bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-100"
            onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}')"
-           style="min-height:180px;">
+           style="min-height:200px;height:200px;">
         <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-          class="w-full h-full border-0 pointer-events-none absolute inset-0"
-          style="min-height:180px;" scrolling="no" tabindex="-1"></iframe>
+          class="w-full border-0 pointer-events-none"
+          style="height:200px;display:block;" scrolling="no" tabindex="-1"></iframe>
         <div class="absolute inset-0 bg-transparent group-hover:bg-black/25 transition-all duration-200 flex items-center justify-center">
           <span class="text-white font-semibold text-xs px-3 py-1.5 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
             <i class="fas fa-expand-alt text-[10px]"></i> Perbesar
