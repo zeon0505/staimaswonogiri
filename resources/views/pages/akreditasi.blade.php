@@ -189,7 +189,7 @@
     </div>
     
     {{-- Modal Body --}}
-    <div class="flex-grow p-4 bg-gray-100 overflow-hidden relative" id="modalBody">
+    <div class="flex-grow h-[calc(100%-60px)] p-4 bg-gray-100 overflow-hidden relative" id="modalBody">
       <!-- Content injected via JS -->
     </div>
     
@@ -206,7 +206,7 @@
     modalTitle.textContent = title;
     
     if (type === 'pdf') {
-      modalBody.innerHTML = `<iframe src="${fileUrl}" class="w-full h-full rounded-lg shadow-sm border-0 bg-white"></iframe>`;
+      modalBody.innerHTML = `<iframe src="${fileUrl}" class="w-full h-full min-h-[70vh] rounded-lg shadow-sm border-0 bg-white"></iframe>`;
     } else {
       modalBody.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-white rounded-lg shadow-sm p-4"><img src="${fileUrl}" class="max-w-full max-h-full object-contain rounded"></div>`;
     }
