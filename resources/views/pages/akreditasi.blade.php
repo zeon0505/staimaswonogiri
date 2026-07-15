@@ -148,8 +148,10 @@
       <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
         <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/PAI.jpeg') }}" data-preview-title="Sertifikat Akreditasi PAI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
-          <img src="{{ asset('assest/PAI.jpeg') }}" alt="Sertifikat PAI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+            class="w-full h-full pointer-events-none border-0 scale-[1.02]" style="min-height:208px;"
+            scrolling="no" tabindex="-1"></iframe>
+          <div class="absolute inset-0 bg-black/5 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
@@ -175,8 +177,10 @@
       <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2027">
         <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
-          <img src="{{ asset('assest/kpi.png') }}" alt="Sertifikat KPI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+            class="w-full h-full pointer-events-none border-0 scale-[1.02]" style="min-height:208px;"
+            scrolling="no" tabindex="-1"></iframe>
+          <div class="absolute inset-0 bg-black/5 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
@@ -202,8 +206,10 @@
       <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
         <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/ES.jpeg') }}" data-preview-title="Sertifikat Akreditasi ES" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
-          <img src="{{ asset('assest/ES.jpeg') }}" alt="Sertifikat ES" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+            class="w-full h-full pointer-events-none border-0 scale-[1.02]" style="min-height:208px;"
+            scrolling="no" tabindex="-1"></iframe>
+          <div class="absolute inset-0 bg-black/5 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
@@ -229,8 +235,10 @@
       <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik" data-berlaku="s/d 2029">
         <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/HTN.jpeg') }}" data-preview-title="Sertifikat Akreditasi HTN" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
-          <img src="{{ asset('assest/HTN.jpeg') }}" alt="Sertifikat HTN" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+            class="w-full h-full pointer-events-none border-0 scale-[1.02]" style="min-height:208px;"
+            scrolling="no" tabindex="-1"></iframe>
+          <div class="absolute inset-0 bg-black/5 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
@@ -280,7 +288,7 @@
     </div>
     
     {{-- Modal Body --}}
-    <div class="flex-grow h-[calc(100%-60px)] p-4 bg-gray-100 overflow-hidden relative" id="modalBody">
+    <div class="flex-1 min-h-0 p-3 bg-gray-100 overflow-auto relative" id="modalBody" style="height:calc(85vh - 68px)">
       <!-- Content injected via JS -->
     </div>
     
@@ -406,7 +414,7 @@
     modalTitle.textContent = title;
     
     if (type === 'pdf') {
-      modalBody.innerHTML = `<iframe src="${fileUrl}" class="w-full h-full min-h-[70vh] rounded-lg shadow-sm border-0 bg-white"></iframe>`;
+      modalBody.innerHTML = `<iframe src="${fileUrl}#toolbar=1&navpanes=0&view=FitH" class="w-full rounded-lg shadow-sm border-0 bg-white" style="height:100%;min-height:calc(85vh - 80px);"></iframe>`;
     } else {
       modalBody.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-white rounded-lg shadow-sm p-4"><img src="${fileUrl}" class="max-w-full max-h-full object-contain rounded"></div>`;
     }
