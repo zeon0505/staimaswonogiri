@@ -141,50 +141,52 @@
   </div>
  
   {{-- Akreditasi Section --}}
-  <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-    <div class="flex flex-col md:flex-row">
-      <div class="relative md:w-72 lg:w-80 shrink-0 bg-gray-50 cursor-pointer group"
+  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+    <div class="flex flex-col sm:flex-row">
+      <div class="relative sm:w-52 shrink-0 cursor-pointer group bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-100"
            onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}')"
-           style="min-height:220px;">
+           style="min-height:180px;">
         <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-          class="w-full h-full border-0 pointer-events-none"
-          style="min-height:220px;" scrolling="no" tabindex="-1"></iframe>
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
-          <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
-            <i class="fas fa-expand-alt"></i> Lihat Sertifikat
+          class="w-full h-full border-0 pointer-events-none absolute inset-0"
+          style="min-height:180px;" scrolling="no" tabindex="-1"></iframe>
+        <div class="absolute inset-0 bg-transparent group-hover:bg-black/25 transition-all duration-200 flex items-center justify-center">
+          <span class="text-white font-semibold text-xs px-3 py-1.5 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+            <i class="fas fa-expand-alt text-[10px]"></i> Perbesar
           </span>
         </div>
       </div>
-      <div class="flex-1 p-6 sm:p-8 flex flex-col justify-center gap-4">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-xs font-bold uppercase tracking-widest text-teal-600">Akreditasi Resmi BAN-PT</span>
-        </div>
+      <div class="flex-1 p-6 flex flex-col justify-center gap-5">
         <div>
-          <h3 class="text-2xl font-black text-gray-800 leading-tight">Terakreditasi <span class="text-teal-600">"Baik"</span></h3>
-          <p class="text-sm text-gray-500 mt-1">Program Studi Hukum Tata Negara (HTN) · Jenjang S1</p>
+          <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-teal-600 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Akreditasi BAN-PT
+          </span>
+          <h3 class="text-xl font-bold text-gray-900">Terakreditasi <span class="text-teal-600">"Baik"</span></h3>
+          <p class="text-sm text-gray-400 mt-0.5">Hukum Tata Negara (HTN) &nbsp;·&nbsp; Sarjana (S1)</p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center">
-            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Lembaga</p>
-            <p class="font-bold text-gray-800 text-sm mt-0.5">BAN-PT</p>
+        <div class="flex items-center gap-6 text-sm">
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">Lembaga</p>
+            <p class="font-semibold text-gray-700 mt-0.5">BAN-PT</p>
           </div>
-          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center">
-            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Peringkat</p>
-            <p class="font-bold text-gray-800 text-sm mt-0.5">Baik</p>
+          <div class="h-8 w-px bg-gray-100"></div>
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">Peringkat</p>
+            <p class="font-semibold text-gray-700 mt-0.5">Baik</p>
           </div>
-          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center col-span-2 sm:col-span-1">
-            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Berlaku s/d</p>
-            <p class="font-bold text-gray-800 text-sm mt-0.5">2029</p>
+          <div class="h-8 w-px bg-gray-100"></div>
+          <div>
+            <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">Berlaku s/d</p>
+            <p class="font-semibold text-gray-700 mt-0.5">2029</p>
           </div>
         </div>
-        <div class="flex flex-wrap gap-2 pt-1">
+        <div class="flex items-center gap-2">
           <button onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}')"
-            class="bg-teal-700 hover:bg-teal-800 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2 shadow">
-            <i class="fas fa-eye"></i> Pratinjau Sertifikat
+            class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
+            <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
           <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank"
-            class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2">
+            class="inline-flex items-center gap-2 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-download"></i> Unduh PDF
           </a>
         </div>
@@ -192,14 +194,14 @@
     </div>
   </div>
 
-  <div id="sertifModal" class="fixed inset-0 z-[200] hidden bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl flex flex-col transform scale-95 transition-transform duration-300" id="sertifModalContent" style="height:85vh;">
-      <div class="px-5 py-3.5 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl shrink-0">
-        <span class="font-bold text-gray-800 text-sm flex items-center gap-2"><i class="fas fa-certificate text-teal-600"></i> Sertifikat Akreditasi HTN</span>
-        <button onclick="closeSertifModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors"><i class="fas fa-times"></i></button>
+  <div id="sertifModal" class="fixed inset-0 z-[200] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-200">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl flex flex-col transform scale-95 transition-transform duration-200" id="sertifModalContent" style="height:88vh;">
+      <div class="px-5 py-3 border-b border-gray-100 flex justify-between items-center shrink-0">
+        <span class="font-semibold text-gray-700 text-sm">Sertifikat Akreditasi HTN</span>
+        <button onclick="closeSertifModal()" class="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors text-xs"><i class="fas fa-times"></i></button>
       </div>
-      <div class="flex-1 min-h-0 p-3 bg-gray-100">
-        <iframe id="sertifFrame" src="" class="w-full h-full rounded-lg border-0 bg-white" style="min-height:calc(85vh - 70px);"></iframe>
+      <div class="flex-1 min-h-0 p-2 bg-gray-50">
+        <iframe id="sertifFrame" src="" class="w-full h-full rounded-lg border-0" style="min-height:calc(88vh - 56px);"></iframe>
       </div>
     </div>
   </div>
@@ -216,7 +218,7 @@
       const modal = document.getElementById('sertifModal');
       const content = document.getElementById('sertifModalContent');
       modal.classList.add('opacity-0'); content.classList.add('scale-95');
-      setTimeout(() => { modal.classList.add('hidden'); document.getElementById('sertifFrame').src = ''; document.body.style.overflow = ''; }, 280);
+      setTimeout(() => { modal.classList.add('hidden'); document.getElementById('sertifFrame').src = ''; document.body.style.overflow = ''; }, 200);
     }
     document.getElementById('sertifModal').addEventListener('click', function(e) { if (e.target === this) closeSertifModal(); });
   </script>
