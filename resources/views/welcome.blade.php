@@ -198,6 +198,7 @@
           </li>
 
           <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">BERITA</a></li>
+          <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">PENGUMUMAN</a></li>
           <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">AKREDITASI</a></li>
         </ul>
       </nav>
