@@ -132,11 +132,11 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden lg:block" aria-label="Navigasi utama">
-        <ul class="flex items-center gap-6">
-          <li><a href="{{ route('home') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]" id="link-beranda">BERANDA</a></li>
+        <ul class="flex items-center gap-4">
+          <li><a href="{{ route('home') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap" id="link-beranda">BERANDA</a></li>
           
           <li class="nav-item-dropdown relative">
-            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px] cursor-pointer">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
               PENDIDIKAN <i class="fas fa-chevron-down text-[10px] transition-transform duration-300"></i>
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-60 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
@@ -148,8 +148,8 @@
           </li>
 
           <li class="nav-item-dropdown relative">
-            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px] cursor-pointer">
-              TENTANG STAIMAS <i class="fas fa-chevron-down text-[10px]"></i>
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
+              TENTANG <i class="fas fa-chevron-down text-[10px]"></i>
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-56 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
               <li><a href="{{ route('pages.sambutan') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">Sambutan Ketua</a></li>
@@ -161,7 +161,7 @@
           </li>
 
           <li class="nav-item-dropdown relative">
-            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px] cursor-pointer">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
               MANAJEMEN <i class="fas fa-chevron-down text-[10px]"></i>
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-60 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
@@ -173,7 +173,7 @@
           </li>
 
           <li class="nav-item-dropdown relative">
-            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px] cursor-pointer">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
               KEMAHASISWAAN <i class="fas fa-chevron-down text-[10px]"></i>
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-60 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
@@ -185,7 +185,7 @@
           </li>
 
           <li class="nav-item-dropdown relative">
-            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px] cursor-pointer">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
               UNIT <i class="fas fa-chevron-down text-[10px]"></i>
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-60 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
@@ -197,9 +197,9 @@
             </ul>
           </li>
 
-          <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">BERITA</a></li>
-          <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">PENGUMUMAN</a></li>
-          <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[14px]">AKREDITASI</a></li>
+          <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">BERITA</a></li>
+          <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">PENGUMUMAN</a></li>
+          <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">AKREDITASI</a></li>
         </ul>
       </nav>
 
