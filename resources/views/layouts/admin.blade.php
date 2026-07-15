@@ -106,6 +106,12 @@
         <i class="fas fa-user-tie"></i>
         <span>Dosen & Staff</span>
       </a>
+
+      <div class="sidebar-section-title" style="margin-top:10px;">Analitik</div>
+      <a href="{{ route('admin.visitors.index') }}" class="sidebar-link {{ request()->routeIs('admin.visitors*') ? 'active' : '' }}">
+        <i class="fas fa-globe"></i>
+        <span>Statistik Pengunjung</span>
+      </a>
     </nav>
 
     <!-- User & Logout -->

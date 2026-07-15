@@ -4,12 +4,11 @@
 
 @section('content')
 {{-- Stats Cards --}}
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-3">
   @foreach([
-    ['label'=>'Total Berita','value'=>$totalBerita,'icon'=>'fas fa-newspaper','color'=>'bg-blue-500','bg'=>'bg-blue-50','text'=>'text-blue-600','route'=>'admin.beritas.index'],
-    ['label'=>'Total Dosen','value'=>$totalDosen,'icon'=>'fas fa-user-tie','color'=>'bg-teal-600','bg'=>'bg-teal-50','text'=>'text-teal-600','route'=>'admin.dosens.index'],
-    ['label'=>'Hero Slider','value'=>$totalSlide,'icon'=>'fas fa-images','color'=>'bg-purple-500','bg'=>'bg-purple-50','text'=>'text-purple-600','route'=>'admin.slides.index'],
-    ['label'=>'Poster','value'=>$totalPoster,'icon'=>'fas fa-flag','color'=>'bg-yellow-500','bg'=>'bg-yellow-50','text'=>'text-yellow-600','route'=>'admin.posters.index'],
+    ['label'=>'Total Berita','value'=>$totalBerita,'icon'=>'fas fa-newspaper','bg'=>'bg-blue-50','text'=>'text-blue-600','route'=>'admin.beritas.index'],
+    ['label'=>'Total Dosen','value'=>$totalDosen,'icon'=>'fas fa-user-tie','bg'=>'bg-teal-50','text'=>'text-teal-600','route'=>'admin.dosens.index'],
+    ['label'=>'Hero Slider','value'=>$totalSlide,'icon'=>'fas fa-images','bg'=>'bg-purple-50','text'=>'text-purple-600','route'=>'admin.slides.index'],
   ] as $stat)
   <a href="{{ route($stat['route']) }}" class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
     <div class="w-11 h-11 {{ $stat['bg'] }} {{ $stat['text'] }} rounded-xl flex items-center justify-center text-lg flex-shrink-0">
@@ -21,6 +20,37 @@
     </div>
   </a>
   @endforeach
+</div>
+
+{{-- Visitor + Poster Stats Row --}}
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+  <a href="{{ route('admin.posters.index') }}" class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
+    <div class="w-11 h-11 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+      <i class="fas fa-flag"></i>
+    </div>
+    <div>
+      <p class="text-2xl font-black text-gray-800">{{ $totalPoster }}</p>
+      <p class="text-xs text-gray-500 font-medium">Poster</p>
+    </div>
+  </a>
+  <a href="{{ route('admin.visitors.index') }}" class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
+    <div class="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+      <i class="fas fa-eye"></i>
+    </div>
+    <div>
+      <p class="text-2xl font-black text-gray-800">{{ number_format($totalVisits) }}</p>
+      <p class="text-xs text-gray-500 font-medium">Total Kunjungan</p>
+    </div>
+  </a>
+  <a href="{{ route('admin.visitors.index') }}" class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-all flex items-center gap-4">
+    <div class="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg flex-shrink-0">
+      <i class="fas fa-globe"></i>
+    </div>
+    <div>
+      <p class="text-2xl font-black text-gray-800">{{ number_format($totalUnique) }}</p>
+      <p class="text-xs text-gray-500 font-medium">Pengunjung Unik</p>
+    </div>
+  </a>
 </div>
 
 {{-- Quick Actions --}}
@@ -91,4 +121,32 @@
     </div>
   </div>
 </div>
+
+{{-- Visitor Countries Widget --}}
+<div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden mb-6">
+  <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+    <h3 class="font-bold text-gray-800 text-sm flex items-center gap-2">
+      <i class="fas fa-globe text-teal-600"></i> Statistik Pengunjung per Negara
+    </h3>
+    <a href="{{ route('admin.visitors.index') }}" class="text-xs font-bold text-teal-700 hover:underline">Lihat semua →</a>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 divide-x divide-gray-50">
+    @forelse($topCountries as $country)
+    <div class="p-4 text-center hover:bg-gray-50 transition-colors">
+      <img src="https://flagcdn.com/32x24/{{ strtolower($country->country_code) }}.png"
+           alt="{{ $country->country_code }}"
+           class="w-8 h-6 object-cover mx-auto mb-1.5 rounded-sm shadow-sm"
+           onerror="this.src='https://flagcdn.com/32x24/un.png'">
+      <p class="text-xs font-bold text-gray-700">{{ $country->country_code }}</p>
+      <p class="text-sm font-black text-teal-700">{{ number_format($country->total_visits) }}</p>
+    </div>
+    @empty
+    <div class="col-span-8 py-8 text-center text-gray-400 text-sm">
+      <i class="fas fa-globe text-3xl mb-2 block opacity-20"></i>
+      Belum ada data pengunjung — data akan muncul setelah ada yang mengunjungi website.
+    </div>
+    @endforelse
+  </div>
+</div>
+
 @endsection

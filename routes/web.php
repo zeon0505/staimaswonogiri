@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\Admin\VisitorController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -76,6 +77,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('kategoris', KategoriController::class)->except(['show']);
         Route::resource('beritas',  BeritaController::class)->except(['show']);
         Route::resource('posters',  PosterController::class)->except(['show']);
+
+        // Statistik Pengunjung
+        Route::get('/visitors',           [VisitorController::class, 'index'])->name('visitors.index');
+        Route::delete('/visitors/all',    [VisitorController::class, 'destroyAll'])->name('visitors.destroy-all');
+        Route::delete('/visitors/{visitor}', [VisitorController::class, 'destroy'])->name('visitors.destroy');
     });
 });
 

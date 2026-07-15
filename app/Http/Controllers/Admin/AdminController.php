@@ -7,6 +7,7 @@ use App\Models\Berita;
 use App\Models\Dosen;
 use App\Models\Slide;
 use App\Models\Poster;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,10 +16,13 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard', [
-            'totalBerita' => Berita::count(),
-            'totalDosen'  => Dosen::count(),
-            'totalSlide'  => Slide::count(),
-            'totalPoster' => Poster::count(),
+            'totalBerita'   => Berita::count(),
+            'totalDosen'    => Dosen::count(),
+            'totalSlide'    => Slide::count(),
+            'totalPoster'   => Poster::count(),
+            'totalVisits'   => Visitor::sum('visits'),
+            'totalUnique'   => Visitor::count(),
+            'topCountries'  => Visitor::topCountries(8),
             'beritaTerbaru' => Berita::with('kategori')->latest()->take(5)->get(),
         ]);
     }
