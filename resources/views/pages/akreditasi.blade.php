@@ -71,16 +71,16 @@
 
       {{-- PAI --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        {{-- Thumbnail gambar sertifikat --}}
-        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
-          <img src="{{ asset('assest/PAI.jpeg') }}" alt="Sertifikat PAI" class="w-full h-48 object-cover object-top">
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
-              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+        {{-- Thumbnail PDF sertifikat --}}
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none scale-[1] origin-top" scrolling="no"></iframe>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
+              <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
           </div>
         </div>
-        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+        <div class="p-4 flex flex-col flex-1 justify-between space-y-3">
           <div>
             <h4 class="font-bold text-gray-800">Pendidikan Agama Islam (PAI)</h4>
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
@@ -98,15 +98,15 @@
 
       {{-- KPI --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
-          <img src="{{ asset('assest/kpi.png') }}" alt="Sertifikat KPI" class="w-full h-48 object-cover object-top">
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
-              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
+              <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
           </div>
         </div>
-        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+        <div class="p-4 flex flex-col flex-1 justify-between space-y-3">
           <div>
             <h4 class="font-bold text-gray-800">Komunikasi Penyiaran Islam (KPI)</h4>
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
@@ -124,15 +124,15 @@
 
       {{-- ES --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
-          <img src="{{ asset('assest/ES.jpeg') }}" alt="Sertifikat ES" class="w-full h-48 object-cover object-top">
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
-              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
+              <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
           </div>
         </div>
-        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+        <div class="p-4 flex flex-col flex-1 justify-between space-y-3">
           <div>
             <h4 class="font-bold text-gray-800">Ekonomi Syariah (ES)</h4>
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
@@ -150,15 +150,15 @@
 
       {{-- HTN --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
-          <img src="{{ asset('assest/HTN.jpeg') }}" alt="Sertifikat HTN" class="w-full h-48 object-cover object-top">
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
-              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
+              <i class="fas fa-search-plus"></i> Lihat Penuh
             </span>
           </div>
         </div>
-        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+        <div class="p-4 flex flex-col flex-1 justify-between space-y-3">
           <div>
             <h4 class="font-bold text-gray-800">Hukum Tata Negara (HTN)</h4>
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
