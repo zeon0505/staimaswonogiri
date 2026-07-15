@@ -19,6 +19,12 @@ class TrackVisitor
 
         $ip = $request->ip();
 
+        // If on localhost/private network, simulate a public IP for testing purposes
+        if ($ip === '127.0.0.1' || $ip === '::1' || str_starts_with($ip, '192.168.')) {
+            // Use a mock public IP (Indonesia) for localhost preview
+            $ip = '103.146.185.171';
+        }
+
         // Cache key per IP - track once per hour per IP to avoid repeated DB writes
         $cacheKey = 'visitor_tracked_' . md5($ip);
 
@@ -37,22 +43,21 @@ class TrackVisitor
                 $countryName = null;
 
                 try {
-                    $response = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,country,countryCode", false, stream_context_create([
-                        'http' => [
-                            'timeout' => 3,
-                            'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n"
-                        ]
-                    ]));
+                    $response = \Illuminate\Support\Facades\Http::timeout(3)
+                        ->withHeaders([
+                            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+                        ])
+                        ->get("http://ip-api.com/json/{$ip}?fields=status,country,countryCode");
 
-                    if ($response) {
-                        $data = json_decode($response, true);
+                    if ($response->successful()) {
+                        $data = $response->json();
                         if (isset($data['status']) && $data['status'] === 'success') {
                             $countryCode = $data['countryCode'] ?? null;
                             $countryName = $data['country'] ?? null;
                         }
                     }
                 } catch (\Throwable $e) {
-                    // Silently fail - don't break the request
+                    // Silently fail
                 }
 
                 Visitor::create([
