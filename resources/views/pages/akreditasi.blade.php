@@ -54,7 +54,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       
       {{-- Akreditasi Institusi --}}
-      <div class="lg:col-span-3 bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white text-center shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="lg:col-span-3 bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="absolute top-0 right-0 p-4 opacity-10">
           <i class="fas fa-award text-8xl"></i>
         </div>
@@ -70,78 +70,107 @@
       </div>
 
       {{-- PAI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
-        <div>
-          <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-book-open"></i>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+        {{-- Thumbnail gambar sertifikat --}}
+        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
+          <img src="{{ asset('assest/PAI.jpeg') }}" alt="Sertifikat PAI" class="w-full h-48 object-cover object-top">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+            </span>
           </div>
-          <h4 class="font-bold text-gray-800">Pendidikan Agama Islam (PAI)</h4>
-          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
-            <i class="fas fa-eye mr-1"></i> Pratinjau
-          </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+          <div>
+            <h4 class="font-bold text-gray-800">Pendidikan Agama Islam (PAI)</h4>
+            <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+              <i class="fas fa-eye mr-1"></i> Pratinjau
+            </button>
+            <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
 
       {{-- KPI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
-        <div>
-          <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-broadcast-tower"></i>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
+          <img src="{{ asset('assest/kpi.png') }}" alt="Sertifikat KPI" class="w-full h-48 object-cover object-top">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+            </span>
           </div>
-          <h4 class="font-bold text-gray-800">Komunikasi Penyiaran Islam</h4>
-          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
-            <i class="fas fa-eye mr-1"></i> Pratinjau
-          </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+          <div>
+            <h4 class="font-bold text-gray-800">Komunikasi Penyiaran Islam (KPI)</h4>
+            <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+              <i class="fas fa-eye mr-1"></i> Pratinjau
+            </button>
+            <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
 
       {{-- ES --}}
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
-        <div>
-          <div class="w-10 h-10 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-chart-line"></i>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
+          <img src="{{ asset('assest/ES.jpeg') }}" alt="Sertifikat ES" class="w-full h-48 object-cover object-top">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+            </span>
           </div>
-          <h4 class="font-bold text-gray-800">Ekonomi Syariah (ES)</h4>
-          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
-            <i class="fas fa-eye mr-1"></i> Pratinjau
-          </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+          <div>
+            <h4 class="font-bold text-gray-800">Ekonomi Syariah (ES)</h4>
+            <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+              <i class="fas fa-eye mr-1"></i> Pratinjau
+            </button>
+            <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
 
       {{-- HTN --}}
-      <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
-        <div>
-          <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-balance-scale"></i>
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+        <div class="relative cursor-pointer group" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
+          <img src="{{ asset('assest/HTN.jpeg') }}" alt="Sertifikat HTN" class="w-full h-48 object-cover object-top">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+              <i class="fas fa-search-plus"></i> Lihat Sertifikat
+            </span>
           </div>
-          <h4 class="font-bold text-gray-800">Hukum Tata Negara (HTN)</h4>
-          <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
-            <i class="fas fa-eye mr-1"></i> Pratinjau
-          </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
-            <i class="fas fa-external-link-alt"></i>
-          </a>
+        <div class="p-5 flex flex-col flex-1 justify-between space-y-3">
+          <div>
+            <h4 class="font-bold text-gray-800">Hukum Tata Negara (HTN)</h4>
+            <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+              <i class="fas fa-eye mr-1"></i> Pratinjau
+            </button>
+            <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
         </div>
       </div>
       
