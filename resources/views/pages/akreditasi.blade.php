@@ -113,7 +113,7 @@
             </td>
             <td class="px-6 py-4 text-gray-500 font-medium">{{ $row[4] }}</td>
             <td class="px-6 py-4 text-center">
-              <a href="{{ asset('assets/' . $row[5]) }}" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-teal-600 hover:text-teal-800 bg-teal-50/50 hover:bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100/50 transition-all">
+              <a href="{{ asset('assest/' . $row[5]) }}" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-teal-600 hover:text-teal-800 bg-teal-50/50 hover:bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100/50 transition-all">
                 <i class="fas fa-file-pdf"></i> Sertifikat (PDF)
               </a>
             </td>
