@@ -27,6 +27,7 @@
     .mobile-sub-list { display: none; }
     .mobile-sub-list.open { display: block; }
   </style>
+  @stack('styles')
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased font-sans">
 

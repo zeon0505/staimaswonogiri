@@ -1,5 +1,82 @@
 @extends('layouts.app')
 
+@push('styles')
+<style>
+  @keyframes badgeFloatIn {
+    0%   { opacity: 0; transform: translateY(10px) scale(0.85); }
+    60%  { opacity: 1; transform: translateY(-4px) scale(1.04); }
+    100% { opacity: 1; transform: translateY(0px) scale(1); }
+  }
+  @keyframes badgePulse {
+    0%, 100% { box-shadow: 0 4px 24px rgba(7,78,80,0.18), 0 0 0 0 rgba(20,184,166,0.35); }
+    50%       { box-shadow: 0 4px 24px rgba(7,78,80,0.28), 0 0 0 8px rgba(20,184,166,0); }
+  }
+  .akreditasi-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 30;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+    transition: none;
+  }
+  .akreditasi-badge.badge-visible {
+    animation: badgeFloatIn 0.38s cubic-bezier(.32,1.4,.5,1) forwards,
+               badgePulse 2.2s ease-in-out 0.4s infinite;
+  }
+  .akreditasi-badge.badge-hidden {
+    animation: none;
+    opacity: 0;
+    transform: translateY(10px) scale(0.85);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .badge-main {
+    background: linear-gradient(135deg, #074e50 60%, #0d9488);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 5px 11px;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(7,78,80,0.22);
+  }
+  .badge-sub {
+    background: rgba(255,255,255,0.93);
+    color: #074e50;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 99px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+    box-shadow: 0 1px 6px rgba(7,78,80,0.12);
+    border: 1px solid rgba(13,148,136,0.2);
+  }
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #34d399;
+    border-radius: 50%;
+    display: inline-block;
+    animation: dotBlink 1.3s ease-in-out infinite;
+    box-shadow: 0 0 5px #34d399;
+  }
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+</style>
+@endpush
+
 @section('content')
 <div class="space-y-8">
   <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
@@ -68,7 +145,8 @@
       </div>
 
       {{-- PAI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
         <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-pai.png') }}" data-preview-title="Sertifikat Akreditasi PAI" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
           <img src="{{ asset('assets/sertifikat-pai.png') }}" alt="Sertifikat PAI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
@@ -94,7 +172,8 @@
       </div>
 
       {{-- KPI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2027">
         <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
           <img src="{{ asset('assets/sertifikat-kpi.png') }}" alt="Sertifikat KPI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
@@ -120,7 +199,8 @@
       </div>
 
       {{-- ES --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
         <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-es.png') }}" data-preview-title="Sertifikat Akreditasi ES" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
           <img src="{{ asset('assets/sertifikat-es.png') }}" alt="Sertifikat ES" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
@@ -146,7 +226,8 @@
       </div>
 
       {{-- HTN --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik" data-berlaku="s/d 2029">
         <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-htn.png') }}" data-preview-title="Sertifikat Akreditasi HTN" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
           <img src="{{ asset('assets/sertifikat-htn.png') }}" alt="Sertifikat HTN" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
@@ -276,6 +357,46 @@
 
   // Jalankan inisialisasi
   initHoverPreview();
+
+  // ── Floating Akreditasi Badge on Card Hover ──────────────────────────────
+  function initCertCardBadge() {
+    document.querySelectorAll('.cert-card').forEach(card => {
+      const akreditasi = card.getAttribute('data-akreditasi') || 'Terakreditasi BAN-PT';
+      const peringkat  = card.getAttribute('data-peringkat')  || 'Baik';
+      const berlaku    = card.getAttribute('data-berlaku')    || '';
+
+      // Buat elemen badge sekali, sisipkan ke dalam container gambar (posisi relative)
+      const imgWrapper = card.querySelector('.relative.h-52');
+      if (!imgWrapper) return;
+
+      const badge = document.createElement('div');
+      badge.className = 'akreditasi-badge badge-hidden';
+      badge.innerHTML = `
+        <div class="badge-main">
+          <span class="badge-dot"></span>
+          <span>&#9733; ${akreditasi}</span>
+        </div>
+        <div class="badge-sub">
+          <i class="fas fa-medal" style="font-size:9px;color:#0d9488;"></i>
+          Peringkat <strong>${peringkat}</strong>
+          ${berlaku ? `<span style="opacity:.6;margin-left:2px;">· ${berlaku}</span>` : ''}
+        </div>
+      `;
+      imgWrapper.appendChild(badge);
+
+      // Tampilkan badge saat hover ke card (bukan hanya gambar)
+      card.addEventListener('mouseenter', () => {
+        badge.classList.remove('badge-hidden');
+        badge.classList.add('badge-visible');
+      });
+      card.addEventListener('mouseleave', () => {
+        badge.classList.remove('badge-visible');
+        badge.classList.add('badge-hidden');
+      });
+    });
+  }
+
+  initCertCardBadge();
 
   // Modal Logic
   function openModal(fileUrl, type, title) {
