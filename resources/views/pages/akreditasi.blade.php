@@ -70,7 +70,7 @@
       {{-- PAI --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
         {{-- Thumbnail PDF sertifikat --}}
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/PAI.jpeg') }}" data-preview-title="Sertifikat Akreditasi PAI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
           <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none scale-[1] origin-top" scrolling="no"></iframe>
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
@@ -84,7 +84,7 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/PAI.jpeg') }}" data-preview-title="Sertifikat Akreditasi PAI">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
             <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
@@ -96,7 +96,7 @@
 
       {{-- KPI --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
           <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
@@ -110,7 +110,7 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
             <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
@@ -122,7 +122,7 @@
 
       {{-- ES --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/ES.jpeg') }}" data-preview-title="Sertifikat Akreditasi ES" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
           <iframe src="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
@@ -136,7 +136,7 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/ES.jpeg') }}" data-preview-title="Sertifikat Akreditasi ES">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
             <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
@@ -148,7 +148,7 @@
 
       {{-- HTN --}}
       <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
+        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/HTN.jpeg') }}" data-preview-title="Sertifikat Akreditasi HTN" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
           <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="w-full h-full border-0 pointer-events-none" scrolling="no"></iframe>
           <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
@@ -162,7 +162,7 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/HTN.jpeg') }}" data-preview-title="Sertifikat Akreditasi HTN">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
             <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
@@ -173,6 +173,17 @@
       </div>
       
     </div>
+  </div>
+</div>
+
+{{-- Tooltip Hover Preview Mengambang --}}
+<div id="hoverPreview" class="fixed pointer-events-none z-[120] hidden bg-white p-2 rounded-xl shadow-2xl border border-gray-200 transition-opacity duration-150 opacity-0 w-80 sm:w-96 overflow-hidden">
+  <div class="text-xs font-bold text-gray-700 mb-1 px-1 flex justify-between items-center">
+    <span id="hoverPreviewTitle">Pratinjau</span>
+    <span class="text-[10px] text-teal-600 font-normal bg-teal-50 px-1.5 py-0.5 rounded">Mengikuti Kursor</span>
+  </div>
+  <div class="relative w-full aspect-[4/3] bg-gray-50 rounded-lg overflow-hidden border border-gray-100">
+    <img id="hoverPreviewImg" src="" alt="Pratinjau Sertifikat" class="w-full h-full object-contain">
   </div>
 </div>
 
@@ -197,6 +208,60 @@
 </div>
 
 <script>
+  // Tooltip Hover Preview Logic
+  const hoverPreview = document.getElementById('hoverPreview');
+  const hoverPreviewImg = document.getElementById('hoverPreviewImg');
+  const hoverPreviewTitle = document.getElementById('hoverPreviewTitle');
+
+  function initHoverPreview() {
+    const hoverTargets = document.querySelectorAll('.hover-preview-trigger');
+    
+    hoverTargets.forEach(target => {
+      const imgUrl = target.getAttribute('data-preview-img');
+      const title = target.getAttribute('data-preview-title');
+      
+      target.addEventListener('mouseenter', () => {
+        hoverPreviewImg.src = imgUrl;
+        hoverPreviewTitle.textContent = title;
+        hoverPreview.classList.remove('hidden');
+        // Force reflow
+        void hoverPreview.offsetWidth;
+        hoverPreview.classList.add('opacity-100');
+      });
+
+      target.addEventListener('mousemove', (e) => {
+        // Offset tooltip by 15px from cursor
+        const offset = 15;
+        let x = e.clientX + offset;
+        let y = e.clientY + offset;
+
+        // Prevent tooltip from overflowing the viewport width
+        const tooltipWidth = hoverPreview.offsetWidth;
+        const tooltipHeight = hoverPreview.offsetHeight;
+        
+        if (x + tooltipWidth > window.innerWidth) {
+          x = e.clientX - tooltipWidth - offset;
+        }
+        if (y + tooltipHeight > window.innerHeight) {
+          y = e.clientY - tooltipHeight - offset;
+        }
+
+        hoverPreview.style.left = `${x}px`;
+        hoverPreview.style.top = `${y}px`;
+      });
+
+      target.addEventListener('mouseleave', () => {
+        hoverPreview.classList.remove('opacity-100');
+        hoverPreview.classList.add('hidden');
+        hoverPreviewImg.src = '';
+      });
+    });
+  }
+
+  // Initialize once DOM is ready
+  document.addEventListener('DOMContentLoaded', initHoverPreview);
+
+  // Modal Logic
   function openModal(fileUrl, type, title) {
     const modal = document.getElementById('certModal');
     const modalContent = document.getElementById('certModalContent');
