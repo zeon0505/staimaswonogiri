@@ -865,30 +865,7 @@
     });
   </script>
 
-  <!-- ===== BROSUR & FLYER GALERI ===== -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-extrabold text-teal-brand-dark">Pusat Informasi Brosur</h2>
-        <p class="text-gray-500 mt-2 text-sm">Download dan baca pamflet resmi informasi pendaftaran disini.</p>
-      </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="https://drive.google.com/file/d/1Xh-8eYSYaGyTPKhzxoENRqqnvY7ydzk5/view?usp=sharing" target="_blank" class="rounded-xl overflow-hidden shadow border border-gray-100 block group">
-          <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/03/BROSURE-KECIL-scaled.jpg" alt="Brosur Pendaftaran" class="w-full object-cover aspect-[4/5] group-hover:scale-105 transition-transform duration-350"/>
-        </a>
-        <div class="rounded-xl overflow-hidden shadow border border-gray-100">
-          <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/05/PMB-GEL2-01-01-scaled.jpg" alt="Flyer Gelombang 2" class="w-full object-cover aspect-[4/5]"/>
-        </div>
-        <div class="rounded-xl overflow-hidden shadow border border-gray-100">
-          <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/05/PMB-GELOMBANG-II-01-scaled.jpg" alt="Pamflet Gelombang 2 Detail" class="w-full object-cover aspect-[4/5]"/>
-        </div>
-        <a href="https://drive.google.com/file/d/1u5CxJZ7TfskNvH01Gaq2akPdmFHkJoll/view?usp=sharing" target="_blank" class="rounded-xl overflow-hidden shadow border border-gray-100 block group">
-          <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/04/quotes1-01-scaled.jpg" alt="Quotes Beasiswa Asrama" class="w-full object-cover aspect-[4/5] group-hover:scale-105 transition-transform duration-350"/>
-        </a>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== KONTAK SECTION ===== -->
   <section class="py-20 bg-gray-50" id="kontak">
