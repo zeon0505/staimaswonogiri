@@ -214,55 +214,69 @@
   const hoverPreviewTitle = document.getElementById('hoverPreviewTitle');
 
   function initHoverPreview() {
-    const hoverTargets = document.querySelectorAll('.hover-preview-trigger');
-    
-    hoverTargets.forEach(target => {
-      const imgUrl = target.getAttribute('data-preview-img');
-      const title = target.getAttribute('data-preview-title');
+    // Gunakan event delegation global agar 100% mendeteksi gerakan mouse tanpa kendala binding
+    document.addEventListener('mouseover', (e) => {
+      const trigger = e.target.closest('.hover-preview-trigger');
+      if (!trigger) return;
+
+      const imgUrl = trigger.getAttribute('data-preview-img');
+      const title = trigger.getAttribute('data-preview-title');
+      if (!imgUrl) return;
+
+      hoverPreviewImg.src = imgUrl;
+      hoverPreviewTitle.textContent = title;
+      hoverPreview.classList.remove('hidden');
       
-      target.addEventListener('mouseenter', () => {
-        if (!imgUrl) return;
-        hoverPreviewImg.src = imgUrl;
-        hoverPreviewTitle.textContent = title;
-        hoverPreview.classList.remove('hidden');
-        setTimeout(() => {
-          hoverPreview.classList.add('opacity-100');
-        }, 10);
-      });
+      // Hitung posisi awal instan
+      const offset = 20;
+      let x = e.clientX + offset;
+      let y = e.clientY + offset;
+      hoverPreview.style.left = x + 'px';
+      hoverPreview.style.top = y + 'px';
 
-      target.addEventListener('mousemove', (e) => {
-        const offset = 20;
-        let x = e.clientX + offset;
-        let y = e.clientY + offset;
+      setTimeout(() => {
+        hoverPreview.classList.add('opacity-100');
+      }, 10);
+    });
 
-        const tooltipWidth = hoverPreview.offsetWidth || 350;
-        const tooltipHeight = hoverPreview.offsetHeight || 250;
-        
-        if (x + tooltipWidth > window.innerWidth) {
-          x = e.clientX - tooltipWidth - offset;
-        }
-        if (y + tooltipHeight > window.innerHeight) {
-          y = e.clientY - tooltipHeight - offset;
-        }
+    document.addEventListener('mousemove', (e) => {
+      const trigger = e.target.closest('.hover-preview-trigger');
+      if (!trigger || hoverPreview.classList.contains('hidden')) return;
 
-        hoverPreview.style.left = x + 'px';
-        hoverPreview.style.top = y + 'px';
-      });
+      const offset = 20;
+      let x = e.clientX + offset;
+      let y = e.clientY + offset;
 
-      target.addEventListener('mouseleave', () => {
-        hoverPreview.classList.remove('opacity-100');
-        hoverPreview.classList.add('hidden');
-        hoverPreviewImg.src = '';
-      });
+      const tooltipWidth = hoverPreview.offsetWidth || 350;
+      const tooltipHeight = hoverPreview.offsetHeight || 250;
+      
+      if (x + tooltipWidth > window.innerWidth) {
+        x = e.clientX - tooltipWidth - offset;
+      }
+      if (y + tooltipHeight > window.innerHeight) {
+        y = e.clientY - tooltipHeight - offset;
+      }
+
+      hoverPreview.style.left = x + 'px';
+      hoverPreview.style.top = y + 'px';
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const trigger = e.target.closest('.hover-preview-trigger');
+      if (!trigger) return;
+
+      // Hanya sembunyikan jika mouse benar-benar meninggalkan elemen trigger
+      const relatedTarget = e.relatedTarget;
+      if (relatedTarget && trigger.contains(relatedTarget)) return;
+
+      hoverPreview.classList.remove('opacity-100');
+      hoverPreview.classList.add('hidden');
+      hoverPreviewImg.src = '';
     });
   }
 
-  // Initialize once DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHoverPreview);
-  } else {
-    initHoverPreview();
-  }
+  // Jalankan inisialisasi
+  initHoverPreview();
 
   // Modal Logic
   function openModal(fileUrl, type, title) {
