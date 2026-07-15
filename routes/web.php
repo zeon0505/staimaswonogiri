@@ -57,6 +57,9 @@ Route::get('/dosen/{slug}', [PageController::class, 'dosenShow'])->name('pages.d
 Route::get('/berita',     [PageController::class, 'berita'])->name('pages.berita');
 Route::get('/berita/{slug}', [PageController::class, 'beritaShow'])->name('pages.berita.show');
 
+// ===== SITEMAP XML =====
+Route::get('/sitemap.xml', [PageController::class, 'sitemap'])->name('sitemap');
+
 // ═══════════════════════════════════════════
 //  ADMIN ROUTES (tersembunyi dari publik)
 // ═══════════════════════════════════════════

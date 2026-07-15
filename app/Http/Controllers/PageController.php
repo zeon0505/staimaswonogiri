@@ -275,4 +275,83 @@ class PageController extends Controller
             'next' => $next
         ]);
     }
+
+    public function sitemap()
+    {
+        // Static URLs with priority and change frequency
+        $urls = [
+            ['loc' => route('home'), 'priority' => '1.0', 'changefreq' => 'daily'],
+            ['loc' => route('pages.akademik'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.pusat-data'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.program-studi'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.pai'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.kpi'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.es'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.hukum'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.sambutan'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.makna-lambang'), 'priority' => '0.5', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.sejarah'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.hymne'), 'priority' => '0.5', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.visi-misi'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.yayasan'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.senat'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.tendik'), 'priority' => '0.7', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.struktur-organisasi'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.beasiswa'), 'priority' => '0.8', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.prestasi'), 'priority' => '0.7', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.kegiatan'), 'priority' => '0.7', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.fasilitas'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.perpustakaan'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.lppm'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.lpm'), 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.ejournal'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.keuangan'), 'priority' => '0.6', 'changefreq' => 'monthly'],
+            ['loc' => route('pages.dosen'), 'priority' => '0.7', 'changefreq' => 'weekly'],
+            ['loc' => route('pages.berita'), 'priority' => '0.9', 'changefreq' => 'daily'],
+            ['loc' => route('pages.pengumuman'), 'priority' => '0.8', 'changefreq' => 'daily'],
+            ['loc' => route('pages.akreditasi'), 'priority' => '0.8', 'changefreq' => 'monthly'],
+        ];
+
+        // Dynamic news URLs
+        $beritas = Berita::where('aktif', true)->orderBy('tanggal', 'desc')->get();
+        foreach ($beritas as $b) {
+            $urls[] = [
+                'loc' => route('pages.berita.show', $b->slug),
+                'priority' => '0.8',
+                'changefreq' => 'weekly',
+                'lastmod' => $b->updated_at->toAtomString()
+            ];
+        }
+
+        // Dynamic lecturer profile URLs
+        $dosens = Dosen::where('aktif', true)->get();
+        foreach ($dosens as $d) {
+            $urls[] = [
+                'loc' => route('pages.dosen.show', $d->slug),
+                'priority' => '0.6',
+                'changefreq' => 'monthly',
+                'lastmod' => $d->updated_at->toAtomString()
+            ];
+        }
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        
+        foreach ($urls as $url) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . htmlspecialchars($url['loc']) . '</loc>';
+            if (isset($url['lastmod'])) {
+                $xml .= '<lastmod>' . $url['lastmod'] . '</lastmod>';
+            } else {
+                $xml .= '<lastmod>' . now()->toAtomString() . '</lastmod>';
+            }
+            $xml .= '<changefreq>' . $url['changefreq'] . '</changefreq>';
+            $xml .= '<priority>' . $url['priority'] . '</priority>';
+            $xml .= '</url>';
+        }
+        
+        $xml .= '</urlset>';
+
+        return response($xml, 200)->header('Content-Type', 'text/xml');
+    }
 }
