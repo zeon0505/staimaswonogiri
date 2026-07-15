@@ -38,7 +38,10 @@ class TrackVisitor
 
                 try {
                     $response = @file_get_contents("http://ip-api.com/json/{$ip}?fields=status,country,countryCode", false, stream_context_create([
-                        'http' => ['timeout' => 2]
+                        'http' => [
+                            'timeout' => 3,
+                            'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)\r\n"
+                        ]
                     ]));
 
                     if ($response) {
