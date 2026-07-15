@@ -131,24 +131,24 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       
       {{-- Akreditasi Institusi --}}
-      <div class="lg:col-span-3 bg-[#074e50] rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm hover-preview-trigger cursor-pointer" data-preview-img="{{ asset('assets/akreditasi.jpg') }}" data-preview-title="Akreditasi Institusi" onclick="openModal('{{ asset('assets/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')">
+      <div class="lg:col-span-3 bg-[#074e50] rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm hover-preview-trigger cursor-pointer" data-preview-img="{{ asset('assest/akreditasi.jpg') }}" data-preview-title="Akreditasi Institusi" onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')">
         <div class="space-y-2">
           <span class="text-xs font-semibold uppercase tracking-widest text-teal-200">Akreditasi Institusi</span>
           <h4 class="font-bold text-2xl">STAIMAS Wonogiri</h4>
           <p class="text-teal-100 text-sm max-w-xl">Sekolah Tinggi Agama Islam Mulia Astuti (STAIMAS) Wonogiri telah meraih peringkat <strong>"Baik"</strong> dari Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT).</p>
         </div>
         <div class="shrink-0">
-          <button onclick="event.stopPropagation(); openModal('{{ asset('assets/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-teal-900/60 hover:bg-teal-900 border border-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center gap-2 text-sm">
+          <button onclick="event.stopPropagation(); openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-teal-900/60 hover:bg-teal-900 border border-teal-600 text-white font-semibold py-2.5 px-5 rounded-lg transition-colors flex items-center gap-2 text-sm">
             <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
         </div>
       </div>
 
       {{-- PAI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+      <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-pai.png') }}" data-preview-title="Sertifikat Akreditasi PAI" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
-          <img src="{{ asset('assets/sertifikat-pai.png') }}" alt="Sertifikat PAI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+        <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/PAI.jpeg') }}" data-preview-title="Sertifikat Akreditasi PAI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')">
+          <img src="{{ asset('assest/PAI.jpeg') }}" alt="Sertifikat PAI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
@@ -161,10 +161,10 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assets/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-pai.png') }}" data-preview-title="Sertifikat Akreditasi PAI">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}', 'pdf', 'Sertifikat PAI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/PAI.jpeg') }}" data-preview-title="Sertifikat Akreditasi PAI">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
-            <a href="{{ asset('assets/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
@@ -172,10 +172,10 @@
       </div>
 
       {{-- KPI --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+      <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2027">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
-          <img src="{{ asset('assets/sertifikat-kpi.png') }}" alt="Sertifikat KPI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+        <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')">
+          <img src="{{ asset('assest/kpi.png') }}" alt="Sertifikat KPI" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
@@ -188,10 +188,10 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}', 'pdf', 'Sertifikat KPI')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/kpi.png') }}" data-preview-title="Sertifikat Akreditasi KPI">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
-            <a href="{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
@@ -199,10 +199,10 @@
       </div>
 
       {{-- ES --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+      <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-es.png') }}" data-preview-title="Sertifikat Akreditasi ES" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
-          <img src="{{ asset('assets/sertifikat-es.png') }}" alt="Sertifikat ES" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+        <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/ES.jpeg') }}" data-preview-title="Sertifikat Akreditasi ES" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')">
+          <img src="{{ asset('assest/ES.jpeg') }}" alt="Sertifikat ES" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
@@ -215,10 +215,10 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assets/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-es.png') }}" data-preview-title="Sertifikat Akreditasi ES">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}', 'pdf', 'Sertifikat ES')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/ES.jpeg') }}" data-preview-title="Sertifikat Akreditasi ES">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
-            <a href="{{ asset('assets/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
@@ -226,10 +226,10 @@
       </div>
 
       {{-- HTN --}}
-      <div class="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden cert-card"
+      <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
            data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik" data-berlaku="s/d 2029">
-        <div class="relative cursor-pointer group h-52 overflow-hidden bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-htn.png') }}" data-preview-title="Sertifikat Akreditasi HTN" onclick="openModal('{{ asset('assets/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
-          <img src="{{ asset('assets/sertifikat-htn.png') }}" alt="Sertifikat HTN" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+        <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger" data-preview-img="{{ asset('assest/HTN.jpeg') }}" data-preview-title="Sertifikat Akreditasi HTN" onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')">
+          <img src="{{ asset('assest/HTN.jpeg') }}" alt="Sertifikat HTN" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all flex items-center justify-center">
             <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-lg text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow">
               <i class="fas fa-search-plus"></i> Lihat Penuh
@@ -242,10 +242,10 @@
             <p class="text-xs text-gray-500 mt-1">Sertifikat Akreditasi BAN-PT</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('{{ asset('assets/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assets/sertifikat-htn.png') }}" data-preview-title="Sertifikat Akreditasi HTN">
+            <button onclick="openModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}', 'pdf', 'Sertifikat HTN')" class="flex-1 bg-teal-50 text-teal-700 hover:bg-teal-100 font-bold py-2 px-4 rounded-lg text-sm transition-colors text-center hover-preview-trigger" data-preview-img="{{ asset('assest/HTN.jpeg') }}" data-preview-title="Sertifikat Akreditasi HTN">
               <i class="fas fa-eye mr-1"></i> Pratinjau
             </button>
-            <a href="{{ asset('assets/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
+            <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="bg-gray-50 text-gray-600 hover:bg-gray-100 font-bold py-2 px-3 rounded-lg text-sm transition-colors" title="Buka di tab baru">
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
@@ -365,10 +365,8 @@
       const peringkat  = card.getAttribute('data-peringkat')  || 'Baik';
       const berlaku    = card.getAttribute('data-berlaku')    || '';
 
-      // Buat elemen badge sekali, sisipkan ke dalam container gambar (posisi relative)
-      const imgWrapper = card.querySelector('.relative.h-52');
-      if (!imgWrapper) return;
-
+      // Badge ditempatkan langsung di card (bukan di dalam overflow-hidden)
+      // Card sudah punya position:relative dari class 'relative' di HTML
       const badge = document.createElement('div');
       badge.className = 'akreditasi-badge badge-hidden';
       badge.innerHTML = `
@@ -382,9 +380,9 @@
           ${berlaku ? `<span style="opacity:.6;margin-left:2px;">· ${berlaku}</span>` : ''}
         </div>
       `;
-      imgWrapper.appendChild(badge);
+      card.appendChild(badge);
 
-      // Tampilkan badge saat hover ke card (bukan hanya gambar)
+      // Tampilkan badge saat hover ke card
       card.addEventListener('mouseenter', () => {
         badge.classList.remove('badge-hidden');
         badge.classList.add('badge-visible');
