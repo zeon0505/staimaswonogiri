@@ -51,52 +51,58 @@
       <i class="fas fa-certificate text-teal-600"></i> Pratinjau Sertifikat Akreditasi
     </h3>
     
+    <div class="grid grid-cols-1 gap-8 mb-8">
+      {{-- Akreditasi Institusi --}}
+      <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center space-y-4">
+        <h4 class="font-bold text-gray-800 text-lg">Sertifikat Akreditasi Institusi STAIMAS Wonogiri</h4>
+        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2">
+          <img src="{{ asset('assest/akreditasi.jpg') }}" alt="Sertifikat Akreditasi Institusi" class="w-full max-w-2xl h-auto object-contain hover:scale-[1.01] transition-transform duration-300 rounded-lg shadow-sm">
+        </div>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {{-- PAI --}}
       <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center space-y-4">
         <h4 class="font-bold text-gray-800 text-sm">Sertifikat Akreditasi PAI</h4>
-        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2 min-h-[300px]">
-          <img src="{{ asset('assest/PAI.jpeg') }}" alt="Sertifikat Akreditasi PAI" class="max-h-[380px] w-auto object-contain hover:scale-[1.02] transition-transform duration-300 rounded-lg shadow-sm">
+        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-[400px]">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" class="w-full h-full border-0"></iframe>
         </div>
         <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank" class="w-full text-center text-xs font-bold bg-teal-700 hover:bg-teal-800 text-white py-2.5 rounded-xl transition-colors shadow-sm">
-          <i class="fas fa-download"></i> Unduh PDF PAI
+          <i class="fas fa-download"></i> Buka Full PDF PAI
         </a>
       </div>
 
       {{-- ES --}}
       <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center space-y-4">
         <h4 class="font-bold text-gray-800 text-sm">Sertifikat Akreditasi Ekonomi Syariah (ES)</h4>
-        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2 min-h-[300px]">
-          <img src="{{ asset('assest/ES.jpeg') }}" alt="Sertifikat Akreditasi ES" class="max-h-[380px] w-auto object-contain hover:scale-[1.02] transition-transform duration-300 rounded-lg shadow-sm">
+        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-[400px]">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" class="w-full h-full border-0"></iframe>
         </div>
         <a href="{{ asset('assest/Sertifikat Akreditasi ES.pdf') }}" target="_blank" class="w-full text-center text-xs font-bold bg-teal-700 hover:bg-teal-800 text-white py-2.5 rounded-xl transition-colors shadow-sm">
-          <i class="fas fa-download"></i> Unduh PDF ES
+          <i class="fas fa-download"></i> Buka Full PDF ES
         </a>
       </div>
 
       {{-- HTN --}}
       <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center space-y-4">
         <h4 class="font-bold text-gray-800 text-sm">Sertifikat Akreditasi Hukum Tata Negara (HTN)</h4>
-        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2 min-h-[300px]">
-          <img src="{{ asset('assest/HTN.jpeg') }}" alt="Sertifikat Akreditasi HTN" class="max-h-[380px] w-auto object-contain hover:scale-[1.02] transition-transform duration-300 rounded-lg shadow-sm">
+        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-[400px]">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" class="w-full h-full border-0"></iframe>
         </div>
         <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank" class="w-full text-center text-xs font-bold bg-teal-700 hover:bg-teal-800 text-white py-2.5 rounded-xl transition-colors shadow-sm">
-          <i class="fas fa-download"></i> Unduh PDF HTN
+          <i class="fas fa-download"></i> Buka Full PDF HTN
         </a>
       </div>
 
       {{-- KPI --}}
       <div class="bg-gray-50 rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center space-y-4">
         <h4 class="font-bold text-gray-800 text-sm">Sertifikat Akreditasi KPI</h4>
-        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex items-center justify-center p-2 min-h-[300px]">
-          {{-- KPI only has PDF, so we show an informative placeholder --}}
-          <div class="flex flex-col items-center justify-center space-y-3 p-8 text-gray-400">
-            <i class="fas fa-file-pdf text-5xl text-red-500 opacity-80"></i>
-            <p class="text-xs font-medium max-w-[200px]">Sertifikat KPI tersedia dalam format dokumen PDF resmi.</p>
-          </div>
+        <div class="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-[400px]">
+          <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" class="w-full h-full border-0"></iframe>
         </div>
         <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank" class="w-full text-center text-xs font-bold bg-teal-700 hover:bg-teal-800 text-white py-2.5 rounded-xl transition-colors shadow-sm">
-          <i class="fas fa-download"></i> Unduh PDF KPI
+          <i class="fas fa-download"></i> Buka Full PDF KPI
         </a>
       </div>
     </div>
