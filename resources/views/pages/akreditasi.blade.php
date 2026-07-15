@@ -54,15 +54,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       
       {{-- Akreditasi Institusi --}}
-      <div class="lg:col-span-3 bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="absolute top-0 right-0 p-4 opacity-10">
-          <i class="fas fa-award text-8xl"></i>
-        </div>
-        <div class="text-left relative z-10 space-y-2 md:w-1/2">
+      <div class="lg:col-span-3 bg-gradient-to-br from-[#074e50] to-teal-800 rounded-2xl p-6 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-left space-y-2 md:w-1/2">
           <h4 class="font-bold text-2xl">Akreditasi Institusi STAIMAS</h4>
           <p class="text-teal-100 text-sm">Sekolah Tinggi Agama Islam Mulia Astuti (STAIMAS) Wonogiri telah meraih peringkat "Baik" dari Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT).</p>
         </div>
-        <div class="relative z-10 md:w-1/2 flex justify-end">
+        <div class="md:w-1/2 flex justify-end">
           <button onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-white text-teal-800 hover:bg-teal-50 font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center gap-2">
             <i class="fas fa-search-plus"></i> Lihat Sertifikat
           </button>

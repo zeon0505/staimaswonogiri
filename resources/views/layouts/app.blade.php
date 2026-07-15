@@ -45,7 +45,6 @@
           <a href="https://www.facebook.com/people/staimaswonogiri/100068071263429/" target="_blank" class="hover:text-gold-brand transition-colors"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/staimaswonogiri/" target="_blank" class="hover:text-gold-brand transition-colors"><i class="fab fa-instagram"></i></a>
           <a href="https://www.youtube.com/@STAIMASWONOGIRI/featured" target="_blank" class="hover:text-gold-brand transition-colors"><i class="fab fa-youtube"></i></a>
-          <a href="https://open.spotify.com/show/0o5IEOghzkmdb9J7UJ2io6" target="_blank" class="hover:text-gold-brand transition-colors"><i class="fab fa-spotify"></i></a>
         </div>
       </div>
     </div>
