@@ -60,7 +60,7 @@
           <p class="text-teal-100 text-sm">Sekolah Tinggi Agama Islam Mulia Astuti (STAIMAS) Wonogiri telah meraih peringkat "Baik" dari Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT).</p>
         </div>
         <div class="md:w-1/2 flex justify-end">
-          <button onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-white text-teal-800 hover:bg-teal-50 font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center gap-2">
+          <button onclick="openModal('{{ asset('assest/akreditasi.jpg') }}', 'image', 'Sertifikat Akreditasi Institusi')" class="bg-white text-teal-800 hover:bg-teal-50 font-bold py-3 px-6 rounded-xl transition-all flex items-center gap-2">
             <i class="fas fa-search-plus"></i> Lihat Sertifikat
           </button>
         </div>
