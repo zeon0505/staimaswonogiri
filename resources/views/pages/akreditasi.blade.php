@@ -47,8 +47,8 @@
     </div>
 
     {{-- Certificate Visual Preview Section --}}
-    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2 pt-4 border-t border-gray-100">
-      <i class="fas fa-certificate text-teal-600"></i> Berkas Sertifikat Akreditasi
+    <h3 class="text-xl font-bold text-gray-800 mb-6 pt-4 border-t border-gray-100">
+      Berkas Sertifikat Akreditasi
     </h3>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
