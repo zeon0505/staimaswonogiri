@@ -141,7 +141,102 @@
     </div>
   </div>
 
-  <!-- Kurikulum / Download Section -->
+  {{-- Akreditasi Section --}}
+  <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+    <div class="flex flex-col md:flex-row">
+      {{-- Left: Certificate Preview --}}
+      <div class="relative md:w-72 lg:w-80 shrink-0 bg-gray-50 cursor-pointer group"
+           onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}')"
+           style="min-height:220px;">
+        <iframe src="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+          class="w-full h-full border-0 pointer-events-none"
+          style="min-height:220px;" scrolling="no" tabindex="-1"></iframe>
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-center justify-center">
+          <span class="bg-white text-teal-700 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+            <i class="fas fa-expand-alt"></i> Lihat Sertifikat
+          </span>
+        </div>
+      </div>
+
+      {{-- Right: Info --}}
+      <div class="flex-1 p-6 sm:p-8 flex flex-col justify-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-xs font-bold uppercase tracking-widest text-teal-600">Akreditasi Resmi BAN-PT</span>
+        </div>
+        <div>
+          <h3 class="text-2xl font-black text-gray-800 leading-tight">Terakreditasi <span class="text-teal-600">"Baik"</span></h3>
+          <p class="text-sm text-gray-500 mt-1">Program Studi Pendidikan Agama Islam (PAI) · Jenjang S1</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center">
+            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Lembaga</p>
+            <p class="font-bold text-gray-800 text-sm mt-0.5">BAN-PT</p>
+          </div>
+          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center">
+            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Peringkat</p>
+            <p class="font-bold text-gray-800 text-sm mt-0.5">Baik / B</p>
+          </div>
+          <div class="bg-teal-50 border border-teal-100 rounded-xl p-3 text-center col-span-2 sm:col-span-1">
+            <p class="text-[10px] font-semibold text-teal-500 uppercase tracking-wide">Berlaku s/d</p>
+            <p class="font-bold text-gray-800 text-sm mt-0.5">2028</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-1">
+          <button onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}')"
+            class="bg-teal-700 hover:bg-teal-800 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2 shadow">
+            <i class="fas fa-eye"></i> Pratinjau Sertifikat
+          </button>
+          <a href="{{ asset('assest/Sertifikat Akreditasi PAI.pdf') }}" target="_blank"
+            class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2">
+            <i class="fas fa-download"></i> Unduh PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Modal Sertifikat --}}
+  <div id="sertifModal" class="fixed inset-0 z-[200] hidden bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl flex flex-col transform scale-95 transition-transform duration-300" id="sertifModalContent" style="height:85vh;">
+      <div class="px-5 py-3.5 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl shrink-0">
+        <span class="font-bold text-gray-800 text-sm flex items-center gap-2"><i class="fas fa-certificate text-teal-600"></i> Sertifikat Akreditasi PAI</span>
+        <button onclick="closeSertifModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="flex-1 min-h-0 p-3 bg-gray-100">
+        <iframe id="sertifFrame" src="" class="w-full h-full rounded-lg border-0 bg-white" style="min-height:calc(85vh - 70px);"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openSertifModal(url) {
+      const modal = document.getElementById('sertifModal');
+      const content = document.getElementById('sertifModalContent');
+      document.getElementById('sertifFrame').src = url + '#toolbar=1&navpanes=0&view=FitH';
+      modal.classList.remove('hidden');
+      void modal.offsetWidth;
+      modal.classList.remove('opacity-0');
+      content.classList.remove('scale-95');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSertifModal() {
+      const modal = document.getElementById('sertifModal');
+      const content = document.getElementById('sertifModalContent');
+      modal.classList.add('opacity-0');
+      content.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.getElementById('sertifFrame').src = '';
+        document.body.style.overflow = '';
+      }, 280);
+    }
+    document.getElementById('sertifModal').addEventListener('click', function(e) {
+      if (e.target === this) closeSertifModal();
+    });
+  </script>
+
+  {{-- Kurikulum / Download Section --}}
   <div id="kurikulum" class="bg-gray-100/70 border border-gray-200/50 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
     <div class="flex items-center gap-4">
       <div class="w-14 h-14 bg-teal-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg shadow-teal-600/10">
