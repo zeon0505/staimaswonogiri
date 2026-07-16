@@ -10,8 +10,8 @@ class VisitorController extends Controller
 {
     public function index(Request $request)
     {
-        $sort = $request->get('sort', 'visits');
-        $search = $request->get('search');
+        $sort = $request->input('sort', 'visits');
+        $search = $request->input('search');
 
         $query = Visitor::query();
 

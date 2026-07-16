@@ -144,9 +144,9 @@
   <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
     <div class="flex flex-col sm:flex-row">
       <div class="relative sm:w-52 shrink-0 cursor-pointer group bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-100"
-           onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}')"
+           onclick="openSertifModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}')"
            style="min-height:200px;height:200px;">
-        <iframe src="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+        <iframe src="{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
           class="w-full border-0 pointer-events-none"
           style="height:200px;display:block;" scrolling="no" tabindex="-1"></iframe>
         <div class="absolute inset-0 bg-transparent group-hover:bg-black/25 transition-all duration-200 flex items-center justify-center">
@@ -180,12 +180,12 @@
             <p class="font-semibold text-gray-700 mt-0.5">2027</p>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}')"
+         <div class="flex items-center gap-2">
+          <button onclick="openSertifModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}')"
             class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi KPI.pdf') }}" target="_blank"
+          <a href="{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}" target="_blank"
             class="inline-flex items-center gap-2 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-download"></i> Unduh PDF
           </a>
@@ -194,11 +194,14 @@
     </div>
   </div>
 
+  {{-- Modal Sertifikat --}}
   <div id="sertifModal" class="fixed inset-0 z-[200] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-200">
     <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl flex flex-col transform scale-95 transition-transform duration-200" id="sertifModalContent" style="height:88vh;">
       <div class="px-5 py-3 border-b border-gray-100 flex justify-between items-center shrink-0">
         <span class="font-semibold text-gray-700 text-sm">Sertifikat Akreditasi KPI</span>
-        <button onclick="closeSertifModal()" class="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors text-xs"><i class="fas fa-times"></i></button>
+        <button onclick="closeSertifModal()" class="w-7 h-7 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors text-xs">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       <div class="flex-1 min-h-0 p-2 bg-gray-50">
         <iframe id="sertifFrame" src="" class="w-full h-full rounded-lg border-0" style="min-height:calc(88vh - 56px);"></iframe>
@@ -223,7 +226,7 @@
     document.getElementById('sertifModal').addEventListener('click', function(e) { if (e.target === this) closeSertifModal(); });
   </script>
 
-  <!-- Kurikulum / Download Section -->
+  {{-- Kurikulum / Download Section --}}
   <div id="kurikulum" class="bg-gray-100/70 border border-gray-200/50 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
     <div class="flex items-center gap-4">
       <div class="w-14 h-14 bg-teal-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg shadow-teal-600/10">
@@ -234,35 +237,76 @@
         <p class="text-sm text-gray-500">Download struktur kurikulum mata kuliah program studi Komunikasi dan Penyiaran Islam.</p>
       </div>
     </div>
-    <a href="#" class="w-full md:w-auto bg-teal-700 hover:bg-teal-800 text-white font-bold px-8 py-3.5 rounded-xl text-sm shadow transition-colors flex items-center justify-center gap-2">
+    <a href="https://drive.google.com/file/d/1Xh-8eYSYaGyTPKhzxoENRqqnvY7ydzk5/view?usp=sharing" target="_blank" class="w-full md:w-auto bg-teal-700 hover:bg-teal-800 text-white font-bold px-8 py-3.5 rounded-xl text-sm shadow transition-colors flex items-center justify-center gap-2">
       <i class="fas fa-cloud-download-alt"></i> Download PDF
     </a>
   </div>
 
+  <!-- Contact & Map Section -->
+  <div id="kontak" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-6">
+    <div class="lg:col-span-7 bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+      <h3 class="font-bold text-gray-900 text-lg mb-6">Ajukan Pertanyaan</h3>
+      <form class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="text" placeholder="Nama Lengkap" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-teal-brand" required />
+          <input type="tel" placeholder="Nomor Telepon/WA" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-teal-brand" />
+        </div>
+        <input type="email" placeholder="Alamat Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-teal-brand" required />
+        <textarea rows="4" placeholder="Tulis pesan Anda..." class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-teal-brand" required></textarea>
+        <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-3.5 rounded-lg shadow transition-colors">Kirim Pesan</button>
+      </form>
+    </div>
+
+    <div class="lg:col-span-5 space-y-4">
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 flex gap-4 shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-brand text-lg shrink-0"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 text-sm">Alamat Kampus</h4>
+          <p class="text-xs text-gray-500 mt-1">Jl. Cempaka 6, Wonoboyo, Kec. Wonogiri, Wonogiri, Jawa Tengah 57615</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 flex gap-4 shadow-sm">
+        <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-brand text-lg shrink-0"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <h4 class="font-bold text-gray-900 text-sm">WhatsApp</h4>
+          <p class="text-xs text-gray-500 mt-1">082223204552</p>
+        </div>
+      </div>
+
+      <div class="kontak-map rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2044.960527882958!2d110.93878935266353!3d-7.813874308778577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a2e51f116d5bb%3A0x26cbc235ed5a2edc!2sSTAIMAS%20(Sekolah%20Tinggi%20Agama%20Islam%20Mulia%20Astuti)!5e1!3m2!1sid!2sid!4v1741595178278!5m2!1sid!2sid"
+          width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi Kampus KPI STAIMAS"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center pt-8">
+    <p class="text-gray-500 mb-3">Baca lebih lanjut tentang prodi KPI.</p>
+    <a href="http://kpi.test/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
+        Selengkapnya
+    </a>
+  </div>
 </div>
 
 <script>
   function switchTab(tabId) {
-    // Hide all tab contents
     document.querySelectorAll('.tab-content').forEach(content => {
       content.classList.add('hidden');
       content.classList.remove('block');
     });
 
-    // Remove active styles from all buttons
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.classList.remove('text-teal-700', 'border-teal-700');
       btn.classList.add('text-gray-400', 'border-transparent');
     });
 
-    // Show selected tab content
     const activeContent = document.getElementById('content-' + tabId);
     if (activeContent) {
       activeContent.classList.remove('hidden');
       activeContent.classList.add('block');
     }
 
-    // Add active styles to clicked button
     const activeBtn = document.getElementById('tab-' + tabId);
     if (activeBtn) {
       activeBtn.classList.remove('text-gray-400', 'border-transparent');
