@@ -188,15 +188,33 @@ class PageController extends Controller
         $query = Dosen::where('aktif', true);
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where('nama', 'like', "%{$search}%")
+            $query->where(function($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
                   ->orWhere('jabatan', 'like', "%{$search}%");
+            });
         }
-        $dosens = $query->paginate(12)->withQueryString();
+        $dosens = $query->orderBy('urutan')->get();
         
+        $dosenPAI = $dosens->filter(fn($d) => strtoupper($d->program_studi) === 'PAI');
+        $dosenES  = $dosens->filter(fn($d) => strtoupper($d->program_studi) === 'ES');
+        $dosenHTN = $dosens->filter(fn($d) => strtoupper($d->program_studi) === 'HTN');
+        $dosenKPI = $dosens->filter(fn($d) => strtoupper($d->program_studi) === 'KPI');
+        
+        // Sisa dosen yang tidak terdefinisi prodinya dimasukkan ke PAI sebagai default jika belum diatur
+        $dosenLain = $dosens->filter(fn($d) => !in_array(strtoupper($d->program_studi), ['PAI', 'ES', 'HTN', 'KPI']));
+        if ($dosenLain->count() > 0 && !$request->filled('search')) {
+            $dosenPAI = $dosenPAI->merge($dosenLain);
+            $dosenLain = collect();
+        }
+
         return view('pages.dosen', [
             'title' => 'Tenaga Pengajar',
             'subtitle' => 'Dosen-Dosen STAIMAS',
-            'dosens' => $dosens
+            'dosenPAI' => $dosenPAI,
+            'dosenES' => $dosenES,
+            'dosenHTN' => $dosenHTN,
+            'dosenKPI' => $dosenKPI,
+            'dosenLain' => $dosenLain
         ]);
     }
 
