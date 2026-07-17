@@ -5,11 +5,11 @@
     <p class='text-gray-600 leading-relaxed mb-6'>Layanan satu pintu untuk data akademik, statistik mahasiswa, dan informasi penting lainnya tentang STAIMAS Wonogiri.</p>
     <div class='grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8'>
         <div class='bg-teal-50 p-6 rounded-xl'>
-            <h4 class='font-bold text-teal-700 text-3xl mb-1'>1.200+</h4>
+            <h4 class='font-bold text-teal-700 text-3xl mb-1'>300+</h4>
             <p class='text-sm text-gray-600 font-semibold'>Mahasiswa Aktif</p>
         </div>
         <div class='bg-teal-50 p-6 rounded-xl'>
-            <h4 class='font-bold text-teal-700 text-3xl mb-1'>50+</h4>
+            <h4 class='font-bold text-teal-700 text-3xl mb-1'>21+</h4>
             <p class='text-sm text-gray-600 font-semibold'>Dosen Profesional</p>
         </div>
         <div class='bg-teal-50 p-6 rounded-xl'>
