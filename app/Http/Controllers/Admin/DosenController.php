@@ -10,9 +10,24 @@ use Illuminate\Support\Facades\Storage;
 
 class DosenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.dosens.index', ['dosens' => Dosen::orderBy('urutan')->get()]);
+        $query = Dosen::orderBy('program_studi')->orderBy('urutan');
+
+        if ($request->filled('prodi')) {
+            $query->where('program_studi', $request->prodi);
+        }
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
+                  ->orWhere('jabatan', 'like', "%{$search}%");
+            });
+        }
+
+        $dosens = $query->paginate(15)->withQueryString();
+
+        return view('admin.dosens.index', ['dosens' => $dosens]);
     }
 
     public function create()
