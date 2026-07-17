@@ -126,13 +126,13 @@
     @php
       $assetInstitusi = asset('assest/akreditasi.jpg');
       $assetPaiImg = asset('assest/PAI.jpeg');
-      $assetPaiPdf = asset('assest/Sertifikat Akreditasi PAI.pdf');
+      $assetPaiPdf = str_replace(' ', '%20', asset('assest/Sertifikat Akreditasi PAI.pdf'));
       $assetKpiImg = asset('assest/akreditasi.jpg');
-      $assetKpiPdf = asset('assest/Sertifikat Akreditasi KPI.pdf');
+      $assetKpiPdf = str_replace(' ', '%20', asset('assest/Sertifikat Akreditasi KPI.pdf'));
       $assetEsImg = asset('assest/ES.jpeg');
-      $assetEsPdf = asset('assest/Sertifikat Akreditasi ES.pdf');
+      $assetEsPdf = str_replace(' ', '%20', asset('assest/Sertifikat Akreditasi ES.pdf'));
       $assetHtnImg = asset('assest/HTN.jpeg');
-      $assetHtnPdf = asset('assest/Sertifikat Akreditasi HTN.pdf');
+      $assetHtnPdf = str_replace(' ', '%20', asset('assest/Sertifikat Akreditasi HTN.pdf'));
     @endphp
 
     {{-- Certificate Visual Preview Section --}}
