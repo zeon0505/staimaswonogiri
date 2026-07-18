@@ -251,7 +251,7 @@
 
   <div class="text-center pt-8">
     <p class="text-gray-500 mb-3">Baca lebih lanjut tentang prodi PAI.</p>
-    <a href="http://prodipai.test/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
+    <a href="https://prodipai.staimaswonogiri.ac.id/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
         Selengkapnya
     </a>
   </div>
