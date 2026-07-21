@@ -2,96 +2,99 @@
 @section('title', $poster->judul . ' - STAIMAS Wonogiri')
 
 @section('content')
-<div class="max-w-xl mx-auto py-2 px-2 space-y-8">
+<div class="max-w-6xl mx-auto py-4 px-2 sm:px-4 space-y-10">
 
-  {{-- Card Postering Bergaya Feed Instagram --}}
-  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+  {{-- Main Post Container (Instagram Web Layout for Desktop / Single Column Feed for Mobile) --}}
+  <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xl shadow-gray-100/70 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[480px]">
 
-    {{-- 1. IG Post Header --}}
-    <div class="p-3.5 sm:p-4 flex items-center justify-between border-b border-gray-100 bg-white">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full bg-teal-50 border border-teal-500/30 p-0.5 flex items-center justify-center shrink-0">
-          <img src="{{ asset('assest/LOGO STAIMAS AI.png') }}" alt="STAIMAS Logo" class="w-full h-full object-contain rounded-full">
-        </div>
-        <div class="leading-tight">
-          <div class="flex items-center gap-1.5">
-            <span class="font-extrabold text-gray-900 text-xs sm:text-sm">staimaswonogiri</span>
-            <i class="fas fa-check-circle text-teal-600 text-[11px]" title="Akun Resmi STAIMAS"></i>
+      {{-- 1. Media Section (Sisi Kiri di Laptop, Atas di HP) --}}
+      <div class="lg:col-span-7 bg-slate-950 p-4 sm:p-6 flex items-center justify-center relative min-h-[350px] lg:min-h-[500px]">
+        @if($poster->gambar)
+          <img src="{{ asset('storage/' . $poster->gambar) }}"
+               alt="{{ $poster->judul }}"
+               class="max-h-[600px] w-auto max-w-full object-contain rounded-xl shadow-2xl" />
+        @else
+          <div class="flex flex-col items-center justify-center text-slate-500 py-16 space-y-2">
+            <i class="fas fa-image text-4xl"></i>
+            <span class="text-xs font-semibold">Tidak ada gambar poster</span>
           </div>
-          <span class="text-[10px] font-semibold text-gray-400 block">{{ $poster->created_at->isoFormat('D MMMM Y') }} &bull; {{ $poster->kategori ?? 'Umum' }}</span>
+        @endif
+
+        {{-- Badge Kategori Floating --}}
+        <span class="absolute top-4 left-4 bg-teal-700/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
+          {{ $poster->kategori ?? 'Pengumuman' }}
+        </span>
+      </div>
+
+      {{-- 2. Details & Caption Section (Sisi Kanan di Laptop, Bawah di HP) --}}
+      <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-white border-t lg:border-t-0 lg:border-l border-gray-100">
+
+        <div class="space-y-5">
+
+          {{-- Publisher / Header IG Style --}}
+          <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-teal-50 border border-teal-500/30 p-0.5 flex items-center justify-center shrink-0">
+                <img src="{{ asset('assest/LOGO STAIMAS AI.png') }}" alt="STAIMAS Logo" class="w-full h-full object-contain rounded-full">
+              </div>
+              <div class="leading-tight">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-extrabold text-gray-900 text-sm">staimaswonogiri</span>
+                  <i class="fas fa-check-circle text-teal-600 text-xs" title="Akun Resmi"></i>
+                </div>
+                <span class="text-[11px] text-gray-400 font-medium block">STAIMAS Official &bull; {{ $poster->created_at->isoFormat('D MMMM Y') }}</span>
+              </div>
+            </div>
+          </div>
+
+          {{-- Judul & Deskripsi Highlight --}}
+          <div class="space-y-3">
+            <h1 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug tracking-tight">
+              {{ $poster->judul }}
+            </h1>
+
+            @if($poster->deskripsi)
+            <div class="text-xs font-medium text-teal-800 bg-teal-50/80 p-3 rounded-xl border border-teal-100 leading-relaxed">
+              <i class="fas fa-info-circle text-teal-600 mr-1"></i> {{ $poster->deskripsi }}
+            </div>
+            @endif
+          </div>
+
+          {{-- Caption / Konten Detail (Scrollable di Laptop jika sangat panjang) --}}
+          @if($poster->konten)
+          <div class="text-xs sm:text-sm text-gray-700 leading-relaxed space-y-2 whitespace-pre-line pt-3 border-t border-gray-100 max-h-[300px] overflow-y-auto pr-2">
+            {!! nl2br(e($poster->konten)) !!}
+          </div>
+          @endif
+
         </div>
-      </div>
 
-      <div class="flex items-center gap-1">
-        <button onclick="copyCurrentUrl()" class="p-2 text-gray-400 hover:text-teal-700 transition-colors" title="Salin Link">
-          <i class="fas fa-ellipsis-h text-sm"></i>
-        </button>
-      </div>
-    </div>
+        {{-- Footer Action Buttons (Share & Download) --}}
+        <div class="pt-4 border-t border-gray-100 space-y-3">
+          <div class="grid grid-cols-2 gap-3">
+            <a href="https://api.whatsapp.com/send?text={{ urlencode($poster->judul . ' - ' . url()->current()) }}"
+               target="_blank"
+               class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-colors shadow-sm">
+              <i class="fab fa-whatsapp text-sm"></i> Bagikan WA
+            </a>
 
-    {{-- 2. IG Post Media / Gambar Poster --}}
-    <div class="bg-slate-950 relative overflow-hidden flex items-center justify-center min-h-[300px]">
-      @if($poster->gambar)
-        <img src="{{ asset('storage/' . $poster->gambar) }}" alt="{{ $poster->judul }}" class="w-full h-auto object-contain">
-      @else
-        <div class="py-20 text-center text-slate-500">
-          <i class="fas fa-image text-4xl mb-2"></i>
-          <p class="text-xs font-semibold">Tidak ada gambar</p>
+            <button onclick="copyCurrentUrl()"
+                    class="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-xl text-xs transition-colors">
+              <i class="fas fa-link text-xs"></i> <span id="copy-btn-text">Salin Tautan</span>
+            </button>
+          </div>
+
+          @if($poster->gambar)
+            <a href="{{ asset('storage/' . $poster->gambar) }}" download
+               class="w-full flex items-center justify-center gap-2 border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold py-2 rounded-xl text-xs transition-colors">
+              <i class="fas fa-download"></i> Unduh Poster File
+            </a>
+          @endif
         </div>
-      @endif
+
+      </div>
     </div>
-
-    {{-- 3. IG Action Bar (Icons) --}}
-    <div class="px-4 pt-3 pb-1 flex items-center justify-between">
-      <div class="flex items-center gap-4 text-gray-700 text-lg">
-        <a href="https://api.whatsapp.com/send?text={{ urlencode($poster->judul . ' - ' . url()->current()) }}"
-           target="_blank"
-           class="hover:text-emerald-600 transition-colors"
-           title="Bagikan ke WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <button onclick="copyCurrentUrl()" class="hover:text-teal-600 transition-colors" title="Salin Tautan">
-          <i class="far fa-paper-plane"></i>
-        </button>
-      </div>
-
-      @if($poster->gambar)
-      <a href="{{ asset('storage/' . $poster->gambar) }}" download class="text-gray-700 hover:text-teal-700 transition-colors text-lg" title="Unduh Poster">
-        <i class="far fa-bookmark"></i>
-      </a>
-      @endif
-    </div>
-
-    {{-- 4. IG Caption & Content Area --}}
-    <div class="px-4 pb-5 pt-1 space-y-2.5 text-xs sm:text-sm">
-
-      {{-- Judul Post --}}
-      <div class="text-gray-900 leading-snug">
-        <span class="font-extrabold mr-1.5">staimaswonogiri</span>
-        <span class="font-bold text-gray-900">{{ $poster->judul }}</span>
-      </div>
-
-      {{-- Highlight Deskripsi --}}
-      @if($poster->deskripsi)
-      <p class="text-teal-800 bg-teal-50/80 p-2.5 rounded-xl border border-teal-100/70 text-xs leading-relaxed">
-        {{ $poster->deskripsi }}
-      </p>
-      @endif
-
-      {{-- Isi Keterangan Lengkap (Caption IG) --}}
-      @if($poster->konten)
-      <div class="text-gray-700 leading-relaxed whitespace-pre-line pt-2 text-xs border-t border-gray-100">
-        {!! nl2br(e($poster->konten)) !!}
-      </div>
-      @endif
-
-      {{-- Date stamp --}}
-      <div class="pt-2 text-[10px] uppercase tracking-wider text-gray-400 font-semibold">
-        {{ $poster->created_at->diffForHumans() }}
-      </div>
-
-    </div>
-
   </div>
 
   {{-- Notification toast for URL copy --}}
@@ -99,54 +102,54 @@
     <i class="fas fa-check-circle text-emerald-400"></i> Link postingan berhasil disalin!
   </div>
 
-  {{-- 5. Recommended Posters Section (Instagram Explore Style) --}}
+  {{-- 3. Recommended Posters Section (Rapi 4 Kolom di Laptop, 2 Kolom di HP) --}}
   @if(isset($otherPosters) && $otherPosters->count() > 0)
-  <div class="pt-4 border-t border-gray-200/80 space-y-4">
+  <div class="pt-6 border-t border-gray-200/80 space-y-5">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <i class="fas fa-th text-xs text-teal-700"></i>
-        <h3 class="text-xs font-bold uppercase tracking-wider text-gray-600">Postingan Lainnya</h3>
+        <i class="fas fa-th-large text-teal-700"></i>
+        <h3 class="text-base font-extrabold text-gray-900">Poster & Pengumuman Lainnya</h3>
       </div>
-      <a href="{{ route('pages.pengumuman') }}" class="text-xs font-bold text-teal-700 hover:text-teal-800 transition-colors">
-        Lihat Semua <i class="fas fa-chevron-right text-[9px] ml-0.5"></i>
+      <a href="{{ route('pages.pengumuman') }}" class="text-xs font-bold text-teal-700 hover:underline">
+        Lihat Semua <i class="fas fa-arrow-right text-[10px] ml-1"></i>
       </a>
     </div>
 
-    {{-- Grid Layout Rapi ala Instagram Explore --}}
-    <div class="grid grid-cols-3 gap-3 sm:gap-4">
+    {{-- Grid 4 Kolom di Desktop & 2 Kolom di Mobile --}}
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
       @foreach($otherPosters as $item)
       <a href="{{ route('pages.pengumuman.show', $item->slug ?? $item->id) }}"
-         class="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
-        
-        {{-- Image Box --}}
+         class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+
+        {{-- Thumbnail Box --}}
         <div class="aspect-[3/4] bg-slate-900 relative overflow-hidden">
           @if($item->gambar)
             <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
           @else
             <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 p-2 text-center">
-              <i class="fas fa-image text-xl mb-1"></i>
-              <span class="text-[9px] font-medium">Tanpa Gambar</span>
+              <i class="fas fa-image text-2xl mb-1"></i>
+              <span class="text-xs font-medium">Tanpa Gambar</span>
             </div>
           @endif
 
-          {{-- Hover overlay IG style --}}
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-200 flex items-center justify-center">
-            <span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-              <i class="fas fa-eye text-[10px]"></i> Lihat
-            </span>
-          </div>
-
-          <span class="absolute top-1.5 left-1.5 bg-black/60 backdrop-blur-sm text-white text-[9px] font-semibold px-2 py-0.5 rounded-md">
+          <span class="absolute top-2 left-2 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">
             {{ $item->kategori ?? 'Umum' }}
           </span>
+
+          {{-- Hover overlay --}}
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-200 flex items-center justify-center">
+            <span class="text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+              <i class="fas fa-eye text-[10px]"></i> Lihat Detail
+            </span>
+          </div>
         </div>
 
-        {{-- Caption preview --}}
-        <div class="p-2.5 flex-1 flex flex-col justify-between">
-          <h4 class="font-bold text-[11px] text-gray-800 leading-tight group-hover:text-teal-700 transition-colors line-clamp-2">
+        {{-- Info --}}
+        <div class="p-3.5 flex-1 flex flex-col justify-between">
+          <h4 class="font-bold text-xs sm:text-sm text-gray-900 group-hover:text-teal-700 transition-colors line-clamp-2 leading-snug">
             {{ $item->judul }}
           </h4>
-          <span class="text-[9px] font-medium text-gray-400 mt-1.5 block">
+          <span class="text-[10px] font-semibold text-gray-400 mt-2 block">
             {{ $item->created_at->format('d M Y') }}
           </span>
         </div>
