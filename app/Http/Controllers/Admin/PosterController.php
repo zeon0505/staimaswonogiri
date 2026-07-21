@@ -19,11 +19,18 @@ class PosterController extends Controller
         return view('admin.posters.form', ['poster' => null]);
     }
 
+    private function sanitizeUtf8(?string $text): ?string
+    {
+        if (empty($text)) return $text;
+        // Jika DB belum utf8mb4, bersihkan emoji 4-byte agar PDOException tidak terjadi
+        return preg_replace('/[\x{10000}-\x{10FFFF}]/u', '', $text);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
             'judul'     => 'required|string|max:255',
-            'deskripsi' => 'nullable|string|max:500',
+            'deskripsi' => 'nullable|string',
             'konten'    => 'nullable|string',
             'kategori'  => 'nullable|string|max:100',
             'gambar'    => 'nullable|image|max:5120',
@@ -37,7 +44,16 @@ class PosterController extends Controller
             $data['gambar'] = $request->file('gambar')->store('posters', 'public');
         }
 
-        Poster::create($data);
+        try {
+            Poster::create($data);
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Fallback jika DB server cPanel belum diset utf8mb4
+            $data['judul']     = $this->sanitizeUtf8($data['judul']);
+            $data['deskripsi'] = $this->sanitizeUtf8($data['deskripsi']);
+            $data['konten']    = $this->sanitizeUtf8($data['konten']);
+            Poster::create($data);
+        }
+
         return redirect()->route('admin.posters.index')->with('success', 'Poster berhasil ditambahkan.');
     }
 
@@ -50,7 +66,7 @@ class PosterController extends Controller
     {
         $request->validate([
             'judul'     => 'required|string|max:255',
-            'deskripsi' => 'nullable|string|max:500',
+            'deskripsi' => 'nullable|string',
             'konten'    => 'nullable|string',
             'kategori'  => 'nullable|string|max:100',
             'gambar'    => 'nullable|image|max:5120',
@@ -63,11 +79,20 @@ class PosterController extends Controller
         }
 
         if ($request->hasFile('gambar')) {
-            if ($poster->gambar) Storage::disk('public')->delete($poster->gambar);
+            if ($poster->gambar) \Illuminate\Support\Facades\Storage::disk('public')->delete($poster->gambar);
             $data['gambar'] = $request->file('gambar')->store('posters', 'public');
         }
 
-        $poster->update($data);
+        try {
+            $poster->update($data);
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Fallback jika DB server cPanel belum diset utf8mb4
+            $data['judul']     = $this->sanitizeUtf8($data['judul']);
+            $data['deskripsi'] = $this->sanitizeUtf8($data['deskripsi']);
+            $data['konten']    = $this->sanitizeUtf8($data['konten']);
+            $poster->update($data);
+        }
+
         return redirect()->route('admin.posters.index')->with('success', 'Poster berhasil diperbarui.');
     }
 
