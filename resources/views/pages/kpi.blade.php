@@ -141,12 +141,14 @@
   </div>
  
   {{-- Akreditasi Section --}}
+  @php $kpiPdfUrl = asset('assest/Sertifikat Akreditasi KPI.pdf'); @endphp
   <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
     <div class="flex flex-col sm:flex-row">
       <div class="relative sm:w-52 shrink-0 cursor-pointer group bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-100"
-           onclick="openSertifModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}')"
+           data-url="{{ $kpiPdfUrl }}"
+           onclick="openSertifModal(this.dataset.url)"
            style="min-height:200px;height:200px;">
-        <iframe src="{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+        <iframe src="{{ $kpiPdfUrl }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
           class="w-full border-0 pointer-events-none"
           style="height:200px;display:block;" scrolling="no" tabindex="-1"></iframe>
         <div class="absolute inset-0 bg-transparent group-hover:bg-black/25 transition-all duration-200 flex items-center justify-center">
@@ -181,11 +183,12 @@
           </div>
         </div>
          <div class="flex items-center gap-2">
-          <button onclick="openSertifModal('{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}')"
+          <button data-url="{{ $kpiPdfUrl }}"
+            onclick="openSertifModal(this.dataset.url)"
             class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
-          <a href="{{ asset('assets/Sertifikat Akreditasi KPI.pdf') }}" target="_blank"
+          <a href="{{ $kpiPdfUrl }}" target="_blank"
             class="inline-flex items-center gap-2 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-download"></i> Unduh PDF
           </a>
@@ -283,7 +286,7 @@
 
   <div class="text-center pt-8">
     <p class="text-gray-500 mb-3">Baca lebih lanjut tentang prodi KPI.</p>
-    <a href="http://kpi.test/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
+    <a href="https://komunikasipenyiaranislam.staimaswonogiri.ac.id/" target="_blank" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md">
         Selengkapnya
     </a>
   </div>
