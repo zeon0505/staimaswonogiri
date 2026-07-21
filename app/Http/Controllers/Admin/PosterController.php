@@ -24,11 +24,13 @@ class PosterController extends Controller
         $request->validate([
             'judul'     => 'required|string|max:255',
             'deskripsi' => 'nullable|string|max:500',
+            'konten'    => 'nullable|string',
             'kategori'  => 'nullable|string|max:100',
             'gambar'    => 'nullable|image|max:5120',
         ]);
 
-        $data = $request->only('judul', 'deskripsi', 'kategori');
+        $data = $request->only('judul', 'deskripsi', 'konten', 'kategori');
+        $data['slug']  = \Illuminate\Support\Str::slug($request->judul) . '-' . time();
         $data['aktif'] = $request->boolean('aktif', true);
 
         if ($request->hasFile('gambar')) {
@@ -49,12 +51,16 @@ class PosterController extends Controller
         $request->validate([
             'judul'     => 'required|string|max:255',
             'deskripsi' => 'nullable|string|max:500',
+            'konten'    => 'nullable|string',
             'kategori'  => 'nullable|string|max:100',
             'gambar'    => 'nullable|image|max:5120',
         ]);
 
-        $data = $request->only('judul', 'deskripsi', 'kategori');
+        $data = $request->only('judul', 'deskripsi', 'konten', 'kategori');
         $data['aktif'] = $request->boolean('aktif');
+        if (empty($poster->slug)) {
+            $data['slug'] = \Illuminate\Support\Str::slug($request->judul) . '-' . time();
+        }
 
         if ($request->hasFile('gambar')) {
             if ($poster->gambar) Storage::disk('public')->delete($poster->gambar);

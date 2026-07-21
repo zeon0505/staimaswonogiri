@@ -773,7 +773,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($posters as $poster)
-        <div class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden group cursor-pointer hover:shadow-md transition-all" onclick="openPosterModal('{{ addslashes($poster->judul) }}', '{{ addslashes($poster->deskripsi) }}', '{{ $poster->gambar ? asset('storage/' . $poster->gambar) : '' }}', '{{ addslashes($poster->kategori) }}')">
+        <a href="{{ route('pages.pengumuman.show', $poster->slug ?? $poster->id) }}"
+           class="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden group hover:shadow-md transition-all block">
           <div class="aspect-[3/4] bg-gray-100 overflow-hidden relative">
             @if($poster->gambar)
             <img src="{{ asset('storage/' . $poster->gambar) }}" alt="{{ $poster->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -786,12 +787,17 @@
             <div class="absolute top-3 left-3 bg-teal-brand text-white text-[10px] font-bold px-2 py-1 rounded shadow">
               {{ $poster->kategori ?? 'Umum' }}
             </div>
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-teal-800 text-xs font-bold px-3 py-1.5 rounded-full">
+                <i class="fas fa-eye mr-1"></i> Lihat Detail
+              </span>
+            </div>
           </div>
           <div class="p-4 border-t border-gray-100">
-            <h3 class="font-bold text-gray-900 text-sm leading-snug line-clamp-2">{{ $poster->judul }}</h3>
+            <h3 class="font-bold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-teal-700 transition-colors">{{ $poster->judul }}</h3>
             <p class="text-xs text-gray-500 mt-1 line-clamp-1">{{ $poster->deskripsi }}</p>
           </div>
-        </div>
+        </a>
         @empty
         <div class="col-span-4 text-center py-10 text-gray-500 text-sm">Belum ada poster atau pengumuman.</div>
         @endforelse

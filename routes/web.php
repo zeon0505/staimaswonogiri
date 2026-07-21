@@ -49,6 +49,7 @@ Route::get('/keuangan', [PageController::class, 'keuangan'])->name('pages.keuang
 
 // ===== UMUM =====
 Route::get('/pengumuman', [PageController::class, 'pengumuman'])->name('pages.pengumuman');
+Route::get('/pengumuman/{key}', [PageController::class, 'pengumumanShow'])->name('pages.pengumuman.show');
 Route::get('/akreditasi', [PageController::class, 'akreditasi'])->name('pages.akreditasi');
 
 // ===== DOSEN & BERITA =====
