@@ -2,94 +2,83 @@
 @section('title', $poster->judul . ' - STAIMAS Wonogiri')
 
 @section('content')
-<div class="max-w-5xl mx-auto space-y-8 py-2">
+<div class="max-w-4xl mx-auto py-4 px-2">
 
-  {{-- Minimalist Card Container --}}
-  <div class="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-gray-100/50 overflow-hidden">
-    <div class="grid grid-cols-1 lg:grid-cols-12">
-
-      {{-- Kolom Kiri: Gambar Poster --}}
-      <div class="lg:col-span-6 bg-slate-900/95 p-4 sm:p-6 flex items-center justify-center relative min-h-[350px]">
-        @if($poster->gambar)
-          <img src="{{ asset('storage/' . $poster->gambar) }}"
-               alt="{{ $poster->judul }}"
-               class="max-h-[520px] w-auto max-w-full object-contain rounded-xl shadow-2xl transition-transform duration-300 hover:scale-[1.01]" />
-        @else
-          <div class="flex flex-col items-center justify-center text-slate-400 py-16 space-y-2">
-            <i class="fas fa-image text-4xl"></i>
-            <span class="text-xs font-semibold">Tidak ada gambar</span>
-          </div>
-        @endif
-
-        <span class="absolute top-4 left-4 bg-teal-600/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
-          {{ $poster->kategori ?? 'Pengumuman' }}
-        </span>
-      </div>
-
-      {{-- Kolom Kanan: Rincian & Keterangan --}}
-      <div class="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-
-        <div class="space-y-4">
-          {{-- Category & Date Header --}}
-          <div class="flex items-center justify-between text-xs text-gray-400 font-medium pb-2 border-b border-gray-100">
-            <span class="text-teal-700 font-bold uppercase tracking-wider text-[11px]">STAIMAS Info</span>
-            <span><i class="far fa-calendar-alt mr-1"></i> {{ $poster->created_at->isoFormat('D MMMM Y') }}</span>
-          </div>
-
-          {{-- Title & Subtitle --}}
-          <div class="space-y-2">
-            <h1 class="text-xl sm:text-2xl font-extrabold text-gray-900 leading-snug tracking-tight">
-              {{ $poster->judul }}
-            </h1>
-            @if($poster->deskripsi)
-              <p class="text-xs font-medium text-teal-800 bg-teal-50/80 px-3.5 py-2.5 rounded-xl border border-teal-100 leading-relaxed">
-                {{ $poster->deskripsi }}
-              </p>
-            @endif
-          </div>
-
-          {{-- Description Content / Caption --}}
-          <div class="text-xs sm:text-sm text-gray-600 leading-relaxed space-y-2 whitespace-pre-line pt-2">
-            @if($poster->konten)
-              {!! nl2br(e($poster->konten)) !!}
-            @else
-              <p class="text-gray-400 italic text-xs">Poster pengumuman resmi STAIMAS Wonogiri.</p>
-            @endif
-          </div>
+  {{-- Main Card --}}
+  <div class="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+    
+    {{-- Header Judul & Badge --}}
+    <div class="p-6 sm:p-8 border-b border-gray-100 bg-gradient-to-r from-teal-900 to-teal-800 text-white flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="bg-teal-700/80 text-teal-100 text-xs font-bold px-3 py-1 rounded-full border border-teal-500/30">
+            {{ $poster->kategori ?? 'Pengumuman' }}
+          </span>
+          <span class="text-xs text-teal-200/80">
+            <i class="far fa-calendar-alt mr-1"></i> {{ $poster->created_at->isoFormat('D MMMM Y') }}
+          </span>
         </div>
-
-        {{-- Action Buttons --}}
-        <div class="pt-4 border-t border-gray-100 space-y-2.5">
-          <div class="grid grid-cols-2 gap-2.5">
-            <a href="https://api.whatsapp.com/send?text={{ urlencode($poster->judul . ' - ' . url()->current()) }}"
-               target="_blank"
-               class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-colors shadow-sm">
-              <i class="fab fa-whatsapp text-sm"></i> Bagikan WA
-            </a>
-
-            <button onclick="copyCurrentUrl()"
-                    class="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-xl text-xs transition-colors">
-              <i class="fas fa-link text-xs"></i> <span id="copy-btn-text">Salin Tautan</span>
-            </button>
-          </div>
-
-          @if($poster->gambar)
-            <a href="{{ asset('storage/' . $poster->gambar) }}" download
-               class="w-full flex items-center justify-center gap-2 border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold py-2 rounded-xl text-xs transition-colors">
-              <i class="fas fa-download"></i> Unduh File Poster
-            </a>
-          @endif
-        </div>
-
+        <h1 class="text-xl sm:text-2xl font-extrabold text-white leading-snug">
+          {{ $poster->judul }}
+        </h1>
       </div>
+      
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="https://api.whatsapp.com/send?text={{ urlencode($poster->judul . ' - ' . url()->current()) }}"
+           target="_blank"
+           class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-1.5">
+          <i class="fab fa-whatsapp text-sm"></i> Bagikan
+        </a>
+        <button onclick="copyCurrentUrl()"
+                class="bg-white/10 hover:bg-white/20 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5">
+          <i class="fas fa-link text-xs"></i> <span id="copy-btn-text">Salin Link</span>
+        </button>
+      </div>
+    </div>
+
+    {{-- Content Body (Gambar & Keterangan) --}}
+    <div class="p-6 sm:p-8 space-y-8">
+
+      {{-- Gambar Poster Center --}}
+      @if($poster->gambar)
+      <div class="bg-slate-900 rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center relative shadow-inner">
+        <img src="{{ asset('storage/' . $poster->gambar) }}"
+             alt="{{ $poster->judul }}"
+             class="max-h-[600px] w-auto max-w-full object-contain rounded-lg shadow-2xl" />
+        <div class="mt-4 flex justify-center">
+          <a href="{{ asset('storage/' . $poster->gambar) }}" download
+             class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
+            <i class="fas fa-download"></i> Unduh Poster High-Res
+          </a>
+        </div>
+      </div>
+      @endif
+
+      {{-- Deskripsi Highlight --}}
+      @if($poster->deskripsi)
+      <div class="bg-teal-50/70 rounded-2xl p-5 border border-teal-100 text-teal-900 text-sm font-semibold leading-relaxed">
+        <i class="fas fa-info-circle text-teal-600 mr-1.5"></i> {{ $poster->deskripsi }}
+      </div>
+      @endif
+
+      {{-- Konten / Penjelasan Detail --}}
+      @if($poster->konten)
+      <div class="space-y-3">
+        <h3 class="text-sm font-extrabold uppercase tracking-wider text-gray-400">Rincian Informasi / Keterangan</h3>
+        <div class="prose prose-teal max-w-none text-gray-700 text-sm sm:text-base leading-relaxed whitespace-pre-line bg-gray-50/50 p-6 rounded-2xl border border-gray-100">
+          {!! nl2br(e($poster->konten)) !!}
+        </div>
+      </div>
+      @endif
+
     </div>
   </div>
 
-  {{-- Section Poster Lainnya --}}
+  {{-- Poster Lainnya --}}
   @if(isset($otherPosters) && $otherPosters->count() > 0)
-  <div class="pt-4 space-y-4">
+  <div class="pt-6 space-y-4">
     <div class="flex items-center justify-between">
-      <h3 class="text-base font-extrabold text-gray-900">Pengumuman Lainnya</h3>
+      <h3 class="text-base font-extrabold text-gray-900">Pengumuman & Poster Lainnya</h3>
       <a href="{{ route('pages.pengumuman') }}" class="text-xs font-bold text-teal-700 hover:underline">
         Lihat Semua <i class="fas fa-arrow-right text-[10px] ml-1"></i>
       </a>
@@ -133,7 +122,7 @@ function copyCurrentUrl() {
   navigator.clipboard.writeText(window.location.href).then(() => {
     const btnText = document.getElementById('copy-btn-text');
     btnText.textContent = 'Tersalin!';
-    setTimeout(() => { btnText.textContent = 'Salin Tautan'; }, 2000);
+    setTimeout(() => { btnText.textContent = 'Salin Link'; }, 2000);
   });
 }
 </script>
