@@ -15,9 +15,8 @@ class Poster extends Model
     protected $fillable = ['judul', 'slug', 'deskripsi', 'konten', 'gambar', 'kategori', 'aktif'];
     protected $casts = ['aktif' => 'boolean'];
 
-    protected static function boot()
+    protected static function booted(): void
     {
-        parent::boot();
         static::creating(function ($poster) {
             if (empty($poster->slug)) {
                 $poster->slug = Str::slug($poster->judul) . '-' . time();
