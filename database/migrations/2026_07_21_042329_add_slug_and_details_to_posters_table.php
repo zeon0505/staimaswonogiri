@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('posters', function (Blueprint $table) {
             $table->string('slug')->nullable()->after('judul');
+            $table->text('deskripsi')->nullable()->change();
             $table->longText('konten')->nullable()->after('deskripsi');
         });
     }
