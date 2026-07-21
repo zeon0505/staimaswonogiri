@@ -2,10 +2,10 @@
 @section('title', $poster->judul . ' - STAIMAS Wonogiri')
 
 @section('content')
-<div class="max-w-xl mx-auto py-2 px-2 space-y-6">
+<div class="max-w-xl mx-auto py-2 px-2 space-y-8">
 
   {{-- Card Postering Bergaya Feed Instagram --}}
-  <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
+  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
 
     {{-- 1. IG Post Header --}}
     <div class="p-3.5 sm:p-4 flex items-center justify-between border-b border-gray-100 bg-white">
@@ -30,9 +30,9 @@
     </div>
 
     {{-- 2. IG Post Media / Gambar Poster --}}
-    <div class="bg-slate-950 relative overflow-hidden flex items-center justify-center min-h-[300px] max-h-[550px]">
+    <div class="bg-slate-950 relative overflow-hidden flex items-center justify-center min-h-[300px]">
       @if($poster->gambar)
-        <img src="{{ asset('storage/' . $poster->gambar) }}" alt="{{ $poster->judul }}" class="w-full h-full object-contain max-h-[550px]">
+        <img src="{{ asset('storage/' . $poster->gambar) }}" alt="{{ $poster->judul }}" class="w-full h-auto object-contain">
       @else
         <div class="py-20 text-center text-slate-500">
           <i class="fas fa-image text-4xl mb-2"></i>
@@ -80,7 +80,7 @@
 
       {{-- Isi Keterangan Lengkap (Caption IG) --}}
       @if($poster->konten)
-      <div class="text-gray-700 leading-relaxed whitespace-pre-line pt-1 text-xs border-t border-gray-100">
+      <div class="text-gray-700 leading-relaxed whitespace-pre-line pt-2 text-xs border-t border-gray-100">
         {!! nl2br(e($poster->konten)) !!}
       </div>
       @endif
@@ -99,27 +99,57 @@
     <i class="fas fa-check-circle text-emerald-400"></i> Link postingan berhasil disalin!
   </div>
 
-  {{-- Recommended Items --}}
+  {{-- 5. Recommended Posters Section (Instagram Explore Style) --}}
   @if(isset($otherPosters) && $otherPosters->count() > 0)
-  <div class="pt-4 space-y-3">
+  <div class="pt-4 border-t border-gray-200/80 space-y-4">
     <div class="flex items-center justify-between">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500">Postingan Lainnya</h3>
-      <a href="{{ route('pages.pengumuman') }}" class="text-xs font-bold text-teal-700 hover:underline">
-        Lihat Semua
+      <div class="flex items-center gap-2">
+        <i class="fas fa-th text-xs text-teal-700"></i>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-gray-600">Postingan Lainnya</h3>
+      </div>
+      <a href="{{ route('pages.pengumuman') }}" class="text-xs font-bold text-teal-700 hover:text-teal-800 transition-colors">
+        Lihat Semua <i class="fas fa-chevron-right text-[9px] ml-0.5"></i>
       </a>
     </div>
 
-    <div class="grid grid-cols-4 gap-2">
+    {{-- Grid Layout Rapi ala Instagram Explore --}}
+    <div class="grid grid-cols-3 gap-3 sm:gap-4">
       @foreach($otherPosters as $item)
       <a href="{{ route('pages.pengumuman.show', $item->slug ?? $item->id) }}"
-         class="aspect-square bg-slate-900 rounded-xl overflow-hidden relative group border border-gray-100">
-        @if($item->gambar)
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-        @else
-          <div class="w-full h-full flex items-center justify-center text-slate-500">
-            <i class="fas fa-image text-lg"></i>
+         class="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+        
+        {{-- Image Box --}}
+        <div class="aspect-[3/4] bg-slate-900 relative overflow-hidden">
+          @if($item->gambar)
+            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          @else
+            <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 p-2 text-center">
+              <i class="fas fa-image text-xl mb-1"></i>
+              <span class="text-[9px] font-medium">Tanpa Gambar</span>
+            </div>
+          @endif
+
+          {{-- Hover overlay IG style --}}
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-200 flex items-center justify-center">
+            <span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+              <i class="fas fa-eye text-[10px]"></i> Lihat
+            </span>
           </div>
-        @endif
+
+          <span class="absolute top-1.5 left-1.5 bg-black/60 backdrop-blur-sm text-white text-[9px] font-semibold px-2 py-0.5 rounded-md">
+            {{ $item->kategori ?? 'Umum' }}
+          </span>
+        </div>
+
+        {{-- Caption preview --}}
+        <div class="p-2.5 flex-1 flex flex-col justify-between">
+          <h4 class="font-bold text-[11px] text-gray-800 leading-tight group-hover:text-teal-700 transition-colors line-clamp-2">
+            {{ $item->judul }}
+          </h4>
+          <span class="text-[9px] font-medium text-gray-400 mt-1.5 block">
+            {{ $item->created_at->format('d M Y') }}
+          </span>
+        </div>
       </a>
       @endforeach
     </div>
