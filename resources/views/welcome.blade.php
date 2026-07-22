@@ -545,7 +545,7 @@
               style="object-position: center 5%;">
           </div>
           <h4 class="font-bold text-gray-900 text-sm">RATIH</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi PAI</p>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi PAI</p>
           
           <!-- Hover Overlay Info -->
           <div class="hover-overlay-info">
@@ -559,7 +559,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Jabatan</div>
-                <div class="info-value">Ketua Program Studi</div>
+                <div class="info-value">Kepala Program Studi</div>
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
@@ -585,7 +585,7 @@
               style="object-position: center 15%;">
           </div>
           <h4 class="font-bold text-gray-900 text-sm">ACHMAD ZAKY FAIZ, S.Sos., M.Sos</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi KPI</p>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi KPI</p>
 
           <!-- Hover Overlay Info -->
           <div class="hover-overlay-info">
@@ -599,7 +599,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Jabatan</div>
-                <div class="info-value">Ketua Program Studi</div>
+                <div class="info-value">Kepala Program Studi</div>
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
@@ -625,7 +625,7 @@
               style="object-position: center 10%;">
           </div>
           <h4 class="font-bold text-gray-900 text-sm">INDRA SETIAWAN, SE., M.M</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Ekonomi Syariah</p>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi Ekonomi Syariah</p>
 
           <!-- Hover Overlay Info -->
           <div class="hover-overlay-info">
@@ -639,7 +639,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Jabatan</div>
-                <div class="info-value">Ketua Program Studi</div>
+                <div class="info-value">Kepala Program Studi</div>
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
