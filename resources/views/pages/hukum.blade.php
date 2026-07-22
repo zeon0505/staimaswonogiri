@@ -141,12 +141,14 @@
   </div>
  
   {{-- Akreditasi Section --}}
+  @php $htnPdfUrl = asset('assest/Sertifikat Akreditasi HTN.pdf'); @endphp
   <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
     <div class="flex flex-col sm:flex-row">
       <div class="relative sm:w-52 shrink-0 cursor-pointer group bg-gray-50 border-b sm:border-b-0 sm:border-r border-gray-100"
-           onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}')"
+           data-url="{{ $htnPdfUrl }}"
+           onclick="openSertifModal(this.dataset.url)"
            style="min-height:200px;height:200px;">
-        <iframe src="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+        <iframe src="{{ $htnPdfUrl }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
           class="w-full border-0 pointer-events-none"
           style="height:200px;display:block;" scrolling="no" tabindex="-1"></iframe>
         <div class="absolute inset-0 bg-transparent group-hover:bg-black/25 transition-all duration-200 flex items-center justify-center">
@@ -181,11 +183,11 @@
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="openSertifModal('{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}')"
+          <button data-url="{{ $htnPdfUrl }}" onclick="openSertifModal(this.dataset.url)"
             class="inline-flex items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-eye"></i> Lihat Sertifikat
           </button>
-          <a href="{{ asset('assest/Sertifikat Akreditasi HTN.pdf') }}" target="_blank"
+          <a href="{{ $htnPdfUrl }}" target="_blank"
             class="inline-flex items-center gap-2 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-600 text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
             <i class="fas fa-download"></i> Unduh PDF
           </a>
