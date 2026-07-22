@@ -434,7 +434,7 @@
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="text-xs font-bold text-teal-brand uppercase tracking-wider bg-teal-50 px-3 py-1.5 rounded-full inline-block">Tenaga Pengajar</span>
-        <h2 class="text-3xl font-extrabold text-teal-brand-dark mt-2">Pimpinan & Ketua Program Studi</h2>
+        <h2 class="text-3xl font-extrabold text-teal-brand-dark mt-2">Pimpinan & Kepala Program Studi</h2>
         <p class="text-gray-500 mt-2 text-sm">Didukung oleh jajaran akademisi berkualitas yang ahli di bidang masing-masing.</p>
       </div>
 
@@ -665,7 +665,7 @@
               style="object-position: center 10%;">
           </div>
           <h4 class="font-bold text-gray-900 text-sm">Dr. RUSLINA DWI WAHYUNI, S.Sos., M.A.P</h4>
-          <p class="text-xs text-teal-brand font-semibold mt-1">Ketua Program Studi Hukum Tata Negara</p>
+          <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi Hukum Tata Negara</p>
 
           <!-- Hover Overlay Info -->
           <div class="hover-overlay-info">
@@ -679,7 +679,7 @@
               </div>
               <div class="info-item">
                 <div class="info-label">Jabatan</div>
-                <div class="info-value">Ketua Program Studi</div>
+                <div class="info-value">Kepala Program Studi</div>
               </div>
               <div class="info-item">
                 <div class="info-label">Program Studi</div>
