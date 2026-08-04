@@ -194,6 +194,7 @@
               <li><a href="{{ route('pages.lpm') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-check-circle w-4 text-teal-brand"></i> LPM</a></li>
               <li><a href="{{ route('pages.ejournal') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-newspaper w-4 text-teal-brand"></i> E-Journal</a></li>
               <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-wallet w-4 text-teal-brand"></i> Keuangan</a></li>
+              <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-teal-brand hover:bg-teal-50 rounded-lg transition-all"><i class="fas fa-box-open w-4"></i> Peminjaman</a></li>
             </ul>
           </li>
 
@@ -289,7 +290,8 @@
             <li><a href="{{ route('pages.lppm') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-flask text-teal-brand/60 text-xs w-3"></i> LPPM</a></li>
             <li><a href="{{ route('pages.lpm') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-check-circle text-teal-brand/60 text-xs w-3"></i> LPM</a></li>
             <li><a href="{{ route('pages.ejournal') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> E-Journal</a></li>
-            <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-wallet text-teal-brand/60 text-xs w-3"></i> Keuangan</a></li>
+            <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-wallet text-teal-brand/60 text-xs w-3"></i> Keuangan</a></li>
+            <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-2 py-2.5 px-5 text-sm font-bold text-teal-brand hover:text-teal-brand-dark"><i class="fas fa-box-open text-teal-brand/60 text-xs w-3"></i> Peminjaman</a></li>
           </ul>
         </li>
 

@@ -129,12 +129,12 @@
               <li><a href="{{ route('pages.lpm') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-check-circle w-4 text-teal-brand"></i> LPM</a></li>
               <li><a href="{{ route('pages.ejournal') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-newspaper w-4 text-teal-brand"></i> E-Journal</a></li>
               <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-wallet w-4 text-teal-brand"></i> Keuangan</a></li>
+              <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-teal-brand hover:bg-teal-50 rounded-lg transition-all"><i class="fas fa-box-open w-4"></i> Peminjaman</a></li>
             </ul>
           </li>
 
           <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.berita') || request()->routeIs('pages.berita.show') ? 'text-teal-brand font-bold' : '' }}">BERITA</a></li>
           <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.pengumuman') ? 'text-teal-brand font-bold' : '' }}">PENGUMUMAN</a></li>
-          <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.akreditasi') ? 'text-teal-brand font-bold' : '' }}">AKREDITASI</a></li>
         </ul>
       </nav>
 
@@ -232,6 +232,9 @@
         <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita</a></li>
         <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-bell w-4 text-teal-brand"></i> Pengumuman</a></li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
+
+        {{-- PEMINJAMAN --}}
+        <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><i class="fas fa-box-open w-4"></i> Peminjaman</a></li>
 
         <!-- PMB Button -->
         <li class="py-4">
