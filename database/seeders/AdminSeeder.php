@@ -108,7 +108,7 @@ class AdminSeeder extends Seeder
         // ── Poster ──
         Poster::truncate();
         $posters = [
-            ['judul' => 'PMB PAI 2025',       'deskripsi' => 'Buka Pendaftaran Mahasiswa Baru Program Studi PAI', 'gambar' => null, 'kategori' => 'PMB'],
+            ['judul' => 'PMB PAI 2026',       'deskripsi' => 'Buka Pendaftaran Mahasiswa Baru Program Studi PAI', 'gambar' => null, 'kategori' => 'PMB'],
             ['judul' => 'Beasiswa Mahasiswa',  'deskripsi' => 'Info Beasiswa Khusus Mahasiswa PAI Berprestasi',    'gambar' => null, 'kategori' => 'Beasiswa'],
             ['judul' => 'KKN PAI 2026',        'deskripsi' => 'Pendaftaran dan Penempatan KKN Angkatan 2026',      'gambar' => null, 'kategori' => 'Kegiatan'],
             ['judul' => 'Seminar Nasional',    'deskripsi' => 'Seminar Edupreneurship – Terbuka Untuk Umum',       'gambar' => null, 'kategori' => 'Akademik'],

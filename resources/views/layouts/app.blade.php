@@ -294,7 +294,7 @@
       </div>
     </div>
     <div class="border-t border-teal-800 py-4 text-center text-[10px] text-gray-500">
-      © 2025 STAIMAS Wonogiri. All Rights Reserved.
+      © 2026 STAIMAS Wonogiri. All Rights Reserved.
     </div>
   </footer>
 

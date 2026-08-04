@@ -301,7 +301,7 @@
         <!-- PMB Button -->
         <li class="py-4">
           <a href="https://staimaswonogiri.ecampuz.com/eadmisi/" target="_blank" class="flex justify-center items-center gap-2 bg-teal-brand hover:bg-teal-brand-dark text-white py-3 rounded-xl font-bold text-sm shadow transition-colors">
-            <i class="fas fa-graduation-cap"></i> Daftar PMB 2025
+            <i class="fas fa-graduation-cap"></i> Daftar PMB 2026
           </a>
         </li>
       </ul>

@@ -13,7 +13,7 @@
       </p>
       <div class="pt-4 flex flex-wrap gap-4">
         <a href="https://staimaswonogiri.ecampuz.com/eadmisi/" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md shadow-yellow-500/20 flex items-center gap-2">
-          <i class="fas fa-user-plus"></i> Daftar PMB ES 2025
+          <i class="fas fa-user-plus"></i> Daftar PMB ES 2026
         </a>
         <a href="#kurikulum" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
           <i class="fas fa-file-download"></i> Kurikulum ES

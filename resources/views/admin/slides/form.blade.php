@@ -35,7 +35,7 @@
         <label class="text-sm font-semibold text-gray-700">Judul Slide <span class="text-gray-400">(opsional)</span></label>
         <input type="text" name="judul" value="{{ old('judul', $slide?->judul) }}"
           class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-          placeholder="Contoh: Mahasiswa PAI Angkatan 2025">
+          placeholder="Contoh: Mahasiswa PAI Angkatan 2026">
       </div>
 
       <div class="grid grid-cols-2 gap-4">

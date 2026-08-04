@@ -25,7 +25,7 @@
         <label class="text-sm font-semibold text-gray-700">Judul Poster <span class="text-red-500">*</span></label>
         <input type="text" name="judul" value="{{ old('judul', $poster?->judul) }}" required autofocus
           class="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-          placeholder="Contoh: PMB PAI 2025">
+          placeholder="Contoh: PMB PAI 2026">
       </div>
 
       <div class="space-y-1.5">
