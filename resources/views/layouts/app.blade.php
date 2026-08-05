@@ -234,7 +234,7 @@
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
 
         {{-- PEMINJAMAN --}}
-        <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><i class="fas fa-box-open w-4"></i> Peminjaman</a></li>
+        <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><i class="fas fa-box-open w-4"></i>Studio & Laboratorium</a></li>
 
         <!-- PMB Button -->
         <li class="py-4">
