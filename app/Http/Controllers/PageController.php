@@ -17,7 +17,7 @@ class PageController extends Controller
         $slides = Slide::where('aktif', true)->orderBy('urutan')->get();
         // Berita & Pengumuman
         $beritas = Berita::where('aktif', true)->orderBy('tanggal', 'desc')->take(6)->get();
-        $posters = Poster::where('aktif', true)->get();
+        $posters = Poster::where('aktif', true)->latest()->get();
         
         return view('welcome', compact('slides', 'beritas', 'posters'));
     }
