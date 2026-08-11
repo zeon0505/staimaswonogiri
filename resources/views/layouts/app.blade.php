@@ -135,6 +135,7 @@
 
           <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.berita') || request()->routeIs('pages.berita.show') ? 'text-teal-brand font-bold' : '' }}">BERITA</a></li>
           <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.pengumuman') ? 'text-teal-brand font-bold' : '' }}">PENGUMUMAN</a></li>
+          <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.akreditasi') ? 'text-teal-brand font-bold' : '' }}">AKREDITASI</a></li>
           <li><a href="{{ route('pages.formulir') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.formulir') ? 'text-teal-brand font-bold' : '' }}">FORMULIR</a></li>
         </ul>
       </nav>

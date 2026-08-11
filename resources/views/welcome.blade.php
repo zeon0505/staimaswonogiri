@@ -201,6 +201,7 @@
           <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">BERITA</a></li>
           <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">PENGUMUMAN</a></li>
           <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">AKREDITASI</a></li>
+          <li><a href="{{ route('pages.formulir') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">FORMULIR</a></li>
         </ul>
       </nav>
 
@@ -295,10 +296,10 @@
           </ul>
         </li>
 
-        <!-- BERITA, PENGUMUMAN & AKREDITASI -->
         <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita</a></li>
         <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-bell w-4 text-teal-brand"></i> Pengumuman</a></li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
+        <li><a href="{{ route('pages.formulir') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-file-alt w-4 text-teal-brand"></i> Formulir</a></li>
 
         <!-- PMB Button -->
         <li class="py-4">
@@ -753,6 +754,7 @@
             <div class="p-5">
               <span class="text-[10px] text-teal-brand font-bold uppercase">{{ $berita->kategori->nama ?? 'Berita' }}</span>
               <h3 class="font-bold text-gray-900 text-base mt-2 leading-snug hover:text-teal-brand">{{ $berita->judul }}</h3>
+              <span class="flex items-center gap-1 text-xs text-gray-400 mt-2"><i class="fas fa-calendar-alt text-teal-500 text-[10px]"></i> {{ $berita->tanggal->isoFormat('D MMMM Y') }}</span>
             </div>
           </a>
         </article>
