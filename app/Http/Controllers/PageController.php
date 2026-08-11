@@ -208,6 +208,46 @@ class PageController extends Controller
         return view('pages.akreditasi', ['title' => 'Akreditasi', 'subtitle' => 'Status Akreditasi Institusi dan Program Studi STAIMAS Wonogiri']);
     }
 
+    public function formulir()
+    {
+        $formulirs = [
+            [
+                'nama'    => 'Formulir Pendaftaran Wisuda',
+                'desc'    => 'Formulir resmi pendaftaran wisuda mahasiswa STAIMAS Wonogiri. Diisi oleh calon wisudawan/wisudawati.',
+                'icon'    => 'fa-graduation-cap',
+                'warna'   => 'teal',
+                'file'    => 'assest/FORMULIR PENDAFTARAN WISUDA.docx',
+            ],
+            [
+                'nama'    => 'Formulir Pendaftaran Skripsi',
+                'desc'    => 'Formulir pengajuan judul dan pendaftaran sidang skripsi bagi mahasiswa tingkat akhir.',
+                'icon'    => 'fa-book-open',
+                'warna'   => 'blue',
+                'file'    => 'assest/FORMULIR PENDAFTARAN SKRIPSI.docx',
+            ],
+            [
+                'nama'    => 'Formulir Pendaftaran Seminar',
+                'desc'    => 'Formulir pendaftaran seminar proposal / hasil penelitian mahasiswa.',
+                'icon'    => 'fa-chalkboard-teacher',
+                'warna'   => 'indigo',
+                'file'    => 'assest/FORMULIR PENDAFTARAN SEMINAR.docx',
+            ],
+            [
+                'nama'    => 'Surat Perbaikan Nilai',
+                'desc'    => 'Formulir permohonan perbaikan nilai mata kuliah yang diajukan mahasiswa kepada dosen pengampu.',
+                'icon'    => 'fa-edit',
+                'warna'   => 'orange',
+                'file'    => 'assest/Surat Perbaikan Nilai.docx',
+            ],
+        ];
+
+        return view('pages.formulir', [
+            'title'     => 'Formulir & Surat',
+            'subtitle'  => 'Unduh dan isi formulir akademik resmi STAIMAS Wonogiri',
+            'formulirs' => $formulirs,
+        ]);
+    }
+
     // ===== DOSEN =====
     public function dosen(Request $request)
     {
