@@ -135,6 +135,43 @@
 
           <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.berita') || request()->routeIs('pages.berita.show') ? 'text-teal-brand font-bold' : '' }}">BERITA</a></li>
           <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.pengumuman') ? 'text-teal-brand font-bold' : '' }}">PENGUMUMAN</a></li>
+
+          {{-- FORMULIR DROPDOWN --}}
+          <li class="nav-item-dropdown relative">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap">
+              FORMULIR <i class="fas fa-chevron-down text-[10px] transition-transform duration-300"></i>
+            </button>
+            <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-72 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
+              <li>
+                <a href="{{ asset('assest/FORMULIR PENDAFTARAN WISUDA.docx') }}" download class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-file-word w-4 text-blue-500"></i>
+                  <span>Formulir Pendaftaran Wisuda</span>
+                  <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ asset('assest/FORMULIR PENDAFTARAN SKRIPSI.docx') }}" download class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-file-word w-4 text-blue-500"></i>
+                  <span>Formulir Pendaftaran Skripsi</span>
+                  <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ asset('assest/FORMULIR PENDAFTARAN SEMINAR.docx') }}" download class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-file-word w-4 text-blue-500"></i>
+                  <span>Formulir Pendaftaran Seminar</span>
+                  <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ asset('assest/Surat Perbaikan Nilai.docx') }}" download class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-file-word w-4 text-blue-500"></i>
+                  <span>Surat Perbaikan Nilai</span>
+                  <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
 
@@ -232,6 +269,40 @@
         <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita</a></li>
         <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-bell w-4 text-teal-brand"></i> Pengumuman</a></li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
+
+        {{-- FORMULIR MOBILE --}}
+        <li>
+          <button class="mobile-sub-toggle w-full flex justify-between items-center py-3 border-b border-gray-100 text-sm font-semibold text-gray-700">
+            <span class="flex items-center gap-3"><i class="fas fa-file-alt w-4 text-teal-brand"></i> Formulir</span>
+            <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
+          </button>
+          <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
+            <li>
+              <a href="{{ asset('assest/FORMULIR PENDAFTARAN WISUDA.docx') }}" download class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70">
+                <i class="fas fa-file-word text-blue-500 text-xs w-3"></i> Formulir Pendaftaran Wisuda
+                <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ asset('assest/FORMULIR PENDAFTARAN SKRIPSI.docx') }}" download class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70">
+                <i class="fas fa-file-word text-blue-500 text-xs w-3"></i> Formulir Pendaftaran Skripsi
+                <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ asset('assest/FORMULIR PENDAFTARAN SEMINAR.docx') }}" download class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70">
+                <i class="fas fa-file-word text-blue-500 text-xs w-3"></i> Formulir Pendaftaran Seminar
+                <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ asset('assest/Surat Perbaikan Nilai.docx') }}" download class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand">
+                <i class="fas fa-file-word text-blue-500 text-xs w-3"></i> Surat Perbaikan Nilai
+                <i class="fas fa-download ml-auto text-xs text-gray-400"></i>
+              </a>
+            </li>
+          </ul>
+        </li>
 
         {{-- PEMINJAMAN --}}
         <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><i class="fas fa-box-open w-4"></i>Studio & Laboratorium</a></li>

@@ -66,8 +66,8 @@
       </div>
       <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
         <div class="space-y-2">
-          <span class="text-xs text-gray-400">{{ $berita->tanggal->isoFormat('D MMMM Y') }}</span>
           <h3 class="font-bold text-gray-800 text-sm leading-snug group-hover:text-teal-700 transition-colors">{{ $berita->judul }}</h3>
+          <span class="flex items-center gap-1 text-xs text-gray-400"><i class="fas fa-calendar-alt text-teal-500 text-[10px]"></i> {{ $berita->tanggal->isoFormat('D MMMM Y') }}</span>
           <p class="text-xs text-gray-500 leading-relaxed">{{ Str::limit(strip_tags($berita->konten), 90) }}</p>
         </div>
         <span class="text-xs font-bold text-teal-700 flex items-center gap-1 group-hover:gap-2 transition-all">Baca Selengkapnya <i class="fas fa-arrow-right text-[10px]"></i></span>
