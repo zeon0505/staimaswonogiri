@@ -171,4 +171,101 @@
   </div>
 
 </div>
+
+  <!-- Jadwal Kelas Karyawan (Full-width) -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+    <div class="flex items-center gap-3 mb-2">
+      <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500"><i class="fas fa-briefcase"></i></div>
+      <div>
+        <h2 class="text-xl font-bold text-gray-800">Jadwal Kelas Karyawan 2026/2027</h2>
+      </div>
+    </div>
+    <p class="text-xs text-gray-400 mb-7 ml-[52px]">Jadwal perkuliahan khusus mahasiswa kelas karyawan (program kerjasama) Semester Ganjil TA 2026/2027.</p>
+
+    @php
+      $jadwalKaryawan = [
+        [
+          'nama'    => 'Kelas Karyawan Semester 1',
+          'subjudul'=> 'Semua Prodi – Semester 1',
+          'file'    => 'assest/JADWAL KELAS KARYAWAN SEMESTER 1.pdf',
+          'logo'    => 'assest/LOGO STAIMAS AI.png',
+          'color'   => '#0f766e',
+        ],
+        [
+          'nama'    => 'Prodi ES – Kelas Karyawan Sem. 3',
+          'subjudul'=> 'Ekonomi Syariah',
+          'file'    => 'assest/JADWAL PRODI ES KELAS KARYAWAN SEMESTER 3.pdf',
+          'logo'    => 'assest/ES.jpeg',
+          'color'   => '#b45309',
+        ],
+        [
+          'nama'    => 'Prodi ES – Kelas Karyawan Sem. 5',
+          'subjudul'=> 'Ekonomi Syariah',
+          'file'    => 'assest/JADWAL PRODI ES KELAS KARYAWAN SEMESTER 5.pdf',
+          'logo'    => 'assest/ES.jpeg',
+          'color'   => '#92400e',
+        ],
+        [
+          'nama'    => 'Prodi HTN – Kelas Karyawan Sem. 3 & 5',
+          'subjudul'=> 'Hukum Tata Negara',
+          'file'    => 'assest/JADWAL PRODI HTN KELAS KARYAWAN SM 3&5.pdf',
+          'logo'    => 'assest/HTN.jpeg',
+          'color'   => '#4338ca',
+        ],
+        [
+          'nama'    => 'Prodi PAI – Kelas Karyawan Sem. 3',
+          'subjudul'=> 'Pendidikan Agama Islam',
+          'file'    => 'assest/JADWAL PRODI PAI KELAS KARYAWAN SEMESTER 3.pdf',
+          'logo'    => 'assest/PAI.jpeg',
+          'color'   => '#047857',
+        ],
+      ];
+    @endphp
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @foreach($jadwalKaryawan as $doc)
+      @php $fileUrl = asset($doc['file']); @endphp
+      <div class="rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col bg-white">
+
+        {{-- PDF Preview (Scrollable iframe) --}}
+        <div class="relative bg-gray-50 overflow-hidden border-b border-gray-100" style="height: 230px;">
+          <iframe
+            src="{{ $fileUrl }}#toolbar=0&navpanes=0&view=FitH&page=1"
+            class="w-full border-0"
+            style="height: 100%;"
+            loading="lazy"
+            title="Preview {{ $doc['nama'] }}"
+          ></iframe>
+        </div>
+
+        {{-- Judul di bawah preview --}}
+        <div class="px-4 pt-3 pb-2">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-md overflow-hidden flex items-center justify-center bg-gray-50 border border-gray-100 shrink-0 p-0.5">
+              <img src="{{ asset($doc['logo']) }}" alt="{{ $doc['nama'] }}" class="w-full h-full object-contain">
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-bold text-gray-900 leading-tight">{{ $doc['nama'] }}</p>
+              <p class="text-[10px] text-gray-400">{{ $doc['subjudul'] }}</p>
+            </div>
+          </div>
+        </div>
+
+        {{-- Tombol Aksi --}}
+        <div class="flex gap-2 px-4 pb-4 mt-auto">
+          <a href="{{ $fileUrl }}" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 border border-gray-200 hover:bg-gray-50 text-gray-600 font-bold text-xs py-2 rounded-xl transition-colors">
+            <i class="fas fa-eye text-[10px]"></i> Buka
+          </a>
+          <a href="{{ $fileUrl }}" download
+             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl transition-opacity hover:opacity-85 shadow-sm"
+             style="background-color: {{ $doc['color'] }};">
+            <i class="fas fa-download text-[10px]"></i> Unduh
+          </a>
+        </div>
+
+      </div>
+      @endforeach
+    </div>
+  </div>
 @endsection
