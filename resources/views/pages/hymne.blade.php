@@ -11,21 +11,11 @@
       <iframe class="w-full h-full" src="https://www.youtube.com/embed/_Y1Eh11feYI" title="Hymne STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
-    <div class="text-gray-600 leading-loose italic space-y-1">
-      <p>Disini kami mengabdi</p>
-      <p>Padamu ibu pertiwi</p>
-      <p>Dalam membangun negeri</p>
-      <p>Kami tingkatkan prestasi</p>
-      <p class="pt-4">Tumbuh tunas-tunas muda</p>
-      <p>Kami dari mahasiswa</p>
-      <p>Teguh berpegang tridharma</p>
-      <p>Demi pancasila jaya</p>
-      <p class="pt-4">Di STAIMAS ku serahkan</p>
-      <p>Ku gantungkan semua cita</p>
-      <p>Kan diukir jiwa dan raga</p>
-      <p>Semoga dapat karunia-Nya</p>
-      <p>Semoga dapat karunia-Nya</p>
+    <div class="mb-8">
+      <img src="{{ asset('assest/not_balok_1.webp') }}" alt="Not Balok Hymne STAIMAS" class="w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-100">
     </div>
+
+
   </div>
 
   {{-- Section Mars --}}
@@ -37,20 +27,11 @@
       <iframe class="w-full h-full" src="https://www.youtube.com/embed/1qncQHKHxcE" title="Mars STAIMAS Wonogiri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
-    <div class="text-gray-600 leading-loose font-medium space-y-1">
-      <p>Bersama dalam menuntut ilmu</p>
-      <p>Meraih cita-cita</p>
-      <p>Di dalam kampus yang tercinta</p>
-      <p>STAIMAS Wonogiri</p>
-      <p class="pt-4">Membina rohani yang islami</p>
-      <p>Berbakti pada negri</p>
-      <p>Religi kekaryaan dalam</p>
-      <p>Tridharma perguruan tinggi</p>
-      <p class="pt-4">Majulah STAIMAS Wonogiri</p>
-      <p>Jayalah STAIMAS Wonogiri</p>
-      <p>Di sini kita kan meraih mimpi</p>
-      <p>Menggapai ridho illahi</p>
+    <div class="mb-8">
+      <img src="{{ asset('assest/not_balok_2.webp') }}" alt="Not Balok Mars STAIMAS" class="w-full max-w-2xl mx-auto rounded-lg shadow-sm border border-gray-100">
     </div>
+
+
   </div>
 </div>
 @endsection
