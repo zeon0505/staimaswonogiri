@@ -102,7 +102,7 @@
         [
           'nama'    => 'Prodi Ekonomi Syariah',
           'subjudul'=> 'Jadwal Perkuliahan ES',
-          'file'    => 'assest/JADWAL PRODI EKONOMI SYARIAH.pdf',
+          'file'    => 'assest/JADWAL PERKULIAHAN PRODI ES REVISI.pdf',
           'logo'    => 'assest/ES.jpeg',
           'color'   => '#b45309',
         ],
