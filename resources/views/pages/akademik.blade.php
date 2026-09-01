@@ -159,8 +159,7 @@
             <i class="fas fa-eye text-[10px]"></i> Buka
           </a>
           <a href="{{ $fileUrl }}" download
-             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl transition-opacity hover:opacity-85 shadow-sm"
-             style="background-color: {{ $doc['color'] }};">
+             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl bg-teal-600 hover:bg-teal-700 transition-colors shadow-sm">
             <i class="fas fa-download text-[10px]"></i> Unduh
           </a>
         </div>
@@ -258,8 +257,7 @@
             <i class="fas fa-eye text-[10px]"></i> Buka
           </a>
           <a href="{{ $fileUrl }}" download
-             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl transition-opacity hover:opacity-85 shadow-sm"
-             style="background-color: {{ $doc['color'] }};">
+             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl bg-teal-600 hover:bg-teal-700 transition-colors shadow-sm">
             <i class="fas fa-download text-[10px]"></i> Unduh
           </a>
         </div>
@@ -268,4 +266,5 @@
       @endforeach
     </div>
   </div>
+
 @endsection
