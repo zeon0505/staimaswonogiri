@@ -98,7 +98,7 @@
         <tbody class="divide-y divide-gray-100">
           @foreach([
             ['1', 'Pendidikan Agama Islam (PAI)', 'S1', 'Baik / B', '2028', 'Sertifikat Akreditasi PAI.pdf'],
-            ['2', 'Komunikasi Penyiaran Islam (KPI)', 'S1', 'Baik / B', '2027', 'Sertifikat Akreditasi KPI.pdf'],
+            ['2', 'Komunikasi Penyiaran Islam (KPI)', 'S1', 'Baik / B', '2028', 'Sertifikat Akreditasi KPI.pdf'],
             ['3', 'Ekonomi Syariah (ES)', 'S1', 'Baik / B', '2028', 'Sertifikat Akreditasi ES.pdf'],
             ['4', 'Hukum Tata Negara (HTN)', 'S1', 'Baik', '2029', 'Sertifikat Akreditasi HTN.pdf']
           ] as $row)
@@ -187,7 +187,7 @@
 
       {{-- KPI --}}
       <div class="relative bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col cert-card"
-           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2027">
+           data-akreditasi="Terakreditasi BAN-PT" data-peringkat="Baik / B" data-berlaku="s/d 2028">
         <div class="relative cursor-pointer group h-52 overflow-hidden rounded-t-2xl bg-gray-100 hover-preview-trigger cert-modal-trigger" data-preview-img="{{ $assetKpiImg }}" data-preview-title="Sertifikat Akreditasi KPI" data-url="{{ $assetKpiPdf }}" data-type="pdf" data-title="Sertifikat KPI">
           <iframe src="{{ $assetKpiPdf }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
             class="w-full h-full pointer-events-none border-0 scale-[1.02]" style="min-height:208px;"

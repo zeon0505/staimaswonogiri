@@ -179,7 +179,7 @@
           <div class="h-8 w-px bg-gray-100"></div>
           <div>
             <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">Berlaku s/d</p>
-            <p class="font-semibold text-gray-700 mt-0.5">2027</p>
+            <p class="font-semibold text-gray-700 mt-0.5">2028</p>
           </div>
         </div>
          <div class="flex items-center gap-2">
