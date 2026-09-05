@@ -207,7 +207,7 @@
         [
           'nama'    => 'Prodi HTN – Kelas Karyawan Sem. 3 & 5',
           'subjudul'=> 'Hukum Tata Negara',
-          'file'    => 'assest/JADWAL PRODI HTN KELAS KARYAWAN SM 3&5.pdf',
+          'file'    => 'assest/Jadwal_Kelas_Karyawan_Gasal_20262027_FIX.docx',
           'logo'    => 'assest/HTN.jpeg',
           'color'   => '#4338ca',
         ],
