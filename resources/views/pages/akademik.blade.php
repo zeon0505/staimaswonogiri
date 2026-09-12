@@ -186,7 +186,7 @@
         [
           'nama'    => 'Kelas Karyawan Semester 1',
           'subjudul'=> 'Semua Prodi – Semester 1',
-          'file'    => 'assest/JADWAL KELAS KARYAWAN SEMESTER 1.pdf',
+          'file'    => 'assest/JADWAL KELAS KARYAWAN SEMESTER 1 -2.pdf',
           'logo'    => 'assest/LOGO STAIMAS AI.png',
           'color'   => '#0f766e',
         ],
