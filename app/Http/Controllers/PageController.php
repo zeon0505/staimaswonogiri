@@ -42,7 +42,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'PAI')->orderBy('urutan')->get();
         return view('pages.pai', [
             'title' => 'Pendidikan Agama Islam (PAI)', 
-            'subtitle' => 'Program Studi Pendidikan Agama Islam – Jenjang S1',
+            'subtitle' => 'Program Studi Pendidikan Agama Islam â€“ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -52,7 +52,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'KPI')->orderBy('urutan')->get();
         return view('pages.kpi', [
             'title' => 'Komunikasi dan Penyiaran Islam (KPI)', 
-            'subtitle' => 'Program Studi Komunikasi dan Penyiaran Islam – Jenjang S1',
+            'subtitle' => 'Program Studi Komunikasi dan Penyiaran Islam â€“ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -62,7 +62,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'ES')->orderBy('urutan')->get();
         return view('pages.es', [
             'title' => 'Ekonomi Syariah (ES)', 
-            'subtitle' => 'Program Studi Ekonomi Syariah – Jenjang S1',
+            'subtitle' => 'Program Studi Ekonomi Syariah â€“ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -72,7 +72,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'HTN')->orderBy('urutan')->get();
         return view('pages.hukum', [
             'title' => 'Hukum Tata Negara (HTN)', 
-            'subtitle' => 'Program Studi Hukum Tata Negara – Jenjang S1',
+            'subtitle' => 'Program Studi Hukum Tata Negara â€“ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -324,39 +324,51 @@ class PageController extends Controller
 
     public function beritaShow($slug)
     {
-        $berita = Berita::where('slug', $slug)->firstOrFail();
+        $berita = Berita::where("slug", $slug)->firstOrFail();
         
-        $prev = Berita::where('aktif', true)
-                      ->where('tanggal', '<', $berita->tanggal)
-                      ->orderBy('tanggal', 'desc')
+        $prev = Berita::where("aktif", true)
+                      ->where("tanggal", "<", $berita->tanggal)
+                      ->orderBy("tanggal", "desc")
                       ->first();
                       
-        $next = Berita::where('aktif', true)
-                      ->where('tanggal', '>', $berita->tanggal)
-                      ->orderBy('tanggal', 'asc')
+        $next = Berita::where("aktif", true)
+                      ->where("tanggal", ">", $berita->tanggal)
+                      ->orderBy("tanggal", "asc")
                       ->first();
 
-        $related = Berita::where('aktif', true)
-                         ->where('kategori_id', $berita->kategori_id)
-                         ->where('id', '!=', $berita->id)
-                         ->orderBy('tanggal', 'desc')
+        $related = Berita::where("aktif", true)
+                         ->where("kategori_id", $berita->kategori_id)
+                         ->where("id", "!=", $berita->id)
+                         ->orderBy("tanggal", "desc")
                          ->take(5)
                          ->get();
 
-        $otherBeritas = Berita::where('aktif', true)
-                              ->where('id', '!=', $berita->id)
-                              ->orderBy('tanggal', 'desc')
+        $otherBeritas = Berita::where("aktif", true)
+                              ->where("id", "!=", $berita->id)
+                              ->orderBy("tanggal", "desc")
                               ->take(5)
                               ->get();
-                                 
-        return view('pages.berita-detail', [
-            'title' => $berita->judul,
-            'subtitle' => 'Berita STAIMAS',
-            'berita' => $berita,
-            'related' => $related,
-            'otherBeritas' => $otherBeritas,
-            'prev' => $prev,
-            'next' => $next
+
+        $ogImage = $berita->gambar 
+            ? (str_starts_with($berita->gambar, "http") ? $berita->gambar : asset("storage/" . $berita->gambar))
+            : asset("assest/LOGO STAIMAS AI.png");
+
+        $ogDesc = \Illuminate\Support\Str::limit(trim(preg_replace("/\s+/", " ", strip_tags($berita->konten))), 160);
+
+        return view("pages.berita-detail", [
+            "title"         => $berita->judul,
+            "subtitle"      => "Berita STAIMAS",
+            "description"   => $ogDesc,
+            "berita"        => $berita,
+            "related"       => $related,
+            "otherBeritas"  => $otherBeritas,
+            "prev"          => $prev,
+            "next"          => $next,
+            "ogTitle"       => $berita->judul,
+            "ogDescription" => $ogDesc,
+            "ogImage"       => $ogImage,
+            "ogType"        => "article",
+            "ogUrl"         => url()->current(),
         ]);
     }
 

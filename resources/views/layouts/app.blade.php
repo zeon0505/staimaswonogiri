@@ -3,8 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $title ?? 'STAIMAS Wonogiri' }} – Sekolah Tinggi Agama Islam Mulia Astuti</title>
-  <meta name="description" content="{{ $description ?? 'STAIMAS Wonogiri – Kampus Islami terpercaya di Jawa Tengah.' }}" />
+  <title>{{ $title ?? 'STAIMAS Wonogiri' }} â€“ Sekolah Tinggi Agama Islam Mulia Astuti</title>
+  <meta name="description" content="{{ $description ?? 'STAIMAS Wonogiri â€“ Kampus Islami terpercaya di Jawa Tengah.' }}" />
+  <!-- OPEN GRAPH / SOCIAL MEDIA SHARE META TAGS (WHATSAPP, FACEBOOK, TELEGRAM) -->
+  <meta property="og:site_name" content="STAIMAS Wonogiri" />
+  <meta property="og:title" content="{{ $ogTitle ?? ($title ?? "STAIMAS Wonogiri") }}" />
+  <meta property="og:description" content="{{ $ogDescription ?? ($description ?? "STAIMAS Wonogiri – Sekolah Tinggi Agama Islam Mulia Astuti Wonogiri") }}" />
+  <meta property="og:type" content="{{ $ogType ?? "website" }}" />
+  <meta property="og:url" content="{{ $ogUrl ?? url()->current() }}" />
+  @if(!empty($ogImage))
+  <meta property="og:image" content="{{ $ogImage }}" />
+  <meta property="og:image:secure_url" content="{{ $ogImage }}" />
+  @else
+  <meta property="og:image" content="{{ asset("assest/LOGO STAIMAS AI.png") }}" />
+  <meta property="og:image:secure_url" content="{{ asset("assest/LOGO STAIMAS AI.png") }}" />
+  @endif
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ $ogTitle ?? ($title ?? "STAIMAS Wonogiri") }}" />
+  <meta name="twitter:description" content="{{ $ogDescription ?? ($description ?? "STAIMAS Wonogiri – Sekolah Tinggi Agama Islam Mulia Astuti Wonogiri") }}" />
+  @if(!empty($ogImage))
+  <meta name="twitter:image" content="{{ $ogImage }}" />
+  @else
+  <meta name="twitter:image" content="{{ asset("assest/LOGO STAIMAS AI.png") }}" />
+  @endif
   <link rel="icon" type="image/png" href="{{ asset('assest/LOGO STAIMAS AI.png') }}" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -302,7 +325,7 @@
       </div>
     </div>
     <div class="border-t border-teal-800 py-4 text-center text-[10px] text-gray-500">
-      © 2026 STAIMAS Wonogiri. All Rights Reserved.
+      Â© 2026 STAIMAS Wonogiri. All Rights Reserved.
     </div>
   </footer>
 
