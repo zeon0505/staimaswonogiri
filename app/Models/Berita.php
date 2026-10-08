@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
 class Berita extends Model
 {
     use HasUuids;
 
-    protected $fillable = ['kategori_id', 'judul', 'slug', 'link', 'konten', 'gambar', 'tanggal', 'aktif'];
-    protected $casts = ['aktif' => 'boolean', 'tanggal' => 'date'];
+    protected $fillable = ['kategori_id', 'judul', 'slug', 'link', 'konten', 'gambar', 'tanggal', 'aktif', 'views'];
+    protected $casts = ['aktif' => 'boolean', 'tanggal' => 'date', 'views' => 'integer'];
 
     public function kategori()
     {

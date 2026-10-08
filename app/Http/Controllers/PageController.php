@@ -42,7 +42,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'PAI')->orderBy('urutan')->get();
         return view('pages.pai', [
             'title' => 'Pendidikan Agama Islam (PAI)', 
-            'subtitle' => 'Program Studi Pendidikan Agama Islam â€“ Jenjang S1',
+            'subtitle' => 'Program Studi Pendidikan Agama Islam Ã¢â‚¬â€œ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -52,7 +52,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'KPI')->orderBy('urutan')->get();
         return view('pages.kpi', [
             'title' => 'Komunikasi dan Penyiaran Islam (KPI)', 
-            'subtitle' => 'Program Studi Komunikasi dan Penyiaran Islam â€“ Jenjang S1',
+            'subtitle' => 'Program Studi Komunikasi dan Penyiaran Islam Ã¢â‚¬â€œ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -62,7 +62,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'ES')->orderBy('urutan')->get();
         return view('pages.es', [
             'title' => 'Ekonomi Syariah (ES)', 
-            'subtitle' => 'Program Studi Ekonomi Syariah â€“ Jenjang S1',
+            'subtitle' => 'Program Studi Ekonomi Syariah Ã¢â‚¬â€œ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -72,7 +72,7 @@ class PageController extends Controller
         $dosens = Dosen::where('aktif', true)->where('program_studi', 'HTN')->orderBy('urutan')->get();
         return view('pages.hukum', [
             'title' => 'Hukum Tata Negara (HTN)', 
-            'subtitle' => 'Program Studi Hukum Tata Negara â€“ Jenjang S1',
+            'subtitle' => 'Program Studi Hukum Tata Negara Ã¢â‚¬â€œ Jenjang S1',
             'dosens' => $dosens
         ]);
     }
@@ -325,6 +325,7 @@ class PageController extends Controller
     public function beritaShow($slug)
     {
         $berita = Berita::where("slug", $slug)->firstOrFail();
+        $berita->increment("views");
         
         $prev = Berita::where("aktif", true)
                       ->where("tanggal", "<", $berita->tanggal)

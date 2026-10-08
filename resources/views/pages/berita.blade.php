@@ -37,7 +37,7 @@
             @if($featured->kategori)
             <span class="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full">{{ $featured->kategori->nama }}</span>
             @endif
-            <span class="text-xs text-gray-400">{{ $featured->tanggal->isoFormat('D MMMM Y') }}</span>
+            <div class="flex items-center gap-3 text-xs text-gray-400"><span class="flex items-center gap-1"><i class="fas fa-calendar-alt text-teal-600"></i> {{ $featured->tanggal->isoFormat('D MMMM Y') }}</span><span class="flex items-center gap-1 text-gray-500 font-semibold"><i class="fas fa-eye text-teal-600"></i> {{ number_format($featured->views ?? 0, 0, ',', '.') }}x Dilihat</span></div>
           </div>
           <h2 class="text-xl font-extrabold text-gray-800 leading-snug group-hover:text-teal-700 transition-colors">{{ $featured->judul }}</h2>
           <p class="text-sm text-gray-500 leading-relaxed">{{ Str::limit(strip_tags($featured->konten), 160) }}</p>
@@ -67,7 +67,7 @@
       <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
         <div class="space-y-2">
           <h3 class="font-bold text-gray-800 text-sm leading-snug group-hover:text-teal-700 transition-colors">{{ $berita->judul }}</h3>
-          <span class="flex items-center gap-1 text-xs text-gray-400"><i class="fas fa-calendar-alt text-teal-500 text-[10px]"></i> {{ $berita->tanggal->isoFormat('D MMMM Y') }}</span>
+          <div class="flex items-center justify-between text-xs text-gray-400 pt-0.5"><span class="flex items-center gap-1"><i class="fas fa-calendar-alt text-teal-500 text-[10px]"></i> {{ $berita->tanggal->isoFormat('D MMMM Y') }}</span><span class="flex items-center gap-1 text-gray-500 font-medium"><i class="fas fa-eye text-teal-600 text-[11px]"></i> {{ number_format($berita->views ?? 0, 0, ',', '.') }}</span></div>
           <p class="text-xs text-gray-500 leading-relaxed">{{ Str::limit(strip_tags($berita->konten), 90) }}</p>
         </div>
         <span class="text-xs font-bold text-teal-700 flex items-center gap-1 group-hover:gap-2 transition-all">Baca Selengkapnya <i class="fas fa-arrow-right text-[10px]"></i></span>

@@ -34,7 +34,11 @@
           </div>
           <div class="flex items-center gap-2 text-gray-500">
             <i class="fas fa-user text-teal-600"></i>
-            <span>Redaksi PAI</span>
+            <span>Redaksi STAIMAS</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full text-xs border border-gray-100 font-semibold">
+            <i class="fas fa-eye text-teal-600"></i>
+            <span>{{ number_format($berita->views ?? 0, 0, ',', '.') }} Kali Dilihat</span>
           </div>
         </div>
 
@@ -70,23 +74,23 @@
       <div class="grid grid-cols-2 gap-4 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
         <div>
           @if($prev)
-          <span class="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">← Post Sebelumnya</span>
+          <span class="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">â† Post Sebelumnya</span>
           <a href="{{ route('pages.berita.show', $prev->slug) }}" class="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 line-clamp-2 mt-1.5 transition-colors">
             {{ $prev->judul }}
           </a>
           @else
-          <span class="text-[10px] font-bold text-gray-300 block uppercase tracking-wider">← Post Sebelumnya</span>
+          <span class="text-[10px] font-bold text-gray-300 block uppercase tracking-wider">â† Post Sebelumnya</span>
           <span class="text-xs sm:text-sm text-gray-400 block mt-1.5">Tidak ada berita sebelumnya</span>
           @endif
         </div>
         <div class="text-right border-l border-gray-100 pl-4">
           @if($next)
-          <span class="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">Post Selanjutnya →</span>
+          <span class="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">Post Selanjutnya â†’</span>
           <a href="{{ route('pages.berita.show', $next->slug) }}" class="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 line-clamp-2 mt-1.5 transition-colors">
             {{ $next->judul }}
           </a>
           @else
-          <span class="text-[10px] font-bold text-gray-300 block uppercase tracking-wider">Post Selanjutnya →</span>
+          <span class="text-[10px] font-bold text-gray-300 block uppercase tracking-wider">Post Selanjutnya â†’</span>
           <span class="text-xs sm:text-sm text-gray-400 block mt-1.5">Tidak ada berita selanjutnya</span>
           @endif
         </div>
