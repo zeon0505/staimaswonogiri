@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 space-y-8">
@@ -19,24 +19,23 @@
   </p>
 
   <!-- BANNER PORTAL PERPUSTAKAAN DIGITAL (E-PUSTAKA ECAMPUZ) -->
-  <div class="p-6 sm:p-8 bg-gradient-to-r from-teal-800 to-teal-900 rounded-2xl text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,179,8,0.15),transparent_60%)]"></div>
+  <div style="background-color: #074e50; background-image: linear-gradient(135deg, #074e50 0%, #032d2e 100%); border: 2px solid #043234;" class="p-6 sm:p-8 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
     <div class="relative z-10 flex items-center gap-5">
-      <div class="w-14 h-14 rounded-2xl bg-yellow-500 text-gray-950 flex items-center justify-center shrink-0 shadow-md">
+      <div style="background-color: #eab308; color: #000000;" class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 shadow-md">
         <i class="fas fa-book-open text-2xl"></i>
       </div>
-      <div class="space-y-1">
-        <span class="inline-block bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">
+      <div class="space-y-1.5">
+        <span style="background-color: #fde047; color: #000000; font-weight: 800; border: 1px solid #eab308;" class="inline-block px-3 py-1 rounded-full text-xs uppercase tracking-wider">
           Portal eCampuz GT-Pustaka Online
         </span>
-        <h3 class="font-extrabold text-xl leading-snug">Akses Katalog & Layanan Pustaka Digital</h3>
-        <p class="text-xs text-teal-100 leading-relaxed">
+        <h3 style="color: #ffffff; margin: 4px 0;" class="font-extrabold text-xl sm:text-2xl leading-snug">Akses Katalog & Layanan Pustaka Digital</h3>
+        <p style="color: #e2e8f0; margin: 0;" class="text-xs sm:text-sm leading-relaxed max-w-xl font-medium">
           Cari koleksi buku, cek ketersediaan pustaka, dan akses portal perpustakaan digital eCampuz STAIMAS secara online.
         </p>
       </div>
     </div>
-    <a href="https://staimaswonogiri.ecampuz.com/gtpustaka_portal/" target="_blank" class="relative z-10 inline-flex items-center gap-2 px-6 py-3.5 bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-extrabold text-sm rounded-xl shadow-lg transition-all shrink-0">
-      <span>Ke Halaman eCampuz Pustaka</span>
+    <a href="https://staimaswonogiri.ecampuz.com/gtpustaka_portal/" target="_blank" style="background-color: #eab308; color: #000000; text-decoration: none;" class="relative z-10 inline-flex items-center gap-2 px-6 py-3.5 font-extrabold text-sm rounded-xl shadow-lg transition-all shrink-0 hover:opacity-90">
+      <span style="color: #000000;">Ke Halaman eCampuz Pustaka</span>
       <i class="fas fa-arrow-right text-xs"></i>
     </a>
   </div>
