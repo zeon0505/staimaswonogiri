@@ -16,17 +16,22 @@
   </p>
 
   <!-- BANNER PORTAL PERPUSTAKAAN DIGITAL (E-PUSTAKA ECAMPUZ) -->
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border border-gray-200 rounded-xl p-5 bg-gray-50">
-    <div class="flex items-center gap-3">
-      <i class="fas fa-book-reader text-teal-700 text-xl"></i>
-      <div>
-        <p class="font-bold text-gray-800 text-sm">Portal Perpustakaan Digital eCampuz</p>
-        <p class="text-gray-500 text-xs mt-0.5">Akses katalog buku, cek ketersediaan, dan layanan pustaka online STAIMAS</p>
+  <div class="p-6 sm:p-8 border-2 border-gray-200 rounded-2xl bg-gray-50 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-5">
+      <div class="w-14 h-14 rounded-2xl bg-teal-700 text-white flex items-center justify-center shrink-0">
+        <i class="fas fa-book-open text-2xl"></i>
+      </div>
+      <div class="space-y-1">
+        <p class="text-xs font-bold text-teal-700 uppercase tracking-wider">Portal eCampuz GT-Pustaka Online</p>
+        <h3 class="font-extrabold text-xl text-gray-800 leading-snug">Akses Katalog & Layanan Pustaka Digital</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Cari koleksi buku, cek ketersediaan pustaka, dan akses portal perpustakaan digital eCampuz STAIMAS secara online.
+        </p>
       </div>
     </div>
     <a href="https://staimaswonogiri.ecampuz.com/gtpustaka_portal/" target="_blank"
-       class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-semibold text-sm rounded-lg transition-all shrink-0">
-      Buka eCampuz Pustaka <i class="fas fa-external-link-alt text-xs"></i>
+       class="inline-flex items-center gap-2 px-6 py-3.5 bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm rounded-xl shadow transition-all shrink-0">
+      Ke Halaman eCampuz Pustaka <i class="fas fa-arrow-right text-xs"></i>
     </a>
   </div>
 
