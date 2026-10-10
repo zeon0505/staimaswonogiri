@@ -64,6 +64,7 @@
       <div class="flex items-center gap-4">
         <a href="https://staimaswonogiri.ecampuz.com/eadmisi/" target="_blank" class="bg-gold-brand text-gray-900 px-3 py-1 rounded font-semibold hover:bg-yellow-600 transition-colors"><i class="fas fa-user-plus mr-1"></i> PMB 2026</a>
         <a href="https://staimaswonogiri.ecampuz.com/eakademikportal/" target="_blank" class="hover:text-gold-brand transition-colors">SIAKAD</a>
+        <a href="https://staimaswonogiri.ecampuz.com/gtpustaka_portal/" target="_blank" class="hover:text-gold-brand transition-colors">E-Pustaka</a>
         <a href="https://e-journal.staimaswonogiri.ac.id/" target="_blank" class="hover:text-gold-brand transition-colors">E-Journal</a>
         <div class="flex items-center gap-2.5 ml-2 border-l border-teal-800 pl-3">
           <a href="https://www.facebook.com/people/staimaswonogiri/100068071263429/" target="_blank" class="hover:text-gold-brand transition-colors"><i class="fab fa-facebook-f"></i></a>
