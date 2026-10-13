@@ -100,6 +100,7 @@
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-60 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
               <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-graduation-cap w-4 text-teal-brand"></i> Akademik</a></li>
+              <li><a href="{{ asset('assest/JADWAL TTS GANJIL 2026.pdf') }}" target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-calendar-check w-4 text-teal-brand"></i> Jadwal TTS Ganjil 2026</a></li>
               <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-database w-4 text-teal-brand"></i> Pusat Data & Informasi</a></li>
               <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-book-open w-4 text-teal-brand"></i> Program Studi</a></li>
               <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all"><i class="fas fa-chalkboard-teacher w-4 text-teal-brand"></i> Dosen & Staff</a></li>
@@ -190,6 +191,7 @@
           </button>
           <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
             <li><a href="{{ route('pages.akademik') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-graduation-cap text-teal-brand/60 text-xs w-3"></i> Akademik</a></li>
+            <li><a href="{{ asset('assest/JADWAL TTS GANJIL 2026.pdf') }}" target="_blank" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-calendar-check text-teal-brand/60 text-xs w-3"></i> Jadwal TTS Ganjil 2026</a></li>
             <li><a href="{{ route('pages.pusat-data') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-database text-teal-brand/60 text-xs w-3"></i> Pusat Data & Informasi</a></li>
             <li><a href="{{ route('pages.program-studi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-list text-teal-brand/60 text-xs w-3"></i> Program Studi</a></li>
             <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-chalkboard-teacher text-teal-brand/60 text-xs w-3"></i> Dosen & Staff</a></li>
