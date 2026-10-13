@@ -44,9 +44,6 @@
       <div class="bg-teal-700 text-white rounded-2xl p-6">
         <h3 class="font-bold text-lg mb-4">Akses Cepat</h3>
         <div class="space-y-3">
-          <a href="#jadwal-tts" class="flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-teal-950 font-bold p-3 rounded-xl text-sm transition-all shadow-sm">
-            <i class="fas fa-calendar-check text-teal-900 text-base"></i> Jadwal TTS Ganjil 2026
-          </a>
           <a href="https://staimaswonogiri.ecampuz.com/eakademikportal/" target="_blank" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 p-3 rounded-xl text-sm transition-colors">
             <i class="fas fa-laptop-code text-yellow-400"></i> SIAKAD Mahasiswa
           </a>
@@ -71,89 +68,6 @@
     </div>
   </div>
 
-  <!-- Jadwal Tes Tengah Semester (TTS) Ganjil 2026/2027 -->
-  <div id="jadwal-tts" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 space-y-6 scroll-mt-24">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-5">
-      <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 bg-teal-50 text-teal-700 rounded-2xl flex items-center justify-center text-xl shrink-0 shadow-sm border border-teal-100/50">
-          <i class="fas fa-calendar-check"></i>
-        </div>
-        <div>
-          <div class="flex flex-wrap items-center gap-2 mb-1">
-            <h2 class="text-xl font-bold text-gray-800">Jadwal Tes Tengah Semester (TTS) Ganjil 2026/2027</h2>
-            <span class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-full tracking-wide">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span> Terbaru
-            </span>
-          </div>
-          <p class="text-xs text-gray-500">Jadwal resmi pelaksanaan ujian Tes Tengah Semester (TTS) Semester Ganjil TA 2026/2027 untuk seluruh program studi.</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2.5 shrink-0">
-        <a href="{{ asset('assest/JADWAL TTS GANJIL 2026.pdf') }}" target="_blank"
-           class="inline-flex items-center gap-2 px-4 py-2.5 border border-gray-200 hover:bg-gray-50 text-gray-700 font-bold text-xs rounded-xl transition-all shadow-sm">
-          <i class="fas fa-external-link-alt text-[11px]"></i> Buka Dokumen
-        </a>
-        <a href="{{ asset('assest/JADWAL TTS GANJIL 2026.pdf') }}" download
-           class="inline-flex items-center gap-2 px-5 py-2.5 text-white font-bold text-xs rounded-xl bg-teal-700 hover:bg-teal-800 transition-all shadow-sm">
-          <i class="fas fa-download text-[11px]"></i> Unduh PDF
-        </a>
-      </div>
-    </div>
-
-    <!-- Informasi Program Studi yang Tercakup -->
-    <div>
-      <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2.5">Program Studi Tercakup:</p>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex items-center gap-2.5 hover:bg-teal-50/40 transition-colors">
-          <div class="w-8 h-8 rounded-lg overflow-hidden bg-white p-0.5 border border-gray-100 shrink-0">
-            <img src="{{ asset('assest/ES.jpeg') }}" alt="ES" class="w-full h-full object-contain">
-          </div>
-          <div class="min-w-0">
-            <p class="text-xs font-bold text-gray-800 truncate">Ekonomi Syariah</p>
-            <p class="text-[10px] text-gray-400">Sem. 1, 3, 5, 7</p>
-          </div>
-        </div>
-        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex items-center gap-2.5 hover:bg-teal-50/40 transition-colors">
-          <div class="w-8 h-8 rounded-lg overflow-hidden bg-white p-0.5 border border-gray-100 shrink-0">
-            <img src="{{ asset('assest/LOGO PRODI KPI.png') }}" alt="KPI" class="w-full h-full object-contain">
-          </div>
-          <div class="min-w-0">
-            <p class="text-xs font-bold text-gray-800 truncate">Komunikasi & Penyiaran Islam</p>
-            <p class="text-[10px] text-gray-400">Sem. 1, 3, 5</p>
-          </div>
-        </div>
-        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex items-center gap-2.5 hover:bg-teal-50/40 transition-colors">
-          <div class="w-8 h-8 rounded-lg overflow-hidden bg-white p-0.5 border border-gray-100 shrink-0">
-            <img src="{{ asset('assest/HTN.jpeg') }}" alt="HTN" class="w-full h-full object-contain">
-          </div>
-          <div class="min-w-0">
-            <p class="text-xs font-bold text-gray-800 truncate">Hukum Tata Negara</p>
-            <p class="text-[10px] text-gray-400">Sem. 1, 3, 5, 7</p>
-          </div>
-        </div>
-        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex items-center gap-2.5 hover:bg-teal-50/40 transition-colors">
-          <div class="w-8 h-8 rounded-lg overflow-hidden bg-white p-0.5 border border-gray-100 shrink-0">
-            <img src="{{ asset('assest/PAI.jpeg') }}" alt="PAI" class="w-full h-full object-contain">
-          </div>
-          <div class="min-w-0">
-            <p class="text-xs font-bold text-gray-800 truncate">Pendidikan Agama Islam</p>
-            <p class="text-[10px] text-gray-400">Sem. 1, 3, 5</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PDF Embed Viewer -->
-    <div class="relative bg-gray-100 rounded-xl overflow-hidden border border-gray-200" style="height: 560px;">
-      <iframe
-        src="{{ asset('assest/JADWAL TTS GANJIL 2026.pdf') }}#toolbar=1&navpanes=0&view=FitH"
-        class="w-full h-full border-0"
-        loading="lazy"
-        title="Jadwal Tes Tengah Semester (TTS) Ganjil 2026/2027"
-      ></iframe>
-    </div>
-  </div>
-
   <!-- Kalender & Jadwal Akademik (Full-width, 3 kolom) -->
   <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
     <div class="flex items-center gap-3 mb-2">
@@ -170,13 +84,6 @@
           'file'    => 'assest/258 SK KALDIK 2026.pdf',
           'logo'    => 'assest/LOGO STAIMAS AI.png',
           'color'   => '#0f766e',
-        ],
-        [
-          'nama'    => 'Jadwal TTS Ganjil',
-          'subjudul'=> 'Tes Tengah Semester TA 2026/2027',
-          'file'    => 'assest/JADWAL TTS GANJIL 2026.pdf',
-          'logo'    => 'assest/LOGO STAIMAS AI.png',
-          'color'   => '#d97706',
         ],
         [
           'nama'    => 'Prodi PAI',
@@ -262,7 +169,71 @@
     </div>
   </div>
 
-</div>
+  <!-- Jadwal TTS (Tes Tengah Semester) 2026/2027 -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+    <div class="flex items-center gap-3 mb-2">
+      <div class="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center text-teal-700"><i class="fas fa-calendar-check"></i></div>
+      <h2 class="text-xl font-bold text-gray-800">Jadwal TTS (Tes Tengah Semester) 2026/2027</h2>
+    </div>
+    <p class="text-xs text-gray-400 mb-7 ml-[52px]">Klik kartu untuk membuka, atau gunakan tombol unduh untuk menyimpan dokumen.</p>
+
+    @php
+      $jadwalTTS = [
+        [
+          'nama'    => 'Jadwal TTS Ganjil 2026',
+          'subjudul'=> 'Semua Prodi (ES, KPI, HTN, PAI)',
+          'file'    => 'assest/JADWAL TTS GANJIL 2026.pdf',
+          'logo'    => 'assest/LOGO STAIMAS AI.png',
+          'color'   => '#0f766e',
+        ],
+      ];
+    @endphp
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @foreach($jadwalTTS as $doc)
+      @php $fileUrl = asset($doc['file']); @endphp
+      <div class="rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col bg-white">
+
+        {{-- PDF Preview (Scrollable iframe) --}}
+        <div class="relative bg-gray-50 overflow-hidden border-b border-gray-100" style="height: 230px;">
+          <iframe
+            src="{{ $fileUrl }}#toolbar=0&navpanes=0&view=FitH&page=1"
+            class="w-full border-0"
+            style="height: 100%;"
+            loading="lazy"
+            title="Preview {{ $doc['nama'] }}"
+          ></iframe>
+        </div>
+
+        {{-- Judul di bawah preview --}}
+        <div class="px-4 pt-3 pb-2">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-md overflow-hidden flex items-center justify-center bg-gray-50 border border-gray-100 shrink-0 p-0.5">
+              <img src="{{ asset($doc['logo']) }}" alt="{{ $doc['nama'] }}" class="w-full h-full object-contain">
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-bold text-gray-900 leading-tight">{{ $doc['nama'] }}</p>
+              <p class="text-[10px] text-gray-400">{{ $doc['subjudul'] }}</p>
+            </div>
+          </div>
+        </div>
+
+        {{-- Tombol Aksi --}}
+        <div class="flex gap-2 px-4 pb-4 mt-auto">
+          <a href="{{ $fileUrl }}" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 border border-gray-200 hover:bg-gray-50 text-gray-600 font-bold text-xs py-2 rounded-xl transition-colors">
+            <i class="fas fa-eye text-[10px]"></i> Buka
+          </a>
+          <a href="{{ $fileUrl }}" download
+             class="flex-1 flex items-center justify-center gap-1.5 text-white font-bold text-xs py-2 rounded-xl bg-teal-600 hover:bg-teal-700 transition-colors shadow-sm">
+            <i class="fas fa-download text-[10px]"></i> Unduh
+          </a>
+        </div>
+
+      </div>
+      @endforeach
+    </div>
+  </div>
 
   <!-- Jadwal Kelas Karyawan (Full-width) -->
   <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
@@ -300,7 +271,7 @@
         [
           'nama'    => 'Prodi HTN – Kelas Karyawan Sem. 3 & 5',
           'subjudul'=> 'Hukum Tata Negara',
-          'file'    => 'assest/Jadwal_Kelas_Karyawan_Gasal_20262027_FIX.docx',
+          'file'    => 'assest/JADWAL PRODI HTN KELAS KARYAWAN SM 3&5.pdf',
           'logo'    => 'assest/HTN.jpeg',
           'color'   => '#4338ca',
         ],
@@ -360,4 +331,5 @@
     </div>
   </div>
 
+</div>
 @endsection
