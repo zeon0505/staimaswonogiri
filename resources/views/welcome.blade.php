@@ -667,7 +667,7 @@
               class="w-full h-full object-cover"
               style="object-position: center 10%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">Dr. RUSLINA DWI WAHYUNI, S.Sos., M.A.P</h4>
+          <h4 class="font-bold text-gray-900 text-sm">Dr. Ruslina Dwi Wahyuni,M.A.P</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi Hukum Tata Negara</p>
 
           <!-- Hover Overlay Info -->
