@@ -547,7 +547,7 @@
               class="w-full h-full object-cover"
               style="object-position: center 5%;">
           </div>
-          <h4 class="font-bold text-gray-900 text-sm">RATIH</h4>
+          <h4 class="font-bold text-gray-900 text-sm">Ratih, M.Pd</h4>
           <p class="text-xs text-teal-brand font-semibold mt-1">Kepala Program Studi PAI</p>
           
           <!-- Hover Overlay Info -->
