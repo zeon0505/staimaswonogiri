@@ -172,7 +172,7 @@
           <div class="h-8 w-px bg-gray-100"></div>
           <div>
             <p class="text-[10px] font-semibold uppercase tracking-wide text-gray-400">Peringkat</p>
-            <p class="font-semibold text-gray-700 mt-0.5">Baik / B</p>
+            <p class="font-semibold text-gray-700 mt-0.5">Baik</p>
           </div>
           <div class="h-8 w-px bg-gray-100"></div>
           <div>
