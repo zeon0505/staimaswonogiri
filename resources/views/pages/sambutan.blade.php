@@ -22,7 +22,7 @@
   <div class="space-y-6">
     <div class="bg-teal-700 text-white rounded-2xl p-6">
       <h3 class="font-bold text-lg mb-2">Visi STAIMAS</h3>
-      <p class="text-sm text-teal-100 leading-relaxed">"Menjadi Perguruan Tinggi Islam yang Unggul, Bermutu, dan Berdaya Saing pada Tahun 2035"</p>
+      <p class="text-sm text-teal-100 leading-relaxed">"Menjadi Perguruan Tinggi Islam yang Unggul, Bermutu, dan Berdaya Saing pada Tahun 2026"</p>
     </div>
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
       <h3 class="font-bold text-gray-800 mb-4">Informasi Kontak</h3>
