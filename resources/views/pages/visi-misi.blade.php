@@ -16,17 +16,22 @@
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200 text-sm">
-          <tr><td class="px-6 py-4">Dokumen Pemutakhiran VMTS</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/08/dokumen-pemutakhiran-VMTS.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Induk Pengembangan STAIMAS 2017-2041</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/?page_id=5176" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Strategis STAIMAS 2017-2021 (milestone I)</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/08/PEMUTAKHIRAN-RENSTRA-2017-2021-STAIMAS.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Strategis STAIMAS 2017-2021 (milestone II)</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2023/09/renstra-milestone-2.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2018</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/11/RENOP-STAIMAS-2018.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2019</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/11/RENOP-STAIMAS-2019.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2020</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/11/RENOP-STAIMAS-2020.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2021</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2022/11/RENOP-STAIMAS-2021.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2022</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2023/06/RENOP-2022.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Rencana Operasional STAIMAS 2023</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/wp-content/uploads/2023/06/RENOP-2023.pdf" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
-          <tr><td class="px-6 py-4">Indikator Kinerja Tambahan</td><td class="px-6 py-4"><a href="https://www.staimaswonogiri.ac.id/?page_id=5181" class="text-teal-600 hover:underline" target="_blank">Klik disini</a></td></tr>
+          <tr>
+            <td class="px-6 py-4 font-medium text-gray-800">Statuta STAIMAS Wonogiri</td>
+            <td class="px-6 py-4">
+              <a href="{{ asset('assest/STATUTA STAIMAS-1.pdf') }}" class="text-teal-600 hover:underline inline-flex items-center gap-1.5 font-medium" target="_blank">
+                <i class="fas fa-file-pdf text-red-500"></i> Klik disini
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 font-medium text-gray-800">Rencana Strategis (RENSTRA) STAIMAS 2022–2026 (Milestone II)</td>
+            <td class="px-6 py-4">
+              <a href="{{ asset('assest/renstra-milestone-2.pdf') }}" class="text-teal-600 hover:underline inline-flex items-center gap-1.5 font-medium" target="_blank">
+                <i class="fas fa-file-pdf text-red-500"></i> Klik disini
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
