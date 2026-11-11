@@ -157,8 +157,36 @@
             </ul>
           </li>
 
-          <li><a href="{{ route('pages.berita') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.berita') || request()->routeIs('pages.berita.show') ? 'text-teal-brand font-bold' : '' }}">BERITA</a></li>
-          <li><a href="{{ route('pages.pengumuman') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.pengumuman') ? 'text-teal-brand font-bold' : '' }}">PENGUMUMAN</a></li>
+          <li class="nav-item-dropdown relative">
+            <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap {{ request()->routeIs('pages.berita*') || request()->routeIs('pages.pengumuman*') ? 'text-teal-brand font-bold' : '' }}">
+              BERITA & PENGUMUMAN <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-64 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
+              <li>
+                <a href="{{ route('home') }}#berita" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita Kampus
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('home') }}#poster" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <i class="fas fa-bullhorn w-4 text-teal-brand"></i> Pengumuman & Poster
+                </a>
+              </li>
+              <li class="border-t border-gray-100 my-1"></li>
+              <li>
+                <a href="{{ route('pages.berita') }}" class="flex items-center justify-between px-4 py-2 text-xs text-gray-500 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <span class="flex items-center gap-2"><i class="fas fa-arrow-up-right-from-square text-[10px] text-teal-brand"></i> Halaman Semua Berita</span>
+                  <i class="fas fa-chevron-right text-[9px] text-gray-300"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('pages.pengumuman') }}" class="flex items-center justify-between px-4 py-2 text-xs text-gray-500 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
+                  <span class="flex items-center gap-2"><i class="fas fa-arrow-up-right-from-square text-[10px] text-teal-brand"></i> Halaman Semua Pengumuman</span>
+                  <i class="fas fa-chevron-right text-[9px] text-gray-300"></i>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.akreditasi') ? 'text-teal-brand font-bold' : '' }}">AKREDITASI</a></li>
           <li><a href="{{ route('pages.formulir') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.formulir') ? 'text-teal-brand font-bold' : '' }}">FORMULIR</a></li>
         </ul>
@@ -254,9 +282,19 @@
           </ul>
         </li>
 
-        <!-- BERITA, PENGUMUMAN & AKREDITASI -->
-        <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita</a></li>
-        <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-bell w-4 text-teal-brand"></i> Pengumuman</a></li>
+        <!-- BERITA & PENGUMUMAN -->
+        <li>
+          <button class="mobile-sub-toggle w-full flex justify-between items-center py-3 border-b border-gray-100 text-sm font-semibold text-gray-700">
+            <span class="flex items-center gap-3"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita & Pengumuman</span>
+            <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
+          </button>
+          <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
+            <li><a href="{{ route('home') }}#berita" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> Berita Kampus</a></li>
+            <li><a href="{{ route('home') }}#poster" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-bullhorn text-teal-brand/60 text-xs w-3"></i> Pengumuman & Poster</a></li>
+            <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-2 py-2 px-5 text-xs text-gray-500 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-arrow-up-right-from-square text-teal-brand/60 text-xs w-3"></i> Halaman Semua Berita</a></li>
+            <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-2 py-2 px-5 text-xs text-gray-500 hover:text-teal-brand"><i class="fas fa-arrow-up-right-from-square text-teal-brand/60 text-xs w-3"></i> Halaman Semua Pengumuman</a></li>
+          </ul>
+        </li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
 
         {{-- FORMULIR --}}
