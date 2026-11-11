@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $title ?? 'STAIMAS Wonogiri' }} â€“ Sekolah Tinggi Agama Islam Mulia Astuti</title>
-  <meta name="description" content="{{ $description ?? 'STAIMAS Wonogiri â€“ Kampus Islami terpercaya di Jawa Tengah.' }}" />
+  <title>{{ $title ?? 'STAIMAS Wonogiri' }} - Sekolah Tinggi Agama Islam Mulia Astuti</title>
+  <meta name="description" content="{{ $description ?? 'STAIMAS Wonogiri - Kampus Islami terpercaya di Jawa Tengah.' }}" />
   <!-- OPEN GRAPH / SOCIAL MEDIA SHARE META TAGS (WHATSAPP, FACEBOOK, TELEGRAM) -->
   <meta property="og:site_name" content="STAIMAS Wonogiri" />
   <meta property="og:title" content="{{ $ogTitle ?? ($title ?? "STAIMAS Wonogiri") }}" />
-  <meta property="og:description" content="{{ $ogDescription ?? ($description ?? "STAIMAS Wonogiri – Sekolah Tinggi Agama Islam Mulia Astuti Wonogiri") }}" />
+  <meta property="og:description" content="{{ $ogDescription ?? ($description ?? "STAIMAS Wonogiri - Sekolah Tinggi Agama Islam Mulia Astuti Wonogiri") }}" />
   <meta property="og:type" content="{{ $ogType ?? "website" }}" />
   <meta property="og:url" content="{{ $ogUrl ?? url()->current() }}" />
   @if(!empty($ogImage))
@@ -140,6 +140,8 @@
               <li><a href="{{ route('pages.prestasi') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">Prestasi</a></li>
               <li><a href="{{ route('pages.kegiatan') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">Kegiatan</a></li>
               <li><a href="{{ route('pages.fasilitas') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">Fasilitas</a></li>
+              <li class="border-t border-gray-100 my-1"></li>
+              <li><a href="https://ikamas.staimaswonogiri.ac.id/" target="_blank" class="flex items-center justify-between px-4 py-2 text-sm text-teal-brand font-medium hover:bg-teal-50 rounded-lg transition-all"><span><i class="fas fa-user-graduate w-4"></i> IKAMAS (Alumni)</span><i class="fas fa-external-link-alt text-[10px] text-gray-400"></i></a></li>
             </ul>
           </li>
 
@@ -159,36 +161,24 @@
 
           <li class="nav-item-dropdown relative">
             <button class="nav-link flex items-center gap-1 font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] cursor-pointer whitespace-nowrap {{ request()->routeIs('pages.berita*') || request()->routeIs('pages.pengumuman*') ? 'text-teal-brand font-bold' : '' }}">
-              BERITA & PENGUMUMAN <i class="fas fa-chevron-down text-[10px]"></i>
+              NEWS <i class="fas fa-chevron-down text-[10px]"></i>
             </button>
-            <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-64 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
+            <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-52 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
               <li>
-                <a href="{{ route('home') }}#berita" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
-                  <i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita Kampus
+                <a href="{{ route('home') }}#berita" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
+                  <i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita
                 </a>
               </li>
               <li>
-                <a href="{{ route('home') }}#poster" class="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
-                  <i class="fas fa-bullhorn w-4 text-teal-brand"></i> Pengumuman & Poster
-                </a>
-              </li>
-              <li class="border-t border-gray-100 my-1"></li>
-              <li>
-                <a href="{{ route('pages.berita') }}" class="flex items-center justify-between px-4 py-2 text-xs text-gray-500 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
-                  <span class="flex items-center gap-2"><i class="fas fa-arrow-up-right-from-square text-[10px] text-teal-brand"></i> Halaman Semua Berita</span>
-                  <i class="fas fa-chevron-right text-[9px] text-gray-300"></i>
-                </a>
-              </li>
-              <li>
-                <a href="{{ route('pages.pengumuman') }}" class="flex items-center justify-between px-4 py-2 text-xs text-gray-500 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all">
-                  <span class="flex items-center gap-2"><i class="fas fa-arrow-up-right-from-square text-[10px] text-teal-brand"></i> Halaman Semua Pengumuman</span>
-                  <i class="fas fa-chevron-right text-[9px] text-gray-300"></i>
+                <a href="{{ route('home') }}#poster" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
+                  <i class="fas fa-bullhorn w-4 text-teal-brand"></i> Pengumuman
                 </a>
               </li>
             </ul>
           </li>
           <li><a href="{{ route('pages.akreditasi') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.akreditasi') ? 'text-teal-brand font-bold' : '' }}">AKREDITASI</a></li>
           <li><a href="{{ route('pages.formulir') }}" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap {{ request()->routeIs('pages.formulir') ? 'text-teal-brand font-bold' : '' }}">FORMULIR</a></li>
+          <li><a href="https://ikamas.staimaswonogiri.ac.id/" target="_blank" class="nav-link font-medium text-gray-600 hover:text-teal-brand transition-colors py-2 text-[13px] whitespace-nowrap">IKAMAS</a></li>
         </ul>
       </nav>
 
@@ -263,7 +253,8 @@
             <li><a href="{{ route('pages.beasiswa') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-medal text-teal-brand/60 text-xs w-3"></i> Beasiswa</a></li>
             <li><a href="{{ route('pages.prestasi') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-trophy text-teal-brand/60 text-xs w-3"></i> Prestasi</a></li>
             <li><a href="{{ route('pages.kegiatan') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-calendar-check text-teal-brand/60 text-xs w-3"></i> Kegiatan Kemahasiswaan</a></li>
-            <li><a href="{{ route('pages.fasilitas') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-school text-teal-brand/60 text-xs w-3"></i> Fasilitas</a></li>
+            <li><a href="{{ route('pages.fasilitas') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-school text-teal-brand/60 text-xs w-3"></i> Fasilitas</a></li>
+            <li><a href="https://ikamas.staimaswonogiri.ac.id/" target="_blank" class="flex items-center justify-between py-2.5 px-5 text-sm font-semibold text-teal-brand hover:text-teal-brand-dark"><span class="flex items-center gap-2"><i class="fas fa-user-graduate text-teal-brand/80 text-xs w-3"></i> IKAMAS (Alumni)</span><i class="fas fa-external-link-alt text-[10px] text-gray-400"></i></a></li>
           </ul>
         </li>
 
@@ -278,21 +269,20 @@
             <li><a href="{{ route('pages.lppm') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-flask w-4 text-teal-brand"></i> LPPM</a></li>
             <li><a href="{{ route('pages.lpm') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-check-circle w-4 text-teal-brand"></i> LPM</a></li>
             <li><a href="{{ route('pages.ejournal') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper w-4 text-teal-brand"></i> E-Journal</a></li>
-            <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-wallet w-4 text-teal-brand"></i> Keuangan</a></li>
+            <li><a href="{{ route('pages.keuangan') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-wallet w-4 text-teal-brand"></i> Keuangan</a></li>
+            <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-2 py-2.5 px-5 text-sm font-bold text-teal-brand hover:text-teal-brand-dark"><i class="fas fa-box-open text-teal-brand/60 text-xs w-3"></i> Studio & Laboratorium</a></li>
           </ul>
         </li>
 
-        <!-- BERITA & PENGUMUMAN -->
+        <!-- NEWS -->
         <li>
           <button class="mobile-sub-toggle w-full flex justify-between items-center py-3 border-b border-gray-100 text-sm font-semibold text-gray-700">
-            <span class="flex items-center gap-3"><i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita & Pengumuman</span>
+            <span class="flex items-center gap-3"><i class="fas fa-newspaper w-4 text-teal-brand"></i> News</span>
             <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
           </button>
           <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
-            <li><a href="{{ route('home') }}#berita" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> Berita Kampus</a></li>
-            <li><a href="{{ route('home') }}#poster" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-bullhorn text-teal-brand/60 text-xs w-3"></i> Pengumuman & Poster</a></li>
-            <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-2 py-2 px-5 text-xs text-gray-500 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-arrow-up-right-from-square text-teal-brand/60 text-xs w-3"></i> Halaman Semua Berita</a></li>
-            <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-2 py-2 px-5 text-xs text-gray-500 hover:text-teal-brand"><i class="fas fa-arrow-up-right-from-square text-teal-brand/60 text-xs w-3"></i> Halaman Semua Pengumuman</a></li>
+            <li><a href="{{ route('home') }}#berita" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> Berita</a></li>
+            <li><a href="{{ route('home') }}#poster" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-bullhorn text-teal-brand/60 text-xs w-3"></i> Pengumuman</a></li>
           </ul>
         </li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
@@ -300,8 +290,8 @@
         {{-- FORMULIR --}}
         <li><a href="{{ route('pages.formulir') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-file-alt w-4 text-teal-brand"></i> Formulir</a></li>
 
-        {{-- PEMINJAMAN --}}
-        <li><a href="https://gemastudio.staimaswonogiri.ac.id/" target="_blank" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><i class="fas fa-box-open w-4"></i>Studio & Laboratorium</a></li>
+        {{-- IKAMAS --}}
+        <li><a href="https://ikamas.staimaswonogiri.ac.id/" target="_blank" class="flex items-center justify-between py-3 border-b border-gray-100 text-sm font-bold text-teal-brand hover:text-teal-brand-dark transition-colors"><span class="flex items-center gap-3"><i class="fas fa-user-graduate w-4 text-teal-brand"></i> IKAMAS (Alumni)</span> <i class="fas fa-external-link-alt text-xs text-gray-400"></i></a></li>
 
         <!-- PMB Button -->
         <li class="py-4">
@@ -364,7 +354,7 @@
       </div>
     </div>
     <div class="border-t border-teal-800 py-4 text-center text-[10px] text-gray-500">
-      Â© 2026 STAIMAS Wonogiri. All Rights Reserved.
+      &copy; 2026 STAIMAS Wonogiri. All Rights Reserved.
     </div>
   </footer>
 
