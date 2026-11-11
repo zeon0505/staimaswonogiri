@@ -57,12 +57,39 @@
       <div id="content-misi" class="tab-content hidden space-y-4 animate-fadeIn">
         <h4 class="font-bold text-gray-800 text-lg">Misi Keilmuan Program Studi KPI</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          @foreach([
-            'Menjadi program studi unggul dalam pengembangan ilmu komunikasi dan penyiaran Islam dengan menjunjung tinggi etika dan moral yang berlandaskan nilai nilai keindonesiaan dan religius kekaryaan serta mampu berperan pada tingkat Asia Tenggara tahun 2042'
-          ] as $i => $misi)
-          <div class="p-5 bg-gray-50 rounded-2xl flex gap-3">
-            <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 text-sm font-bold flex items-center justify-center flex-shrink-0">{{ $i + 1 }}</span>
-            <p class="text-gray-600 text-sm leading-relaxed">{{ $misi }}</p>
+          @php
+            $misiKpi = [
+              [
+                'title' => 'MISI 1',
+                'icon' => 'fas fa-chalkboard-teacher',
+                'desc' => 'Menyelenggarakan pendidikan dan pembelajaran inovatif untuk menghasilkan lulusan KPI yang kompeten di bidang komunikasi, penyiaran, dan jurnalistik Islam.'
+              ],
+              [
+                'title' => 'MISI 2',
+                'icon' => 'fas fa-flask',
+                'desc' => 'Menyelenggarakan penelitian dan pengabdian kepada masyarakat di bidang komunikasi dan penyiaran Islam.'
+              ],
+              [
+                'title' => 'MISI 3',
+                'icon' => 'fas fa-globe',
+                'desc' => 'Memperluas kerjasama nasional dan internasional di bidang media, dakwah, dan komunikasi Islam untuk meningkatkan kompetensi lulusan prodi KPI.'
+              ],
+              [
+                'title' => 'MISI 4',
+                'icon' => 'fas fa-rocket',
+                'desc' => 'Mengembangkan soft skills dan hard skills lulusan KPI terutama di bidang produksi media, public speaking, dan dakwah digital.'
+              ],
+            ];
+          @endphp
+          @foreach($misiKpi as $misi)
+          <div class="p-5 bg-gray-50 rounded-2xl flex items-start gap-4 border border-gray-100/80 hover:bg-teal-50/30 transition-all">
+            <div class="w-11 h-11 rounded-xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 text-base shadow-sm">
+              <i class="{{ $misi['icon'] }}"></i>
+            </div>
+            <div class="space-y-1">
+              <span class="text-xs font-bold text-teal-700 uppercase tracking-wider block">{{ $misi['title'] }}</span>
+              <p class="text-gray-600 text-sm leading-relaxed">{{ $misi['desc'] }}</p>
+            </div>
           </div>
           @endforeach
         </div>
