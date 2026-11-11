@@ -206,12 +206,12 @@
             </button>
             <ul class="nav-dropdown-menu absolute top-full left-1/2 -translate-x-1/2 bg-white border border-gray-100 rounded-xl p-2 w-52 shadow-xl z-50 opacity-0 invisible translate-y-2 transition-all duration-200">
               <li>
-                <a href="#berita" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
+                <a href="{{ route('pages.berita') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
                   <i class="fas fa-newspaper w-4 text-teal-brand"></i> Berita
                 </a>
               </li>
               <li>
-                <a href="#poster" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
+                <a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-600 hover:bg-teal-50 hover:text-teal-brand rounded-lg transition-all font-medium">
                   <i class="fas fa-bullhorn w-4 text-teal-brand"></i> Pengumuman
                 </a>
               </li>
@@ -322,8 +322,8 @@
             <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300"></i>
           </button>
           <ul class="mobile-sub-list bg-gray-50 rounded-lg mb-1">
-            <li><a href="#berita" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> Berita</a></li>
-            <li><a href="#poster" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-bullhorn text-teal-brand/60 text-xs w-3"></i> Pengumuman</a></li>
+            <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand border-b border-gray-100/70"><i class="fas fa-newspaper text-teal-brand/60 text-xs w-3"></i> Berita</a></li>
+            <li><a href="{{ route('pages.pengumuman') }}" class="flex items-center gap-2 py-2.5 px-5 text-sm text-gray-600 hover:text-teal-brand"><i class="fas fa-bullhorn text-teal-brand/60 text-xs w-3"></i> Pengumuman</a></li>
           </ul>
         </li>
         <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-brand transition-colors"><i class="fas fa-certificate w-4 text-teal-brand"></i> Akreditasi</a></li>
