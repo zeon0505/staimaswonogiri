@@ -48,7 +48,7 @@
         <div class="bg-teal-50/50 border-l-4 border-teal-600 p-6 rounded-r-2xl">
           <h4 class="font-bold text-gray-800 text-lg mb-2">Visi Keilmuan Program Studi KPI</h4>
           <p class="text-gray-700 text-sm leading-relaxed italic">
-            "Mengembangkan program studi yang unggul dalam melahirkan sarjana Komunikasi dan Penyiaran Islam yang profesional, kreatif, dan berjiwa dakwah berbasis teknologi media."
+            "Menjadi program studi unggul dalam pengembangan ilmu komunikasi dan penyiaran Islam dengan menjunjung tinggi etika dan moral yang berlandaskan nilai nilai keindonesiaan dan religius kekaryaan serta mampu berperan pada tingkat Asia Tenggara tahun 2042"
           </p>
         </div>
       </div>
@@ -58,10 +58,7 @@
         <h4 class="font-bold text-gray-800 text-lg">Misi Keilmuan Program Studi KPI</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           @foreach([
-            'Menyelenggarakan pendidikan komunikasi dan penyiaran Islam yang berbasis teknologi informasi dan berwawasan entrepreneurship.',
-            'Mengembangkan penelitian ilmiah di bidang media, komunikasi, dan dakwah digital.',
-            'Melakukan pengabdian kepada masyarakat melalui program literasi media dan pemberdayaan dakwah.',
-            'Menjalin kolaborasi strategis dengan praktisi, industri media, dan lembaga penyiaran.'
+            'Menjadi program studi unggul dalam pengembangan ilmu komunikasi dan penyiaran Islam dengan menjunjung tinggi etika dan moral yang berlandaskan nilai nilai keindonesiaan dan religius kekaryaan serta mampu berperan pada tingkat Asia Tenggara tahun 2042'
           ] as $i => $misi)
           <div class="p-5 bg-gray-50 rounded-2xl flex gap-3">
             <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 text-sm font-bold flex items-center justify-center flex-shrink-0">{{ $i + 1 }}</span>
